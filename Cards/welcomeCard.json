@@ -4,16 +4,20 @@
   "version": "1.0",
   "body": [
     {
-      "type": "Image",
-      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtB3AwMUeNoq4gUBGe6Ocj8kyh3bXa9ZbV7u1fVKQoyKFHdkqU",
-      "size": "stretch"
+      "type": "TextBlock",
+      "spacing": "medium",
+      "size": "large",
+      "weight": "bolder",
+      "text": "👋🏼 Hey Brother!",
+      "wrap": true,
+      "maxLines": 0
     },
     {
       "type": "TextBlock",
-      "spacing": "medium",
+      "spacing": "small",
       "size": "default",
       "weight": "bolder",
-      "text": "Welcome to Bot Framework!",
+      "text": "Welcome to Chloe's EthicalBot!",
       "wrap": true,
       "maxLines": 0
     },
@@ -21,7 +25,24 @@
       "type": "TextBlock",
       "size": "default",
       "isSubtle": true,
-      "text": "Now that you have successfully run your bot, follow the links in this Adaptive Card to expand your knowledge of Bot Framework.",
+      "text": "Chloe's EthicalBot (“us,” or “we”) respects your privacy, and we want you to understand how we may collect personal information about you through this conversation.",
+      "wrap": true,
+      "maxLines": 0
+    },
+    {
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": true,
+      "text": "“Personal information”, is any information that enables us to identify you, directly or indirectly, by reference to an identifier such as your name, identification number, location data, online identifier or one or more factors specific to you. Personal information includes “sensitive personal information” and “pseudonymised personal information” but excludes anonymous information or information that has had the identity of an individual permanently removed.",
+      "wrap": true,
+      "maxLines": 0
+    },
+    {
+      "type": "TextBlock",
+      "spacing": "medium",
+      "size": "default",
+      "weight": "bolder",
+      "text": "***Please note, that by continuing you agree to our terms of use and privacy notice.***",
       "wrap": true,
       "maxLines": 0
     }
@@ -29,18 +50,8 @@
   "actions": [
     {
       "type": "Action.OpenUrl",
-      "title": "Get an overview",
-      "url": "https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0"
-    },
-    {
-      "type": "Action.OpenUrl",
-      "title": "Ask a question",
-      "url": "https://stackoverflow.com/questions/tagged/botframework"
-    },
-    {
-      "type": "Action.OpenUrl",
-      "title": "Learn how to deploy",
-      "url": "https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0"
+      "title": "Check out our Privacy Notice",
+      "url": "https://www.termsfeed.com/privacy-policy/e5084bb6c80051b26d12e7350b756208"
     }
   ]
 }
