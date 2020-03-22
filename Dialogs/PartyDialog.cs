@@ -16,7 +16,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private const string OriginStepMsgText = "Where are you traveling from?";
 
         public PartyDialog()
-            : base(nameof(BookingDialog))
+            : base(nameof(ElectionDialog))
         {
             AddDialog(new TextPrompt(nameof(TextPrompt)));
             AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
