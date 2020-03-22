@@ -11,7 +11,7 @@ using Microsoft.Recognizers.Text.DataTypes.TimexExpression;
 
 namespace Microsoft.BotBuilderSamples.Dialogs
 {
-    public class DateResolverDialog : CancelAndHelpDialog
+    public class DateResolverDialog : EndConversationDialog
     {
         private const string PromptMsgText = "When would you like to travel?";
         private const string RepromptMsgText = "I'm sorry, to make your booking please enter a full travel date including Day Month and Year.";

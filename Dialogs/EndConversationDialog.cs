@@ -9,12 +9,12 @@ using Microsoft.Bot.Schema;
 
 namespace Microsoft.BotBuilderSamples.Dialogs
 {
-    public class CancelAndHelpDialog : ComponentDialog
+    public class EndConversationDialog : ComponentDialog
     {
         private const string HelpMsgText = "Show help here";
         private const string CancelMsgText = "Cancelling...";
 
-        public CancelAndHelpDialog(string id)
+        public EndConversationDialog(string id)
             : base(id)
         {
         }
