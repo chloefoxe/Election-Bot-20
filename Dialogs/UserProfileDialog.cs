@@ -63,7 +63,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             };
                 
                 if(luisResult.TopIntent().Equals(Luis.ElectionBot.Intent.endConversation)){
-                return await stepContext.BeginDialogAsync(nameof(EndConversationDialog), cancellationToken);;    
+                return await stepContext.BeginDialogAsync(nameof(EndConversationDialog), cancellationToken);    
            }
             if(luisResult.TopIntent().Equals(Luis.ElectionBot.Intent.None)){
                     var didntUnderstandMessageText = $"Sorry, I didn't get that. Please try rephrasing your message(intent was {luisResult.TopIntent().intent})";
