@@ -11,48 +11,42 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 {
     public class EndConversationDialog : ComponentDialog
     {
-        private const string HelpMsgText = "Show help here";
-        private const string CancelMsgText = "Cancelling...";
-
         public EndConversationDialog(string id)
             : base(id)
         {
+
+            AddDialog(new TextPrompt(nameof(TextPrompt)));
+            AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
+            AddDialog(new DateResolverDialog());
+            AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
+            {
+                PrintOutEntitiesTask,
+                FinalStepAsync,
+            }));
+
+            // The initial child Dialog to run.
+            InitialDialogId = nameof(WaterfallDialog);
         }
 
-        protected override async Task<DialogTurnResult> OnContinueDialogAsync(DialogContext innerDc, CancellationToken cancellationToken = default)
+        private async Task<DialogTurnResult> PrintOutEntitiesTask(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            var result = await InterruptAsync(innerDc, cancellationToken);
-            if (result != null)
+            if (stepContext.Result is PersonalDetails result)
             {
-                return result;
-            }
+                // Now we have all the booking details call the booking service.
 
-            return await base.OnContinueDialogAsync(innerDc, cancellationToken);
+                // If the call to the booking service was successful tell the user.
+
+                var messageText = $"Your name is {result.Name}";
+                var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
+                await stepContext.Context.SendActivityAsync(message, cancellationToken);
+            }
+            return await stepContext.NextAsync(null, cancellationToken);
         }
 
-        private async Task<DialogTurnResult> InterruptAsync(DialogContext innerDc, CancellationToken cancellationToken)
+        private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            if (innerDc.Context.Activity.Type == ActivityTypes.Message)
-            {
-                var text = innerDc.Context.Activity.Text.ToLowerInvariant();
-
-                switch (text)
-                {
-                    case "help":
-                    case "?":
-                        var helpMessage = MessageFactory.Text(HelpMsgText, HelpMsgText, InputHints.ExpectingInput);
-                        await innerDc.Context.SendActivityAsync(helpMessage, cancellationToken);
-                        return new DialogTurnResult(DialogTurnStatus.Waiting);
-
-                    case "cancel":
-                    case "quit":
-                        var cancelMessage = MessageFactory.Text(CancelMsgText, CancelMsgText, InputHints.IgnoringInput);
-                        await innerDc.Context.SendActivityAsync(cancelMessage, cancellationToken);
-                        return await innerDc.CancelAllDialogsAsync(cancellationToken);
-                }
-            }
-
-            return null;
+            var messageText = stepContext.Options?.ToString() ?? "conversation ended";
+            return await stepContext.EndDialogAsync(null, cancellationToken);
         }
     }
 }

@@ -123,8 +123,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         }
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            // // If the child dialog ("BookingDialog") was cancelled, the user failed to confirm or if the intent wasn't BookFlight
-            // // the Result here will be null.
+            // If the child dialog ("BookingDialog") was cancelled, the user failed to confirm or if the intent wasn't BookFlight
+            // the Result here will be null.
             // if (stepContext.Result is PersonalDetails result)
             // {
             //     // Now we have all the booking details call the booking service.
@@ -138,7 +138,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             //     await stepContext.Context.SendActivityAsync(message, cancellationToken);
             // }
 
-            return await stepContext.NextAsync(null, cancellationToken);
+            return await stepContext.EndDialogAsync(null, cancellationToken);
         }
     }
 }
