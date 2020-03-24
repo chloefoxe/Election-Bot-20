@@ -20,7 +20,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         protected readonly ILogger Logger;
 
         // Dependency injection uses this constructor to instantiate MainDialog
-        public MainDialog(ConversationRecognizer luisRecognizer, ElectionDialog electionDialog, PartyDialog partyDialog, UserProfileDialog userProfileDialog, ILogger<MainDialog> logger)
+        public MainDialog(ConversationRecognizer luisRecognizer, ElectionDialog electionDialog, PartyDialog partyDialog, UserProfileDialog userProfileDialog, EndConversationDialog endConversationDialog, ILogger<MainDialog> logger)
             : base(nameof(MainDialog))
         {
             _luisRecognizer = luisRecognizer;
@@ -28,6 +28,9 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             AddDialog(new TextPrompt(nameof(TextPrompt)));
             AddDialog(electionDialog);
+            AddDialog(userProfileDialog);
+            AddDialog(partyDialog);
+            AddDialog(endConversationDialog);
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
                 IntroStepAsync,
@@ -43,7 +46,10 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             if (!_luisRecognizer.IsConfigured)
             {
-                return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), new PersonalDetails(), cancellationToken);
+                await stepContext.Context.SendActivityAsync(
+                    MessageFactory.Text("NOTE: LUIS is not configured. To enable all capabilities, add 'LuisAppId', 'LuisAPIKey' and 'LuisAPIHostName' to the web.config file.", inputHint: InputHints.IgnoringInput), cancellationToken);
+
+                return await stepContext.NextAsync(null, cancellationToken);
             }
 
             // Use the text provided in FinalStepAsync or the default if it is the first time.

@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using Microsoft.Bot.Builder.Dialogs.Choices;
 
 namespace Microsoft.BotBuilderSamples.Dialogs
-
 {
     public class UserProfileDialog : ComponentDialog
     {
@@ -30,11 +29,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             AddDialog(main);
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
-
-            IntroStepAsync,
-            GetNameAsync,
-            
-
+                IntroStepAsync,
+                GetNameAsync,
             }));
 
             // The initial child Dialog to run.
