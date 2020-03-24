@@ -64,10 +64,10 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             }
 
             // Call LUIS and gather any potential booking details. (Note the TurnContext has the response to the prompt.)
-            var luisResult = await _luisRecognizer.RecognizeAsync<ElectionBot>(stepContext.Context, cancellationToken);
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             switch (luisResult.TopIntent().intent)
             {
-                case ElectionBot.Intent.Greeting:
+                case Luis.ElectionBot.Intent.Greeting:
                     var userInfo = new PersonalDetails()
                     {
                         //Name = luisResult.Entities.name,
@@ -91,22 +91,22 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     // Run the BookingDialog giving it whatever details we have from the LUIS call, it will fill out the remainder.
                     // return await stepContext.BeginDialogAsync(nameof(BookingDialog), personalDetails, cancellationToken);
 
-                case ElectionBot.Intent.discussCandidate:
+                case Luis.ElectionBot.Intent.discussCandidate:
                     // // We haven't implemented the GetWeatherDialog so we just display a TODO message.
                     // var getWeatherMessageText = "TODO: get weather flow here";
                     // var getWeatherMessage = MessageFactory.Text(getWeatherMessageText, getWeatherMessageText, InputHints.IgnoringInput);
                     // await stepContext.Context.SendActivityAsync(getWeatherMessage, cancellationToken);
                     // break;
 
-                case ElectionBot.Intent.discussLocation:
+                case Luis.ElectionBot.Intent.discussLocation:
                 
-                case ElectionBot.Intent.discussParty:
+                case Luis.ElectionBot.Intent.discussParty:
 
-                case ElectionBot.Intent.discussPersonal:
+                case Luis.ElectionBot.Intent.discussPersonal:
 
-                case ElectionBot.Intent.discussPolitics:
+                case Luis.ElectionBot.Intent.discussPolitics:
 
-                case ElectionBot.Intent.disscussIssues:
+                case Luis.ElectionBot.Intent.disscussIssues:
 
                 default:
                     // Catch all for unhandled intents
