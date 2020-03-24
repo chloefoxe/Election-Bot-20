@@ -60,17 +60,17 @@ namespace Microsoft.BotBuilderSamples.Dialogs
          private async Task<DialogTurnResult> GetNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
 
         {
-            var luisResult = await _luisRecognizer.RecognizeAsync<ElectionBot>(stepContext.Context, cancellationToken);
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             var userInfo = new PersonalDetails()
             {
                 //Name = luisResult.Entities.name,
 
             };
                 
-                if(luisResult.TopIntent().Equals(ElectionBot.Intent.endConversation)){
+                if(luisResult.TopIntent().Equals(Luis.ElectionBot.Intent.endConversation)){
                 return await stepContext.BeginDialogAsync(nameof(EndConversationDialog), cancellationToken);;    
            }
-            if(luisResult.TopIntent().Equals(ElectionBot.Intent.None)){
+            if(luisResult.TopIntent().Equals(Luis.ElectionBot.Intent.None)){
                     var didntUnderstandMessageText = $"Sorry, I didn't get that. Please try rephrasing your message(intent was {luisResult.TopIntent().intent})";
                     var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
             }
