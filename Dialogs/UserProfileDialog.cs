@@ -17,7 +17,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private readonly ConversationRecognizer _luisRecognizer;
         protected readonly ILogger Logger;
 
-       public UserProfileDialog(ConversationRecognizer luisRecognizer,  MainDialog main,  ILogger<UserProfileDialog> logger, EndConversationDialog endConversationDialog)
+       public UserProfileDialog(ConversationRecognizer luisRecognizer,  ILogger<UserProfileDialog> logger, EndConversationDialog endConversationDialog)
             : base(nameof(UserProfileDialog))
         {
             // _userProfileAccessor = userState.CreateProperty<UserProfile>("UserProfile");
@@ -26,7 +26,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             
             AddDialog(new TextPrompt(nameof(TextPrompt)));
             AddDialog(endConversationDialog);
-            AddDialog(main);
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
                 IntroStepAsync,
@@ -71,9 +70,9 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
             }
                 
-                 await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks {userInfo.Name.FirstOrDefault()}, it's great to meet you!"), cancellationToken);
+                await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks {userInfo.Name.FirstOrDefault()}, it's great to meet you!"), cancellationToken);
 
-                return await stepContext.BeginDialogAsync(nameof(MainDialog));   
+                return await stepContext.BeginDialogAsync(nameof(ElectionDialog));   
             }
     }
 }
