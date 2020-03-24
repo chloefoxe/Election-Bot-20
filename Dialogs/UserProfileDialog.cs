@@ -17,7 +17,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private readonly ConversationRecognizer _luisRecognizer;
         protected readonly ILogger Logger;
 
-       public UserProfileDialog(ConversationRecognizer luisRecognizer,  ILogger<UserProfileDialog> logger, EndConversationDialog endConversationDialog)
+       public UserProfileDialog(ConversationRecognizer luisRecognizer, /*EndConversationDialog endConversationDialog*/ ILogger<UserProfileDialog> logger)
             : base(nameof(UserProfileDialog))
         {
             // _userProfileAccessor = userState.CreateProperty<UserProfile>("UserProfile");
@@ -25,7 +25,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             Logger = logger;
             
             AddDialog(new TextPrompt(nameof(TextPrompt)));
-            AddDialog(endConversationDialog);
+            //AddDialog(endConversationDialog);
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
                 IntroStepAsync,

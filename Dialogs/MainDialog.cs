@@ -20,7 +20,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         protected readonly ILogger Logger;
 
         // Dependency injection uses this constructor to instantiate MainDialog
-        public MainDialog(ConversationRecognizer luisRecognizer, ElectionDialog electionDialog, PartyDialog partyDialog, UserProfileDialog userProfileDialog, EndConversationDialog endConversationDialog, ILogger<MainDialog> logger)
+        public MainDialog(ConversationRecognizer luisRecognizer, ElectionDialog electionDialog, PartyDialog partyDialog, UserProfileDialog userProfileDialog, /*EndConversationDialog endConversationDialog,*/ ILogger<MainDialog> logger)
             : base(nameof(MainDialog))
         {
             _luisRecognizer = luisRecognizer;
@@ -30,7 +30,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             AddDialog(electionDialog);
             AddDialog(userProfileDialog);
             AddDialog(partyDialog);
-            AddDialog(endConversationDialog);
+            //AddDialog(endConversationDialog);
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
                 IntroStepAsync,
