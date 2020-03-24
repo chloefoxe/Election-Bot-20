@@ -10,7 +10,7 @@ using Microsoft.Recognizers.Text.DataTypes.TimexExpression;
 
 namespace Microsoft.BotBuilderSamples.Dialogs
 {
-    public class PartyDialog : EndConversationDialog
+    public class PartyDialog : ComponentDialog
     {
         public PartyDialog()
             : base(nameof(PartyDialog))

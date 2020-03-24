@@ -10,7 +10,7 @@ using Microsoft.Recognizers.Text.DataTypes.TimexExpression;
 
 namespace Microsoft.BotBuilderSamples.Dialogs
 {
-    public class ElectionDialog : EndConversationDialog
+    public class ElectionDialog : ComponentDialog
     {
         private const string DestinationStepMsgText = "Did you vote in this year's election?";
 
