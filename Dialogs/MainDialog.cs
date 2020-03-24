@@ -43,34 +43,31 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             if (!_luisRecognizer.IsConfigured)
             {
-                await stepContext.Context.SendActivityAsync(
-                    MessageFactory.Text("NOTE: LUIS is not configured. To enable all capabilities, add 'LuisAppId', 'LuisAPIKey' and 'LuisAPIHostName' to the appsettings.json file.", inputHint: InputHints.IgnoringInput), cancellationToken);
-
-                return await stepContext.NextAsync(null, cancellationToken);
+                return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), new PersonalDetails(), cancellationToken);
             }
 
             // Use the text provided in FinalStepAsync or the default if it is the first time.
             var messageText = stepContext.Options?.ToString() ?? "My name is EthicalBot, I'd love to have chat with you today! To kick off things, can I ask you your name? ";
             var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
             return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+
         }
 
-        private async Task<DialogTurnResult> ActStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        public async Task<DialogTurnResult> ActStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             if (!_luisRecognizer.IsConfigured)
             {
-                // LUIS is not configured, we just run the BookingDialog path with an empty BookingDetailsInstance.
-                return await stepContext.BeginDialogAsync(nameof(BookingDialog), new PersonalDetails(), cancellationToken);
+                return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), new PersonalDetails(), cancellationToken);
             }
 
-            // Call LUIS and gather any potential booking details. (Note the TurnContext has the response to the prompt.)
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
+            
             switch (luisResult.TopIntent().intent)
             {
                 case Luis.ElectionBot.Intent.Greeting:
                     var userInfo = new PersonalDetails()
                     {
-                        //Name = luisResult.Entities.name,
+                        Name = luisResult.Entities.name,
                     };
 
                     if (userInfo.Name == null)
@@ -120,24 +117,22 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         }
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            // If the child dialog ("BookingDialog") was cancelled, the user failed to confirm or if the intent wasn't BookFlight
-            // the Result here will be null.
-            if (stepContext.Result is PersonalDetails result)
-            {
-                // Now we have all the booking details call the booking service.
+            // // If the child dialog ("BookingDialog") was cancelled, the user failed to confirm or if the intent wasn't BookFlight
+            // // the Result here will be null.
+            // if (stepContext.Result is PersonalDetails result)
+            // {
+            //     // Now we have all the booking details call the booking service.
 
-                // If the call to the booking service was successful tell the user.
+            //     // If the call to the booking service was successful tell the user.
 
-                var timeProperty = new TimexProperty(result.TravelDate);
-                var travelDateMsg = timeProperty.ToNaturalLanguage(DateTime.Now);
-                var messageText = $"I have you booked to {result.Destination} from {result.Origin} on {travelDateMsg}";
-                var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
-                await stepContext.Context.SendActivityAsync(message, cancellationToken);
-            }
+            //     var timeProperty = new TimexProperty(result.TravelDate);
+            //     var travelDateMsg = timeProperty.ToNaturalLanguage(DateTime.Now);
+            //     var messageText = $"I have you booked to {result.Destination} from {result.Origin} on {travelDateMsg}";
+            //     var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
+            //     await stepContext.Context.SendActivityAsync(message, cancellationToken);
+            // }
 
-            // Restart the main dialog with a different message the second time around
-            var promptMessage = "What else can I do for you?";
-            return await stepContext.ReplaceDialogAsync(InitialDialogId, promptMessage, cancellationToken);
+            return await stepContext.NextAsync(null, cancellationToken);
         }
     }
 }
