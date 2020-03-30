@@ -23,7 +23,12 @@ namespace Microsoft.BotBuilderSamples
             services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
 
             // Create the storage we'll be using for User and Conversation state. (Memory is great for testing purposes.)
-            services.AddSingleton<IStorage, MemoryStorage>();
+             services.AddSingleton<IStorage, MemoryStorage>();
+
+            //var storageAccount = "DefaultEndpointsProtocol=https;AccountName=mybotstorage;AccountKey=76Xvfo8hI016W6IreBYyNz610suMmPzhJ2VbIV1VUanL8I7VXs2qCTdYeW7w/1cjfK9+UnX6C0f4J4hEfm90sg==;EndpointSuffix=core.windows.net";
+            //var storageContainer = "mybotstorage";
+
+            //services.AddSingleton<IStorage>(new AzureBlobStorage(storageAccount, storageContainer));
 
             // Create the User state. (Used in this bot's Dialog implementation.)
             services.AddSingleton<UserState>();
