@@ -12,7 +12,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 {
     public class ElectionDialog : ComponentDialog
     {
-        private const string DestinationStepMsgText = "Did you vote in this year's election?";
+        private const string DestinationStepMsgText = "So, did you vote in this year's election?";
 
         public ElectionDialog()
             : base(nameof(ElectionDialog))
@@ -21,14 +21,14 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
-                FinalStepAsync,
+                IntroStepAsync,
             }));
 
             // The initial child Dialog to run.
             InitialDialogId = nameof(WaterfallDialog);
         }
 
-        private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        private async Task<DialogTurnResult> IntroStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             if ((bool)stepContext.Result)
             {
