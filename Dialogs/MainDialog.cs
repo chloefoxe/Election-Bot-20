@@ -74,11 +74,9 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     {
                         Name = luisResult.Entities.name,
                     };
+                
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks {userInfo.Name.FirstOrDefault()}, it's great to meet you!"), cancellationToken);
 
-                    // if (userInfo.Name == null)
-                    // {
-                    //     return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), userInfo, cancellationToken);
-                    // }
                     return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), userInfo, cancellationToken);
 
                     // Initialize BookingDetails with any entities we may have found in the response.
