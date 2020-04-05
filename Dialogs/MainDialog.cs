@@ -75,11 +75,11 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         Name = luisResult.Entities.name,
                     };
 
-                    if (userInfo.Name == null)
-                    {
-                        return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), userInfo, cancellationToken);
-                    }
-                    return await stepContext.BeginDialogAsync(nameof(ElectionDialog), userInfo, cancellationToken);
+                    // if (userInfo.Name == null)
+                    // {
+                    //     return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), userInfo, cancellationToken);
+                    // }
+                    return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), userInfo, cancellationToken);
 
                     // Initialize BookingDetails with any entities we may have found in the response.
                     // var personalDetails = new PersonalDetails()
