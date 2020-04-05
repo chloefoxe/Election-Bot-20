@@ -24,6 +24,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             Logger = logger;
             
             AddDialog(new TextPrompt(nameof(TextPrompt)));
+            AddDialog(electionDialog);
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
                 //GetUserIDAsync
