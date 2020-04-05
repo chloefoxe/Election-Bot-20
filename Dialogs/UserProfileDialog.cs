@@ -13,7 +13,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 {
     public class UserProfileDialog : ComponentDialog
     {
-       
         private readonly ConversationRecognizer _luisRecognizer;
         protected readonly ILogger Logger;
 
@@ -25,11 +24,11 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             Logger = logger;
             
             AddDialog(new TextPrompt(nameof(TextPrompt)));
-            //AddDialog(endConversationDialog);
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
-                IntroStepAsync,
+                //GetUserIDAsync
                 GetNameAsync,
+                //FinalStepAsync,
             }));
 
             // The initial child Dialog to run.
@@ -51,29 +50,36 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
         }
 
-    
-         private async Task<DialogTurnResult> GetNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        // private async Task<DialogTurnResult> GetUserIDAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        // {
+        //     var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
+        //     var userInfo = new PersonalDetails(){
+        //         UserID = luisResult.Entities.userID,
+        //     };
+                
+        //     if(luisResult.TopIntent().Equals(Luis.ElectionBot.Intent.None)){
+        //         var didntUnderstandMessageText = $"Sorry, I didn't get that. Please try rephrasing your message(intent was {luisResult.TopIntent().intent})";
+        //         var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
+        //     }
 
+        //     return await stepContext.NextAsync(UserProfileDialog.UserID, cancellationToken);
+        // }
+
+        private async Task<DialogTurnResult> GetNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-            var userInfo = new PersonalDetails()
-            {
+            var userInfo = new PersonalDetails(){
                 Name = luisResult.Entities.name,
-
             };
                 
-                // if(luisResult.TopIntent().Equals(Luis.ElectionBot.Intent.endConversation)){
-                //     return await stepContext.BeginDialogAsync(nameof(EndConversationDialog), cancellationToken);    
-                // }
-                
-                if(luisResult.TopIntent().Equals(Luis.ElectionBot.Intent.None)){
-                    var didntUnderstandMessageText = $"Sorry, I didn't get that. Please try rephrasing your message(intent was {luisResult.TopIntent().intent})";
-                    var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
-                }
-                
-                await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks {userInfo.Name.FirstOrDefault()}, it's great to meet you!"), cancellationToken);
-
-                return await stepContext.BeginDialogAsync(nameof(ElectionDialog));   
+            if(luisResult.TopIntent().Equals(Luis.ElectionBot.Intent.None)){
+                var didntUnderstandMessageText = $"Sorry, I didn't get that. Please try rephrasing your message(intent was {luisResult.TopIntent().intent})";
+                var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
             }
+                
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks {userInfo.Name.FirstOrDefault()}, it's great to meet you!"), cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"So did you vote in this year's election?"), cancellationToken);
+            return await stepContext.EndDialogAsync(null, cancellationToken);
+        }
     }
-}
+}   

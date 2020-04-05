@@ -39,11 +39,5 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             return await stepContext.EndDialogAsync(null, cancellationToken);
         }
-
-        private static bool IsAmbiguous(string timex)
-        {
-            var timexProperty = new TimexProperty(timex);
-            return !timexProperty.Types.Contains(Constants.TimexTypes.Definite);
-        }
     }
 }
