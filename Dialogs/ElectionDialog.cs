@@ -12,7 +12,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 {
     public class ElectionDialog : ComponentDialog
     {
-        private const string DestinationStepMsgText = "So, did you vote in this year's election?";
+        private readonly ConversationRecognizer _luisRecognizer;
 
         public ElectionDialog()
             : base(nameof(ElectionDialog))
@@ -22,6 +22,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
                 IntroStepAsync,
+                AskVotedAsync,
             }));
 
             // The initial child Dialog to run.
@@ -30,12 +31,14 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         private async Task<DialogTurnResult> IntroStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            if ((bool)stepContext.Result)
-            {
-                var personalDetails = (PersonalDetails)stepContext.Options;
+            var messageText = stepContext.Options?.ToString() ?? "So, did you vote in this year's election then?";
+            var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+            return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+        }
 
-                return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
-            }
+        private async Task<DialogTurnResult> AskVotedAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        {
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"That's cool"), cancellationToken);
 
             return await stepContext.EndDialogAsync(null, cancellationToken);
         }

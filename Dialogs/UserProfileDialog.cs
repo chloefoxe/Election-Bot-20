@@ -16,7 +16,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private readonly ConversationRecognizer _luisRecognizer;
         protected readonly ILogger Logger;
 
-       public UserProfileDialog(ConversationRecognizer luisRecognizer, /*EndConversationDialog endConversationDialog*/ ILogger<UserProfileDialog> logger)
+       public UserProfileDialog(ConversationRecognizer luisRecognizer, ElectionDialog electionDialog, /*EndConversationDialog endConversationDialog*/ ILogger<UserProfileDialog> logger)
             : base(nameof(UserProfileDialog))
         {
             // _userProfileAccessor = userState.CreateProperty<UserProfile>("UserProfile");
@@ -78,8 +78,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             }
                 
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks {userInfo.Name.FirstOrDefault()}, it's great to meet you!"), cancellationToken);
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"So did you vote in this year's election?"), cancellationToken);
-            return await stepContext.EndDialogAsync(null, cancellationToken);
+
+            return await stepContext.BeginDialogAsync(nameof(ElectionDialog));
         }
     }
 }   
