@@ -58,11 +58,15 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         public async Task<DialogTurnResult> ActStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-            
+            var personalDetails = new PersonalDetails();
+
             switch (luisResult.TopIntent().intent)
             {
-                case Luis.ElectionBot.Intent.Greeting:
-                    var personalDetails = new PersonalDetails();
+                case Luis.ElectionBot.Intent.discussFeeling:
+                    return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), personalDetails, cancellationToken);
+                
+                case Luis.ElectionBot.Intent.askMood:
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I'm great! Thanks for asking."), cancellationToken);
                     return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), personalDetails, cancellationToken);
 
                 default:

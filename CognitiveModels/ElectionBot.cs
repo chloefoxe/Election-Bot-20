@@ -19,16 +19,18 @@ namespace Luis
         public string AlteredText;
 
         public enum Intent {
+            askMood, 
             discussCandidate, 
             discussCoronavirus, 
+            discussFeeling, 
             discussLocation, 
             discussParty, 
             discussPersonal, 
             discussPolitics, 
             disscussIssues, 
             endConversation, 
+            giveName, 
             giveUserID, 
-            Greeting, 
             None
         };
         [JsonProperty("intents")]

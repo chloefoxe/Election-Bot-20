@@ -44,7 +44,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             if (personalDetials.Name == null)
             {
-                var messageText = "That's cool. First of all, can I ask what is your name?";
+                var messageText = "Can I ask what is your name?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
@@ -79,7 +79,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks for that."), cancellationToken);
 
             return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
-            
+
             //return await stepContext.EndDialogAsync(null, cancellationToken);
         }
 

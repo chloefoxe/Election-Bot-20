@@ -7,10 +7,16 @@
   "tokenizerVersion": "1.0.0",
   "intents": [
     {
+      "name": "askMood"
+    },
+    {
       "name": "discussCandidate"
     },
     {
       "name": "discussCoronavirus"
+    },
+    {
+      "name": "discussFeeling"
     },
     {
       "name": "discussLocation"
@@ -31,10 +37,10 @@
       "name": "endConversation"
     },
     {
-      "name": "giveUserID"
+      "name": "giveName"
     },
     {
-      "name": "Greeting"
+      "name": "giveUserID"
     },
     {
       "name": "None"
@@ -78,6 +84,11 @@
   "patterns": [],
   "utterances": [
     {
+      "text": "a1234",
+      "intent": "None",
+      "entities": []
+    },
+    {
       "text": "alot of my friends have an interest in politics",
       "intent": "discussPolitics",
       "entities": []
@@ -92,6 +103,11 @@
           "endPos": 52
         }
       ]
+    },
+    {
+      "text": "alright. you?",
+      "intent": "askMood",
+      "entities": []
     },
     {
       "text": "brendan howlin usually tops the vote in wexford",
@@ -142,7 +158,7 @@
     },
     {
       "text": "chloe",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
@@ -153,7 +169,7 @@
     },
     {
       "text": "chloe foxe",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
@@ -166,17 +182,6 @@
       "text": "cool bye now",
       "intent": "endConversation",
       "entities": []
-    },
-    {
-      "text": "cool. i'm excited. my name is chloe",
-      "intent": "Greeting",
-      "entities": [
-        {
-          "entity": "name",
-          "startPos": 30,
-          "endPos": 34
-        }
-      ]
     },
     {
       "text": "covid-19 is putting a delay to things",
@@ -224,6 +229,16 @@
           "endPos": 45
         }
       ]
+    },
+    {
+      "text": "feeling ok. and you?",
+      "intent": "askMood",
+      "entities": []
+    },
+    {
+      "text": "feeling shitty",
+      "intent": "discussFeeling",
+      "entities": []
     },
     {
       "text": "fine gael are a crowd of spoofers",
@@ -281,8 +296,48 @@
       ]
     },
     {
+      "text": "good and yourself?",
+      "intent": "askMood",
+      "entities": []
+    },
+    {
+      "text": "good. and you?",
+      "intent": "askMood",
+      "entities": []
+    },
+    {
+      "text": "good. how are you",
+      "intent": "askMood",
+      "entities": []
+    },
+    {
       "text": "goodbye",
       "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "grand",
+      "intent": "discussFeeling",
+      "entities": []
+    },
+    {
+      "text": "grand thanks",
+      "intent": "discussFeeling",
+      "entities": []
+    },
+    {
+      "text": "great hows things?",
+      "intent": "askMood",
+      "entities": []
+    },
+    {
+      "text": "great. and you?",
+      "intent": "askMood",
+      "entities": []
+    },
+    {
+      "text": "great. how are you",
+      "intent": "askMood",
       "entities": []
     },
     {
@@ -296,23 +351,8 @@
       "entities": []
     },
     {
-      "text": "hello",
-      "intent": "Greeting",
-      "entities": []
-    },
-    {
-      "text": "hey",
-      "intent": "Greeting",
-      "entities": []
-    },
-    {
-      "text": "hey man",
-      "intent": "Greeting",
-      "entities": []
-    },
-    {
       "text": "hey my name is chloe",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
@@ -323,7 +363,7 @@
     },
     {
       "text": "hey my name is chloe, nice to meet you",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
@@ -333,8 +373,19 @@
       ]
     },
     {
+      "text": "hey my name is luis",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 15,
+          "endPos": 18
+        }
+      ]
+    },
+    {
       "text": "hey my name is patrice",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
@@ -345,7 +396,7 @@
     },
     {
       "text": "hey my name is webchat",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
@@ -353,11 +404,6 @@
           "endPos": 21
         }
       ]
-    },
-    {
-      "text": "hi bot",
-      "intent": "Greeting",
-      "entities": []
     },
     {
       "text": "hopefully leitrim will be a better place to live after the election",
@@ -371,52 +417,8 @@
       ]
     },
     {
-      "text": "how are things? my name is chloe",
-      "intent": "Greeting",
-      "entities": [
-        {
-          "entity": "name",
-          "startPos": 27,
-          "endPos": 31
-        }
-      ]
-    },
-    {
-      "text": "how are you doing bot. my name is chloe",
-      "intent": "Greeting",
-      "entities": [
-        {
-          "entity": "name",
-          "startPos": 34,
-          "endPos": 38
-        }
-      ]
-    },
-    {
-      "text": "how are you? my name is chloe",
-      "intent": "Greeting",
-      "entities": [
-        {
-          "entity": "name",
-          "startPos": 24,
-          "endPos": 28
-        }
-      ]
-    },
-    {
-      "text": "how're you today? i'm chloe",
-      "intent": "Greeting",
-      "entities": [
-        {
-          "entity": "name",
-          "startPos": 22,
-          "endPos": 26
-        }
-      ]
-    },
-    {
       "text": "hye",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": []
     },
     {
@@ -432,7 +434,7 @@
     },
     {
       "text": "i am chloe",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
@@ -451,6 +453,16 @@
           "endPos": 35
         }
       ]
+    },
+    {
+      "text": "i am good thanks",
+      "intent": "discussFeeling",
+      "entities": []
+    },
+    {
+      "text": "i am grand. how are you?",
+      "intent": "askMood",
+      "entities": []
     },
     {
       "text": "i am happy that pearse doherty was elected",
@@ -849,6 +861,16 @@
       ]
     },
     {
+      "text": "im good",
+      "intent": "discussFeeling",
+      "entities": []
+    },
+    {
+      "text": "i'm good. how are you",
+      "intent": "askMood",
+      "entities": []
+    },
+    {
       "text": "i'm interested to see if the housing crisis will be sorted by the next government",
       "intent": "disscussIssues",
       "entities": [
@@ -858,6 +880,21 @@
           "endPos": 42
         }
       ]
+    },
+    {
+      "text": "i'm ok",
+      "intent": "discussFeeling",
+      "entities": []
+    },
+    {
+      "text": "i'm ok thanks",
+      "intent": "discussFeeling",
+      "entities": []
+    },
+    {
+      "text": "im ok. how are you?",
+      "intent": "askMood",
+      "entities": []
     },
     {
       "text": "i'm proud of everyone in cork for voting left",
@@ -964,7 +1001,7 @@
     },
     {
       "text": "my name is chloe",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
@@ -975,7 +1012,7 @@
     },
     {
       "text": "my name is chloe foxe",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
@@ -986,7 +1023,73 @@
     },
     {
       "text": "my name is claire",
-      "intent": "Greeting",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 11,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "my name is ger",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 11,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "my name is geraldine",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 11,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "my name is gerard",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 11,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "my name is jerry",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 11,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "my name is luis",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 11,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "my name is sorcha",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
@@ -997,7 +1100,7 @@
     },
     {
       "text": "my name is steven",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
@@ -1008,7 +1111,7 @@
     },
     {
       "text": "my names chloe",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
@@ -1034,7 +1137,32 @@
       ]
     },
     {
+      "text": "my user id is a1234",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "my user id is a1235",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
       "text": "my user id is d1234",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "my user id is e3456",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "my user id is n1234",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "my user id is w1234",
       "intent": "giveUserID",
       "entities": []
     },
@@ -1049,30 +1177,38 @@
       "entities": []
     },
     {
-      "text": "nice to meet you i am chloe",
-      "intent": "Greeting",
-      "entities": [
-        {
-          "entity": "name",
-          "startPos": 22,
-          "endPos": 26
-        }
-      ]
+      "text": "not great",
+      "intent": "discussFeeling",
+      "entities": []
     },
     {
-      "text": "nice to meet you. my name is chloe",
-      "intent": "Greeting",
-      "entities": [
-        {
-          "entity": "name",
-          "startPos": 29,
-          "endPos": 33
-        }
-      ]
+      "text": "not great. you?",
+      "intent": "askMood",
+      "entities": []
+    },
+    {
+      "text": "not too bad",
+      "intent": "discussFeeling",
+      "entities": []
+    },
+    {
+      "text": "not too bad. how are you?",
+      "intent": "askMood",
+      "entities": []
     },
     {
       "text": "ok",
-      "intent": "Greeting",
+      "intent": "discussFeeling",
+      "entities": []
+    },
+    {
+      "text": "ok thanks",
+      "intent": "discussFeeling",
+      "entities": []
+    },
+    {
+      "text": "only alright",
+      "intent": "discussFeeling",
       "entities": []
     },
     {
@@ -1129,6 +1265,11 @@
       "entities": []
     },
     {
+      "text": "s2356",
+      "intent": "None",
+      "entities": []
+    },
+    {
       "text": "see you again",
       "intent": "endConversation",
       "entities": []
@@ -1180,6 +1321,17 @@
       "text": "stupid",
       "intent": "None",
       "entities": []
+    },
+    {
+      "text": "sure thing my name is chloe",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 22,
+          "endPos": 26
+        }
+      ]
     },
     {
       "text": "talk later",
@@ -1341,6 +1493,11 @@
       ]
     },
     {
+      "text": "user id e1256",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
       "text": "usually finna fail top the poll in waterford",
       "intent": "discussLocation",
       "entities": [
@@ -1375,6 +1532,11 @@
     {
       "text": "w000",
       "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "w2356",
+      "intent": "None",
       "entities": []
     },
     {
@@ -1417,12 +1579,12 @@
     },
     {
       "text": "what's up",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": []
     },
     {
       "text": "what's up im chloe",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
@@ -1448,18 +1610,8 @@
       "entities": []
     },
     {
-      "text": "yo",
-      "intent": "Greeting",
-      "entities": []
-    },
-    {
-      "text": "yo bro",
-      "intent": "Greeting",
-      "entities": []
-    },
-    {
       "text": "yo my name is chloe",
-      "intent": "Greeting",
+      "intent": "giveName",
       "entities": [
         {
           "entity": "name",
