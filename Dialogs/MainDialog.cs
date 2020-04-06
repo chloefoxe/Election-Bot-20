@@ -52,6 +52,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 return await stepContext.NextAsync(null, cancellationToken);
             }
 
+            await Task.Delay(5000);
+
             // Use the text provided in FinalStepAsync or the default if it is the first time.
             var messageText = stepContext.Options?.ToString() ?? "My name is BotWise, I'd love to have chat with you today! To kick things off, can I ask you your name? ";
             var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
