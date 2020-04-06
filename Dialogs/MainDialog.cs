@@ -58,16 +58,20 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         public async Task<DialogTurnResult> ActStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-            var personalDetails = new PersonalDetails();
+            var personalDetails = new PersonalDetails()
+            {
+                Name = luisResult.Entities.name,
+                UserID = luisResult.Entities.userID,
+            };
 
             switch (luisResult.TopIntent().intent)
             {
                 case Luis.ElectionBot.Intent.discussFeeling:
-                    return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), personalDetails, cancellationToken);
+                    return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), luisResult, cancellationToken);
                 
                 case Luis.ElectionBot.Intent.askMood:
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I'm great! Thanks for asking."), cancellationToken);
-                    return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), personalDetails, cancellationToken);
+                    return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), luisResult, cancellationToken);
 
                 default:
                     // Catch all for unhandled intents

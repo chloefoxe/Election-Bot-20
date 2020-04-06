@@ -5,7 +5,7 @@ namespace Microsoft.BotBuilderSamples
 {
     public class PersonalDetails
     {
-        public string Name { get; set; }
-        public string UserID { get; set; }
+        public string [] Name { get; set; }
+        public string [] UserID { get; set; }
     }
 }

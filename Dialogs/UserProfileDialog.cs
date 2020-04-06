@@ -54,11 +54,11 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         private async Task<DialogTurnResult> GetUserIDAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             var personalDetails = (PersonalDetails)stepContext.Options;
-            personalDetails.Name = (string)stepContext.Result;
 
             if (personalDetails.UserID== null)
-            {
+            {                                                                                                                                                                    
                 await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Nice to meet you {personalDetails.Name}"), cancellationToken);
                 var messageText = "Next, could you input your User ID, please?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
@@ -70,9 +70,9 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             var personalDetails = (PersonalDetails)stepContext.Options;
-            personalDetails.UserID = (string)stepContext.Result;
+            personalDetails.UserID = (string[])stepContext.Result;
 
             personalDetails = (PersonalDetails)stepContext.Options;
 
