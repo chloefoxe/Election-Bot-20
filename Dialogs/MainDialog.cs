@@ -68,7 +68,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 case Luis.ElectionBot.Intent.Greeting:
                     var userInfo = new PersonalDetails()
                     {
-                        Name = luisResult.Entities.name,
+                        Name = luisResult.Entities.name.ToString()
                     };
                 
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks {userInfo.Name.FirstOrDefault()}, it's nice to meet you!"), cancellationToken);
