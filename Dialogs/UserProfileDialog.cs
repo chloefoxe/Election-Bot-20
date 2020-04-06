@@ -55,7 +55,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private async Task<DialogTurnResult> GetUserIDAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
-            personalDetails.Name = (string[])stepContext.Result;
+            personalDetails.Name = (string)stepContext.Result;
 
             if (personalDetails.UserID== null)
             {
@@ -70,7 +70,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
-            personalDetails.UserID = (string[])stepContext.Result;
+            personalDetails.UserID = (string)stepContext.Result;
 
              if ((bool)stepContext.Result)
             {
