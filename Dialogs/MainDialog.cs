@@ -19,8 +19,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private readonly ConversationRecognizer _luisRecognizer;
         protected readonly ILogger Logger;
 
-        private const string UserInfo = "value-userInfo";
-
         private readonly UserState _userState;
 
         // Dependency injection uses this constructor to instantiate MainDialog
@@ -49,30 +47,21 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         private async Task<DialogTurnResult> IntroStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            if (!_luisRecognizer.IsConfigured)
-            {
-                await stepContext.Context.SendActivityAsync(
-                    MessageFactory.Text("NOTE: LUIS is not configured. To enable all capabilities, add 'LuisAppId', 'LuisAPIKey' and 'LuisAPIHostName' to the web.config file.", inputHint: InputHints.IgnoringInput), cancellationToken);
-
-                return await stepContext.NextAsync(null, cancellationToken);
-            }
-
             await Task.Delay(5000);
 
-            stepContext.Values[UserInfo] = new PersonalDetails();
+            return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), null, cancellationToken);
 
-            // Use the text provided in FinalStepAsync or the default if it is the first time.
-            var messageText = stepContext.Options?.ToString() ?? "My name is BotWise, I'd love to have chat with you today! To kick things off, can I ask you your name? ";
-            var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
-            return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+            // // Use the text provided in FinalStepAsync or the default if it is the first time.
+            // var messageText = stepContext.Options?.ToString() ?? "My name is BotWise, I'd love to have chat with you today! To kick things off, can I ask you your name? ";
+            // var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+            // return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
         }
 
         public async Task<DialogTurnResult> ActStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-            var userProfile = (PersonalDetails)stepContext.Values[UserInfo];
-            
-            userProfile.Name = luisResult.Entities.name;
+            //var userProfile = (PersonalDetails)stepContext.Values[UserInfo];
+            //userProfile.Name = luisResult.Entities.name;
             
             switch (luisResult.TopIntent().intent)
             {
