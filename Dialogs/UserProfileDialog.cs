@@ -44,10 +44,10 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             };
                 
             //await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Next, could you input your User ID, please?"), cancellationToken);
-            var messageText = stepContext.Options?.ToString() ?? "Next, could you input your User ID, please?";
+            var messageText = $"Next, could you input your User ID, please?";
             var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
             return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
-
+            
             //return await stepContext.NextAsync(null, cancellationToken);
         }
 
