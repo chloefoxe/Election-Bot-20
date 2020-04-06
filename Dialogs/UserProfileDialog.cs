@@ -57,7 +57,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 UserID = luisResult.Entities.userID,
             };
 
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks for that {userInfo.Name.FirstOrDefault()}."), cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks for that."), cancellationToken);
 
             return await stepContext.BeginDialogAsync(nameof(ElectionDialog));
         }
