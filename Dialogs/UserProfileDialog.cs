@@ -43,9 +43,12 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 Name = luisResult.Entities.name,
             };
                 
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Next, could you input your User ID, please?"), cancellationToken);
+            //await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Next, could you input your User ID, please?"), cancellationToken);
+            var messageText = stepContext.Options?.ToString() ?? $"Next, could you input your User ID, please?";
+            var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+            return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
 
-            return await stepContext.NextAsync(null, cancellationToken);
+            //return await stepContext.NextAsync(null, cancellationToken);
         }
 
         private async Task<DialogTurnResult> GetUserIDAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
