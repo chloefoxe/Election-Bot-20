@@ -65,11 +65,9 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             
             var userProfile = (PersonalDetails)stepContext.Values[UserInfo];
-            userProfile.UserID = (String[])luisResult.Entities.userID;
+            userProfile.UserID = luisResult.Entities.userID;
 
-            await stepContext.Context.SendActivityAsync(
-                MessageFactory.Text($"Thanks for participating, {userProfile.Name}."),
-                cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text("Thanks for participating, {userProfile.Name}."), cancellationToken);
 
             // Ask the user to enter their age.
             return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
