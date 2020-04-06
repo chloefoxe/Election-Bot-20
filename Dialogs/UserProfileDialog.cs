@@ -68,7 +68,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             userProfile.UserID = (String[])luisResult.Entities.userID;
 
             await stepContext.Context.SendActivityAsync(
-                MessageFactory.Text($"Thanks for participating, {((PersonalDetails)stepContext.Values[UserInfo]).Name}."),
+                MessageFactory.Text($"Thanks for participating, {userProfile.Name}."),
                 cancellationToken);
 
             // Ask the user to enter their age.
