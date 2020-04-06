@@ -72,14 +72,12 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var personalDetails = (PersonalDetails)stepContext.Options;
             personalDetails.UserID = (string)stepContext.Result;
 
-             if ((bool)stepContext.Result)
-            {
-                personalDetails = (PersonalDetails)stepContext.Options;
+            personalDetails = (PersonalDetails)stepContext.Options;
 
-                return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
-            }
+            return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
 
-            return await stepContext.EndDialogAsync(null, cancellationToken);
+
+            //return await stepContext.EndDialogAsync(null, cancellationToken);
         }
 
         // private async Task<DialogTurnResult> GetNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
