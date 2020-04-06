@@ -63,9 +63,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             {
                 case Luis.ElectionBot.Intent.Greeting:
                     var personalDetails = new PersonalDetails();
-
                     return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), personalDetails, cancellationToken);
-
 
                 default:
                     // Catch all for unhandled intents
@@ -79,17 +77,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         }
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            // var userInfo = (PersonalDetails)stepContext.Result;
-
-            // string status = "Your name is " + (userInfo.Name) + ".";
-
-            // await stepContext.Context.SendActivityAsync(status);
-
-            // var assessor = _userState.CreateProperty<PersonalDetails>(nameof(PersonalDetails));
-            // await assessor.SetAsync(stepContext.Context, userInfo, cancellationToken);
-
-            // return await stepContext.EndDialogAsync(null, cancellationToken);
-
             if (stepContext.Result is PersonalDetails result)
             {
                 var messageText = $"Thanks {result.Name} with user ID: {result.UserID}";

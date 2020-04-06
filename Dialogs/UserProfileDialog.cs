@@ -44,7 +44,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             if (personalDetials.Name == null)
             {
-                var messageText = "What is your name kid?";
+                var messageText = "That's cool. First of all, can I ask what is your name?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
@@ -59,7 +59,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             if (personalDetails.UserID== null)
             {
-                var messageText = "What is your user ID?";
+                await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Nice to meet you {personalDetails.Name}"), cancellationToken);
+                var messageText = "Next, could you input your User ID, please?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
@@ -69,14 +70,16 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
+            
             var personalDetails = (PersonalDetails)stepContext.Options;
             personalDetails.UserID = (string)stepContext.Result;
 
             personalDetails = (PersonalDetails)stepContext.Options;
 
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks for that."), cancellationToken);
+
             return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
-
-
+            
             //return await stepContext.EndDialogAsync(null, cancellationToken);
         }
 
