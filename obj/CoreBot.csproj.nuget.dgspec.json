@@ -39,6 +39,10 @@
       "frameworks": {
         "netcoreapp2.1": {
           "dependencies": {
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.2.0, )"
+            },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
               "target": "Package",
@@ -46,6 +50,10 @@
               "autoReferenced": true
             },
             "Microsoft.Bot.Builder.AI.Luis": {
+              "target": "Package",
+              "version": "[4.6.3, )"
+            },
+            "Microsoft.Bot.Builder.Azure": {
               "target": "Package",
               "version": "[4.6.3, )"
             },

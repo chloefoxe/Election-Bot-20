@@ -1,0 +1,5 @@
+/Users/chloefoxe/Desktop/Election-Bot-20/obj/Debug/netcoreapp2.1/CoreBot.csprojAssemblyReference.cache
+/Users/chloefoxe/Desktop/Election-Bot-20/obj/Debug/netcoreapp2.1/CoreBot.RazorAssemblyInfo.cache
+/Users/chloefoxe/Desktop/Election-Bot-20/obj/Debug/netcoreapp2.1/CoreBot.RazorAssemblyInfo.cs
+/Users/chloefoxe/Desktop/Election-Bot-20/obj/Debug/netcoreapp2.1/CoreBot.AssemblyInfoInputs.cache
+/Users/chloefoxe/Desktop/Election-Bot-20/obj/Debug/netcoreapp2.1/CoreBot.AssemblyInfo.cs

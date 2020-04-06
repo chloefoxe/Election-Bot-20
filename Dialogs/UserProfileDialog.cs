@@ -40,37 +40,46 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         private async Task<DialogTurnResult> GetNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            stepContext.Values[UserInfo] = new PersonalDetails();
+            var personalDetials = (PersonalDetails)stepContext.Options;
 
-            var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter your name.") };
+            if (personalDetials.Name == null)
+            {
+                var messageText = "What is your name kid?";
+                var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+                return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+            }
 
-            return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
+            return await stepContext.NextAsync(personalDetials.Name, cancellationToken);
         }
 
         private async Task<DialogTurnResult> GetUserIDAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-            
-            var userProfile = (PersonalDetails)stepContext.Values[UserInfo];
-            userProfile.Name = luisResult.Entities.name.ToString();
+            var personalDetails = (PersonalDetails)stepContext.Options;
+            personalDetails.Name = (String[])stepContext.Result;
 
-            var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter your user ID.") };
+            if (personalDetails.UserID== null)
+            {
+                var messageText = "What is your user ID?";
+                var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+                return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+            }
 
-            // Ask the user to enter their age.
-            return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
+            return await stepContext.NextAsync(personalDetails.UserID, cancellationToken);
         }
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-            
-            var userProfile = (PersonalDetails)stepContext.Values[UserInfo];
-            userProfile.UserID = luisResult.Entities.userID.ToString();
+            var personalDetails = (PersonalDetails)stepContext.Options;
+            personalDetails.UserID = (String[])stepContext.Result;
 
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text("Thanks for participating, {userProfile.Name}."), cancellationToken);
+             if ((bool)stepContext.Result)
+            {
+                personalDetails = (PersonalDetails)stepContext.Options;
 
-            // Ask the user to enter their age.
-            return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
+                return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
+            }
+
+            return await stepContext.EndDialogAsync(null, cancellationToken);
         }
 
         // private async Task<DialogTurnResult> GetNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
