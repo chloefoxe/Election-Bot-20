@@ -27,29 +27,14 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             AddDialog(electionDialog);
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
-                //GetUserIDAsync
+                
                 GetNameAsync,
-                //FinalStepAsync,
+                GetUserIDAsync,
             }));
 
             // The initial child Dialog to run.
             InitialDialogId = nameof(WaterfallDialog);
         }
-
-        // private async Task<DialogTurnResult> GetUserIDAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-        // {
-        //     var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-        //     var userInfo = new PersonalDetails(){
-        //         UserID = luisResult.Entities.userID,
-        //     };
-                
-        //     if(luisResult.TopIntent().Equals(Luis.ElectionBot.Intent.None)){
-        //         var didntUnderstandMessageText = $"Sorry, I didn't get that. Please try rephrasing your message(intent was {luisResult.TopIntent().intent})";
-        //         var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
-        //     }
-
-        //     return await stepContext.NextAsync(UserProfileDialog.UserID, cancellationToken);
-        // }
 
         private async Task<DialogTurnResult> GetNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
@@ -59,6 +44,20 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             };
                 
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks {userInfo.Name.FirstOrDefault()}, it's great to meet you!"), cancellationToken);
+
+            return await stepContext.NextAsync(null, cancellationToken);
+        }
+
+        private async Task<DialogTurnResult> GetUserIDAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        {
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Next, could you input your User ID, please?"), cancellationToken);
+            
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
+            var userInfo = new PersonalDetails(){
+                UserID = luisResult.Entities.userID,
+            };
+
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks for that {userInfo.Name.FirstOrDefault()}."), cancellationToken);
 
             return await stepContext.BeginDialogAsync(nameof(ElectionDialog));
         }

@@ -1,1272 +1,1473 @@
 {
-    "luis_schema_version": "4.0.0",
-    "versionId": "0.1",
-    "name": "Luis-Election",
-    "desc": "Luis Election for Core Bot",
-    "culture": "en-us",
-    "tokenizerVersion": "1.0.0",
-    "intents": [
-      {
-        "name": "discussCandidate"
-      },
-      {
-        "name": "discussLocation"
-      },
-      {
-        "name": "discussParty"
-      },
-      {
-        "name": "discussPersonal"
-      },
-      {
-        "name": "discussPolitics"
-      },
-      {
-        "name": "disscussIssues"
-      },
-      {
-        "name": "endConversation"
-      },
-      {
-        "name": "Greeting"
-      },
-      {
-        "name": "None"
-      }
-    ],
-    "entities": [
-      {
-        "name": "candidate",
-        "roles": []
-      },
-      {
-        "name": "location",
-        "roles": []
-      },
-      {
-        "name": "name",
-        "roles": []
-      },
-      {
-        "name": "party_name",
-        "roles": []
-      },
-      {
-        "name": "topical_issue",
-        "roles": []
-      }
-    ],
-    "composites": [],
-    "closedLists": [],
-    "patternAnyEntities": [],
-    "regex_entities": [],
-    "prebuiltEntities": [],
-    "model_features": [],
-    "regex_features": [],
-    "patterns": [],
-    "utterances": [
-      {
-        "text": "alot of my friends have an interest in politics",
-        "intent": "discussPolitics",
-        "entities": []
-      },
-      {
-        "text": "alot of people in my constituency voted for sinn fein",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 44,
-            "endPos": 52
-          }
-        ]
-      },
-      {
-        "text": "brendan howlin usually tops the vote in wexford",
-        "intent": "discussCandidate",
-        "entities": [
-          {
-            "entity": "candidate",
-            "startPos": 0,
-            "endPos": 13
-          },
-          {
-            "entity": "location",
-            "startPos": 40,
-            "endPos": 46
-          }
-        ]
-      },
-      {
-        "text": "brexit is important to me",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 0,
-            "endPos": 5
-          }
-        ]
-      },
-      {
-        "text": "bye",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "bye bye",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "bye for now",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "chloe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 0,
-            "endPos": 4
-          }
-        ]
-      },
-      {
-        "text": "chloe foxe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 0,
-            "endPos": 9
-          }
-        ]
-      },
-      {
-        "text": "cool bye now",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "cool. i'm excited. my name is chloe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 30,
-            "endPos": 34
-          }
-        ]
-      },
-      {
-        "text": "cya",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "donegal is full of sinn feiners",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 0,
-            "endPos": 6
-          },
-          {
-            "entity": "party_name",
-            "startPos": 19,
-            "endPos": 30
-          }
-        ]
-      },
-      {
-        "text": "election",
-        "intent": "None",
-        "entities": []
-      },
-      {
-        "text": "everyone was talking about the forestry issues",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 31,
-            "endPos": 45
-          }
-        ]
-      },
-      {
-        "text": "fine gael are a crowd of spoofers",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 0,
-            "endPos": 8
-          }
-        ]
-      },
-      {
-        "text": "fine gael are a great party",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 0,
-            "endPos": 8
-          }
-        ]
-      },
-      {
-        "text": "fine gael will guide us to prosperity",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 0,
-            "endPos": 8
-          }
-        ]
-      },
-      {
-        "text": "finna fail have been successful in recent years",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 0,
-            "endPos": 9
-          }
-        ]
-      },
-      {
-        "text": "galway is the pits",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 0,
-            "endPos": 5
-          }
-        ]
-      },
-      {
-        "text": "goodbye",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "have a nice day",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "have a nice evening",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "hello",
-        "intent": "Greeting",
-        "entities": []
-      },
-      {
-        "text": "hey",
-        "intent": "Greeting",
-        "entities": []
-      },
-      {
-        "text": "hey man",
-        "intent": "Greeting",
-        "entities": []
-      },
-      {
-        "text": "hey my name is chloe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 15,
-            "endPos": 19
-          }
-        ]
-      },
-      {
-        "text": "hi bot",
-        "intent": "Greeting",
-        "entities": []
-      },
-      {
-        "text": "hopefully leitrim will be a better place to live after the election",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 10,
-            "endPos": 16
-          }
-        ]
-      },
-      {
-        "text": "how are things? my name is chloe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 27,
-            "endPos": 31
-          }
-        ]
-      },
-      {
-        "text": "how are you doing bot. my name is chloe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 34,
-            "endPos": 38
-          }
-        ]
-      },
-      {
-        "text": "how are you? my name is chloe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 24,
-            "endPos": 28
-          }
-        ]
-      },
-      {
-        "text": "how're you today? i'm chloe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 22,
-            "endPos": 26
-          }
-        ]
-      },
-      {
-        "text": "i always vote for sinn fein",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 18,
-            "endPos": 26
-          }
-        ]
-      },
-      {
-        "text": "i am chloe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 5,
-            "endPos": 9
-          }
-        ]
-      },
-      {
-        "text": "i am dissapointed for brendan howlin",
-        "intent": "discussCandidate",
-        "entities": [
-          {
-            "entity": "candidate",
-            "startPos": 22,
-            "endPos": 35
-          }
-        ]
-      },
-      {
-        "text": "i am happy that pearse doherty was elected",
-        "intent": "discussCandidate",
-        "entities": [
-          {
-            "entity": "candidate",
-            "startPos": 16,
-            "endPos": 29
-          }
-        ]
-      },
-      {
-        "text": "i am interested to see whether sinn fein can live up to their promises",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 31,
-            "endPos": 39
-          }
-        ]
-      },
-      {
-        "text": "i am registerd to vote in wicklow",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 26,
-            "endPos": 32
-          }
-        ]
-      },
-      {
-        "text": "i am suprised about the labour result",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 24,
-            "endPos": 29
-          }
-        ]
-      },
-      {
-        "text": "i am worried about the outcome of brexit",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 34,
-            "endPos": 39
-          }
-        ]
-      },
-      {
-        "text": "i dont believe in politics",
-        "intent": "discussPersonal",
-        "entities": []
-      },
-      {
-        "text": "i folllow the greens",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 14,
-            "endPos": 19
-          }
-        ]
-      },
-      {
-        "text": "i gave johnny mythen my number one",
-        "intent": "discussCandidate",
-        "entities": [
-          {
-            "entity": "candidate",
-            "startPos": 7,
-            "endPos": 19
-          }
-        ]
-      },
-      {
-        "text": "i have a strong alligience with fine gael",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 32,
-            "endPos": 40
-          }
-        ]
-      },
-      {
-        "text": "i have no interest in general elections",
-        "intent": "discussPersonal",
-        "entities": []
-      },
-      {
-        "text": "i have no interest in voting",
-        "intent": "discussPersonal",
-        "entities": []
-      },
-      {
-        "text": "i have no iterest in polotics",
-        "intent": "discussPolitics",
-        "entities": []
-      },
-      {
-        "text": "i have strong feelings about the rental crisis",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 33,
-            "endPos": 45
-          }
-        ]
-      },
-      {
-        "text": "i live in dublin during the week",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 10,
-            "endPos": 15
-          }
-        ]
-      },
-      {
-        "text": "i live in dublin during the week. but i vote in wexford cause i'm from there.",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 10,
-            "endPos": 15
-          },
-          {
-            "entity": "location",
-            "startPos": 48,
-            "endPos": 54
-          }
-        ]
-      },
-      {
-        "text": "i love the healy-rae brothers",
-        "intent": "discussCandidate",
-        "entities": [
-          {
-            "entity": "candidate",
-            "startPos": 11,
-            "endPos": 19
-          }
-        ]
-      },
-      {
-        "text": "i never vote",
-        "intent": "discussPersonal",
-        "entities": []
-      },
-      {
-        "text": "i only vote for independents candiates in elections",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 16,
-            "endPos": 27
-          }
-        ]
-      },
-      {
-        "text": "i only vote in referendums",
-        "intent": "discussPolitics",
-        "entities": []
-      },
-      {
-        "text": "i think everyone in limerick voted for sinn fein",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 20,
-            "endPos": 27
-          },
-          {
-            "entity": "party_name",
-            "startPos": 39,
-            "endPos": 47
-          }
-        ]
-      },
-      {
-        "text": "i think mary lou mc donald will do great things for this country",
-        "intent": "discussCandidate",
-        "entities": [
-          {
-            "entity": "candidate",
-            "startPos": 8,
-            "endPos": 25
-          }
-        ]
-      },
-      {
-        "text": "i voted for leo vradkar",
-        "intent": "discussCandidate",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 12,
-            "endPos": 22
-          }
-        ]
-      },
-      {
-        "text": "i voted for the first time in the last election",
-        "intent": "discussPersonal",
-        "entities": []
-      },
-      {
-        "text": "i voted for the green party.",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 16,
-            "endPos": 26
-          }
-        ]
-      },
-      {
-        "text": "i voted for the social democrats",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 16,
-            "endPos": 31
-          }
-        ]
-      },
-      {
-        "text": "i voted in alliance with my views on climate change",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 37,
-            "endPos": 50
-          }
-        ]
-      },
-      {
-        "text": "i voted in dublin",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 11,
-            "endPos": 16
-          }
-        ]
-      },
-      {
-        "text": "i voted left and went with sinn fein and the greens",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 27,
-            "endPos": 35
-          },
-          {
-            "entity": "party_name",
-            "startPos": 45,
-            "endPos": 50
-          }
-        ]
-      },
-      {
-        "text": "i voted with my family in wexford",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 26,
-            "endPos": 32
-          }
-        ]
-      },
-      {
-        "text": "i want the next government to fix the health service",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 38,
-            "endPos": 51
-          }
-        ]
-      },
-      {
-        "text": "i want the next government to tackle climate change",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 37,
-            "endPos": 50
-          }
-        ]
-      },
-      {
-        "text": "i was delighted for mary lou",
-        "intent": "discussCandidate",
-        "entities": [
-          {
-            "entity": "candidate",
-            "startPos": 20,
-            "endPos": 27
-          }
-        ]
-      },
-      {
-        "text": "i was disspointed that labour didn't win more seats",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 23,
-            "endPos": 28
-          }
-        ]
-      },
-      {
-        "text": "i was suprised with the result in kerry",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 34,
-            "endPos": 38
-          }
-        ]
-      },
-      {
-        "text": "i would like affordable rent",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 24,
-            "endPos": 27
-          }
-        ]
-      },
-      {
-        "text": "i would've voted for finnna fail",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 21,
-            "endPos": 31
-          }
-        ]
-      },
-      {
-        "text": "i'm from wexford",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 9,
-            "endPos": 15
-          }
-        ]
-      },
-      {
-        "text": "i'm interested to see if the housing crisis will be sorted by the next government",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 29,
-            "endPos": 42
-          }
-        ]
-      },
-      {
-        "text": "i'm proud of everyone in cork for voting left",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 25,
-            "endPos": 28
-          }
-        ]
-      },
-      {
-        "text": "johnny mythen is a great person to represent wexford",
-        "intent": "discussCandidate",
-        "entities": [
-          {
-            "entity": "candidate",
-            "startPos": 0,
-            "endPos": 12
-          },
-          {
-            "entity": "location",
-            "startPos": 45,
-            "endPos": 51
-          }
-        ]
-      },
-      {
-        "text": "labour have lost popularity",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 0,
-            "endPos": 5
-          }
-        ]
-      },
-      {
-        "text": "labour used to be a good party",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 0,
-            "endPos": 5
-          }
-        ]
-      },
-      {
-        "text": "mayo is my constituency",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 0,
-            "endPos": 3
-          }
-        ]
-      },
-      {
-        "text": "mick wallace is a legend",
-        "intent": "discussCandidate",
-        "entities": [
-          {
-            "entity": "candidate",
-            "startPos": 0,
-            "endPos": 11
-          }
-        ]
-      },
-      {
-        "text": "my family have no interest in politics",
-        "intent": "discussPersonal",
-        "entities": []
-      },
-      {
-        "text": "my local constituency is in tipperary",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 28,
-            "endPos": 36
-          }
-        ]
-      },
-      {
-        "text": "my mam encouraged me to vote for people before profit",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 33,
-            "endPos": 52
-          }
-        ]
-      },
-      {
-        "text": "my name is chloe foxe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 11,
-            "endPos": 20
-          }
-        ]
-      },
-      {
-        "text": "my parents always encourage me to have my own opinion",
-        "intent": "discussPersonal",
-        "entities": []
-      },
-      {
-        "text": "my rent is so expensive",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 3,
-            "endPos": 6
-          }
-        ]
-      },
-      {
-        "text": "nice talking to you",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "nice to meet you i am chloe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 22,
-            "endPos": 26
-          }
-        ]
-      },
-      {
-        "text": "nice to meet you. my name is chloe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 29,
-            "endPos": 33
-          }
-        ]
-      },
-      {
-        "text": "people before profit were top of my ballot sheet",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 0,
-            "endPos": 19
-          }
-        ]
-      },
-      {
-        "text": "people have realised that finnna fail wrecked the country",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 26,
-            "endPos": 36
-          }
-        ]
-      },
-      {
-        "text": "people in my area wanted to sort issues with teachers pay",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 45,
-            "endPos": 56
-          }
-        ]
-      },
-      {
-        "text": "politics gives power to the people",
-        "intent": "discussPolitics",
-        "entities": []
-      },
-      {
-        "text": "politics is a great way for people to voice their opinions",
-        "intent": "discussPolitics",
-        "entities": []
-      },
-      {
-        "text": "politics is a waste of timem",
-        "intent": "discussPolitics",
-        "entities": []
-      },
-      {
-        "text": "politics is boring",
-        "intent": "discussPolitics",
-        "entities": []
-      },
-      {
-        "text": "see you later",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "shane ross is a great candidate",
-        "intent": "discussCandidate",
-        "entities": [
-          {
-            "entity": "candidate",
-            "startPos": 0,
-            "endPos": 9
-          }
-        ]
-      },
-      {
-        "text": "shane ross is an idiot",
-        "intent": "discussCandidate",
-        "entities": [
-          {
-            "entity": "candidate",
-            "startPos": 0,
-            "endPos": 9
-          }
-        ]
-      },
-      {
-        "text": "shane ross should never be allowed in the daÃ­l",
-        "intent": "discussCandidate",
-        "entities": [
-          {
-            "entity": "candidate",
-            "startPos": 0,
-            "endPos": 9
-          }
-        ]
-      },
-      {
-        "text": "sinn fein always get my number one",
-        "intent": "discussParty",
-        "entities": []
-      },
-      {
-        "text": "talk later",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "talk to you again",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "test",
-        "intent": "None",
-        "entities": []
-      },
-      {
-        "text": "that was fun. thanks",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "that's great thanks",
-        "intent": "endConversation",
-        "entities": []
-      },
-      {
-        "text": "the coronavirus has showed flaws in the health service",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 40,
-            "endPos": 53
-          }
-        ]
-      },
-      {
-        "text": "the homelessness crisis needs to be sorted",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 4,
-            "endPos": 22
-          }
-        ]
-      },
-      {
-        "text": "the housing crisis in kildare is crazy",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 4,
-            "endPos": 17
-          },
-          {
-            "entity": "location",
-            "startPos": 22,
-            "endPos": 28
-          }
-        ]
-      },
-      {
-        "text": "the people of carlow wanted change",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 14,
-            "endPos": 19
-          }
-        ]
-      },
-      {
-        "text": "the results in galway suprised me",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 15,
-            "endPos": 20
-          }
-        ]
-      },
-      {
-        "text": "the social dems had a great manifesto",
-        "intent": "discussParty",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 4,
-            "endPos": 14
-          }
-        ]
-      },
-      {
-        "text": "there are forestry issues in leitrim",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 10,
-            "endPos": 24
-          },
-          {
-            "entity": "location",
-            "startPos": 29,
-            "endPos": 35
-          }
-        ]
-      },
-      {
-        "text": "there were 26 candiates to choose from in wexford",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 42,
-            "endPos": 48
-          }
-        ]
-      },
-      {
-        "text": "there were 5 elected in wexford",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 24,
-            "endPos": 30
-          }
-        ]
-      },
-      {
-        "text": "usually finna fail top the poll in waterford",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "party_name",
-            "startPos": 8,
-            "endPos": 17
-          },
-          {
-            "entity": "location",
-            "startPos": 35,
-            "endPos": 43
-          }
-        ]
-      },
-      {
-        "text": "ususally i do vote but i was working that day",
-        "intent": "discussPersonal",
-        "entities": []
-      },
-      {
-        "text": "we have the worst health service in europe",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 18,
-            "endPos": 31
-          }
-        ]
-      },
-      {
-        "text": "we need a solution to the housing crsis",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 26,
-            "endPos": 38
-          }
-        ]
-      },
-      {
-        "text": "we need more beds in hospitals",
-        "intent": "disscussIssues",
-        "entities": []
-      },
-      {
-        "text": "we're going to have a water crisis if we don't stop wasting it",
-        "intent": "disscussIssues",
-        "entities": [
-          {
-            "entity": "topical_issue",
-            "startPos": 22,
-            "endPos": 33
-          }
-        ]
-      },
-      {
-        "text": "what's up",
-        "intent": "Greeting",
-        "entities": []
-      },
-      {
-        "text": "what's up im chloe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 13,
-            "endPos": 17
-          }
-        ]
-      },
-      {
-        "text": "wicklow voted for change",
-        "intent": "discussLocation",
-        "entities": [
-          {
-            "entity": "location",
-            "startPos": 0,
-            "endPos": 6
-          }
-        ]
-      },
-      {
-        "text": "yo",
-        "intent": "Greeting",
-        "entities": []
-      },
-      {
-        "text": "yo bro",
-        "intent": "Greeting",
-        "entities": []
-      },
-      {
-        "text": "yo my name is chloe",
-        "intent": "Greeting",
-        "entities": [
-          {
-            "entity": "name",
-            "startPos": 14,
-            "endPos": 18
-          }
-        ]
-      }
-    ],
-    "settings": []
-  }
+  "luis_schema_version": "4.0.0",
+  "versionId": "0.1",
+  "name": "Luis-Election",
+  "desc": "Luis Election for Core Bot",
+  "culture": "en-us",
+  "tokenizerVersion": "1.0.0",
+  "intents": [
+    {
+      "name": "discussCandidate"
+    },
+    {
+      "name": "discussCoronavirus"
+    },
+    {
+      "name": "discussLocation"
+    },
+    {
+      "name": "discussParty"
+    },
+    {
+      "name": "discussPersonal"
+    },
+    {
+      "name": "discussPolitics"
+    },
+    {
+      "name": "disscussIssues"
+    },
+    {
+      "name": "endConversation"
+    },
+    {
+      "name": "giveUserID"
+    },
+    {
+      "name": "Greeting"
+    },
+    {
+      "name": "None"
+    }
+  ],
+  "entities": [
+    {
+      "name": "candidate",
+      "roles": []
+    },
+    {
+      "name": "location",
+      "roles": []
+    },
+    {
+      "name": "name",
+      "roles": []
+    },
+    {
+      "name": "party_name",
+      "roles": []
+    },
+    {
+      "name": "topical_issue",
+      "roles": []
+    }
+  ],
+  "composites": [],
+  "closedLists": [],
+  "patternAnyEntities": [],
+  "regex_entities": [
+    {
+      "name": "userID",
+      "regexPattern": "[a-z]\\d{3,4}",
+      "roles": []
+    }
+  ],
+  "prebuiltEntities": [],
+  "model_features": [],
+  "regex_features": [],
+  "patterns": [],
+  "utterances": [
+    {
+      "text": "alot of my friends have an interest in politics",
+      "intent": "discussPolitics",
+      "entities": []
+    },
+    {
+      "text": "alot of people in my constituency voted for sinn fein",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 44,
+          "endPos": 52
+        }
+      ]
+    },
+    {
+      "text": "brendan howlin usually tops the vote in wexford",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 0,
+          "endPos": 13
+        },
+        {
+          "entity": "location",
+          "startPos": 40,
+          "endPos": 46
+        }
+      ]
+    },
+    {
+      "text": "brexit is important to me",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "bye",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "bye bot",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "bye bye",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "bye for now",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "chloe foxe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "cool bye now",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "cool. i'm excited. my name is chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 30,
+          "endPos": 34
+        }
+      ]
+    },
+    {
+      "text": "covid-19 is putting a delay to things",
+      "intent": "discussCoronavirus",
+      "entities": []
+    },
+    {
+      "text": "cya",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "do you know anything about the coronavirus",
+      "intent": "discussCoronavirus",
+      "entities": []
+    },
+    {
+      "text": "donegal is full of sinn feiners",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 6
+        },
+        {
+          "entity": "party_name",
+          "startPos": 19,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "e1234",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "everyone was talking about the forestry issues",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 31,
+          "endPos": 45
+        }
+      ]
+    },
+    {
+      "text": "fine gael are a crowd of spoofers",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 0,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "fine gael are a great party",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 0,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "fine gael will guide us to prosperity",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 0,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "finna fail have been successful in recent years",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 0,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "galway is the pits",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "goodbye",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "have a nice day",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "have a nice evening",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "hello",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "hey",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "hey man",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "hey my name is chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 15,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "hey my name is chloe, nice to meet you",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 15,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "hey my name is patrice",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 15,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "hey my name is webchat",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 15,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "hi bot",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "hopefully leitrim will be a better place to live after the election",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 10,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "how are things? my name is chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 27,
+          "endPos": 31
+        }
+      ]
+    },
+    {
+      "text": "how are you doing bot. my name is chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 34,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "how are you? my name is chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 24,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "how're you today? i'm chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 22,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "hye",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "i always vote for sinn fein",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 18,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "i am chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 5,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "i am dissapointed for brendan howlin",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 22,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "i am happy that pearse doherty was elected",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 16,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "i am interested to see whether sinn fein can live up to their promises",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 31,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "i am registerd to vote in wicklow",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 26,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "i am suprised about the labour result",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 24,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "i am worried about the outcome of brexit",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 34,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "i dont believe in politics",
+      "intent": "discussPersonal",
+      "entities": []
+    },
+    {
+      "text": "i folllow the greens",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 14,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "i gave johnny mythen my number one",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 7,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "i have a strong alligience with fine gael",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 32,
+          "endPos": 40
+        }
+      ]
+    },
+    {
+      "text": "i have no interest in general elections",
+      "intent": "discussPersonal",
+      "entities": []
+    },
+    {
+      "text": "i have no interest in voting",
+      "intent": "discussPersonal",
+      "entities": []
+    },
+    {
+      "text": "i have no iterest in polotics",
+      "intent": "discussPolitics",
+      "entities": []
+    },
+    {
+      "text": "i have strong feelings about the rental crisis",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 33,
+          "endPos": 45
+        }
+      ]
+    },
+    {
+      "text": "i live in dublin during the week",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 10,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "i live in dublin during the week. but i vote in wexford cause i'm from there.",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 10,
+          "endPos": 15
+        },
+        {
+          "entity": "location",
+          "startPos": 48,
+          "endPos": 54
+        }
+      ]
+    },
+    {
+      "text": "i love the healy-rae brothers",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 11,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "i never vote",
+      "intent": "discussPersonal",
+      "entities": []
+    },
+    {
+      "text": "i only vote for independents candiates in elections",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 16,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "i only vote in referendums",
+      "intent": "discussPolitics",
+      "entities": []
+    },
+    {
+      "text": "i think everyone in limerick voted for sinn fein",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 20,
+          "endPos": 27
+        },
+        {
+          "entity": "party_name",
+          "startPos": 39,
+          "endPos": 47
+        }
+      ]
+    },
+    {
+      "text": "i think mary lou mc donald will do great things for this country",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 8,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "i voted for leo vradkar",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 12,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "i voted for mary connick",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 12,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "i voted for the first time in the last election",
+      "intent": "discussPersonal",
+      "entities": []
+    },
+    {
+      "text": "i voted for the green party.",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 16,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "i voted for the social democrats",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 16,
+          "endPos": 31
+        }
+      ]
+    },
+    {
+      "text": "i voted in alliance with my views on climate change",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 37,
+          "endPos": 50
+        }
+      ]
+    },
+    {
+      "text": "i voted in dublin",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 11,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "i voted left and went with sinn fein and the greens",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 27,
+          "endPos": 35
+        },
+        {
+          "entity": "party_name",
+          "startPos": 45,
+          "endPos": 50
+        }
+      ]
+    },
+    {
+      "text": "i voted with my family in wexford",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 26,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "i want the next government to fix the health service",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 38,
+          "endPos": 51
+        }
+      ]
+    },
+    {
+      "text": "i want the next government to tackle climate change",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 37,
+          "endPos": 50
+        }
+      ]
+    },
+    {
+      "text": "i was delighted for mary lou",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 20,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "i was disspointed that labour didn't win more seats",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 23,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "i was suprised with the result in kerry",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 34,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "i would like affordable rent",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 24,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "i would've voted for finnna fail",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 21,
+          "endPos": 31
+        }
+      ]
+    },
+    {
+      "text": "i'm done thanks",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "i'm from wexford",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 9,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "i'm interested to see if the housing crisis will be sorted by the next government",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 29,
+          "endPos": 42
+        }
+      ]
+    },
+    {
+      "text": "i'm proud of everyone in cork for voting left",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 25,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "johnny mythen is a great person to represent wexford",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 0,
+          "endPos": 12
+        },
+        {
+          "entity": "location",
+          "startPos": 45,
+          "endPos": 51
+        }
+      ]
+    },
+    {
+      "text": "labour have lost popularity",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "labour used to be a good party",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "leo vradkar is doing a good job during the coronavirus",
+      "intent": "discussCoronavirus",
+      "entities": []
+    },
+    {
+      "text": "mayo is my constituency",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "mick wallace is a legend",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 0,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "my family have no interest in politics",
+      "intent": "discussPersonal",
+      "entities": []
+    },
+    {
+      "text": "my local constituency is in tipperary",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 28,
+          "endPos": 36
+        }
+      ]
+    },
+    {
+      "text": "my mam encouraged me to vote for people before profit",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 33,
+          "endPos": 52
+        }
+      ]
+    },
+    {
+      "text": "my name is chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 11,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "my name is chloe foxe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 11,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "my name is claire",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 11,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "my name is steven",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 11,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "my names chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 9,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "my parents always encourage me to have my own opinion",
+      "intent": "discussPersonal",
+      "entities": []
+    },
+    {
+      "text": "my rent is so expensive",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 3,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "my user id is d1234",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "my userid is v000",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "nice talking to you",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "nice to meet you i am chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 22,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "nice to meet you. my name is chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 29,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "ok",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "people before profit were top of my ballot sheet",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 0,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "people have realised that finnna fail wrecked the country",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 26,
+          "endPos": 36
+        }
+      ]
+    },
+    {
+      "text": "people in my area wanted to sort issues with teachers pay",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 45,
+          "endPos": 56
+        }
+      ]
+    },
+    {
+      "text": "politics gives power to the people",
+      "intent": "discussPolitics",
+      "entities": []
+    },
+    {
+      "text": "politics is a great way for people to voice their opinions",
+      "intent": "discussPolitics",
+      "entities": []
+    },
+    {
+      "text": "politics is a waste of timem",
+      "intent": "discussPolitics",
+      "entities": []
+    },
+    {
+      "text": "politics is boring",
+      "intent": "discussPolitics",
+      "entities": []
+    },
+    {
+      "text": "see you again",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "see you later",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "shane ross is a great candidate",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 0,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "shane ross is an idiot",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 0,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "shane ross should never be allowed in the daÃ­l",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 0,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "sinn fein always get my number one",
+      "intent": "discussParty",
+      "entities": []
+    },
+    {
+      "text": "stupid",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "talk later",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "talk to you again",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "test",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "thanks byw",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "that was a nice conversation, bye bot",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "that was fun. thanks",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "that's great thanks",
+      "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "the coronavirus has changed things",
+      "intent": "discussCoronavirus",
+      "entities": []
+    },
+    {
+      "text": "the coronavirus has showed flaws in the health service",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 40,
+          "endPos": 53
+        }
+      ]
+    },
+    {
+      "text": "the coronavirus is changing that",
+      "intent": "discussCoronavirus",
+      "entities": []
+    },
+    {
+      "text": "the coronavirus is interrupting dail negotations",
+      "intent": "discussCoronavirus",
+      "entities": []
+    },
+    {
+      "text": "the homelessness crisis needs to be sorted",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 4,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "the housing crisis in kildare is crazy",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 4,
+          "endPos": 17
+        },
+        {
+          "entity": "location",
+          "startPos": 22,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "the people of carlow wanted change",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 14,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "the results in galway suprised me",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 15,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "the social dems had a great manifesto",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 4,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "there are forestry issues in leitrim",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 10,
+          "endPos": 24
+        },
+        {
+          "entity": "location",
+          "startPos": 29,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "there were 26 candiates to choose from in wexford",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 42,
+          "endPos": 48
+        }
+      ]
+    },
+    {
+      "text": "there were 5 elected in wexford",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 24,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "usually finna fail top the poll in waterford",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 8,
+          "endPos": 17
+        },
+        {
+          "entity": "location",
+          "startPos": 35,
+          "endPos": 43
+        }
+      ]
+    },
+    {
+      "text": "ususally i do vote but i was working that day",
+      "intent": "discussPersonal",
+      "entities": []
+    },
+    {
+      "text": "verona murphy is doing a great job",
+      "intent": "discussCandidate",
+      "entities": [
+        {
+          "entity": "candidate",
+          "startPos": 0,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "w000",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "we have the worst health service in europe",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 18,
+          "endPos": 31
+        }
+      ]
+    },
+    {
+      "text": "we need a solution to the housing crsis",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 26,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "we need more beds in hospitals",
+      "intent": "disscussIssues",
+      "entities": []
+    },
+    {
+      "text": "we're going to have a water crisis if we don't stop wasting it",
+      "intent": "disscussIssues",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 22,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "what's up",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "what's up im chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 13,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "wicklow voted for change",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "yes its s0987",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "yo",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "yo bro",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "yo my name is chloe",
+      "intent": "Greeting",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 14,
+          "endPos": 18
+        }
+      ]
+    }
+  ],
+  "settings": []
+}
