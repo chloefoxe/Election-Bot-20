@@ -57,11 +57,11 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var personalDetails = (PersonalDetails)stepContext.Options;
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             personalDetails.Name = luisResult.Entities.name;
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Nice to meet you {personalDetails.Name}"), cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Nice to meet you {personalDetails.Name.ToString()}"), cancellationToken);
 
             if (personalDetails.UserID== null)
             {                                                                                                                                                                    
-                await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Nice to meet you {personalDetails.Name}"), cancellationToken);
+                await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Nice to meet you {personalDetails.Name.ToString()}"), cancellationToken);
                 var messageText = "Next, could you input your User ID, please?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
