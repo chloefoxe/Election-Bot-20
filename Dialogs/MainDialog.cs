@@ -19,11 +19,16 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private readonly ConversationRecognizer _luisRecognizer;
         protected readonly ILogger Logger;
 
+        private const string UserInfo = "value-userInfo";
+
+        private readonly UserState _userState;
+
         // Dependency injection uses this constructor to instantiate MainDialog
-        public MainDialog(ConversationRecognizer luisRecognizer, /*ElectionDialog electionDialog, PartyDialog partyDialog,*/ UserProfileDialog userProfileDialog, /*EndConversationDialog endConversationDialog,*/ ILogger<MainDialog> logger)
+        public MainDialog(UserState userState, ConversationRecognizer luisRecognizer, /*ElectionDialog electionDialog, PartyDialog partyDialog,*/ UserProfileDialog userProfileDialog, /*EndConversationDialog endConversationDialog,*/ ILogger<MainDialog> logger)
             : base(nameof(MainDialog))
         {
             _luisRecognizer = luisRecognizer;
+            _userState = userState;
             Logger = logger;
 
             AddDialog(new TextPrompt(nameof(TextPrompt)));
@@ -54,6 +59,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             await Task.Delay(5000);
 
+            stepContext.Values[UserInfo] = new PersonalDetails();
+
             // Use the text provided in FinalStepAsync or the default if it is the first time.
             var messageText = stepContext.Options?.ToString() ?? "My name is BotWise, I'd love to have chat with you today! To kick things off, can I ask you your name? ";
             var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
@@ -62,12 +69,10 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         public async Task<DialogTurnResult> ActStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            if (!_luisRecognizer.IsConfigured)
-            {
-                return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), new PersonalDetails(), cancellationToken);
-            }
-
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
+            var userProfile = (PersonalDetails)stepContext.Values[UserInfo];
+            
+            userProfile.Name = luisResult.Entities.name;
             
             switch (luisResult.TopIntent().intent)
             {
@@ -112,8 +117,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
                 default:
                     // Catch all for unhandled intents
-                    //var didntUnderstandMessageText = $"Sorry, I didn't get that. Please try asking in a different way (intent was {luisResult.TopIntent().intent})";
-                    var didntUnderstandMessageText = $"NONE INTENT";
+                    var didntUnderstandMessageText = $"Sorry, I didn't get that. Please try asking in a different way (intent was {luisResult.TopIntent().intent})";
                     var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
                     await stepContext.Context.SendActivityAsync(didntUnderstandMessage, cancellationToken);
                     break;
@@ -123,20 +127,14 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         }
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            // If the child dialog ("BookingDialog") was cancelled, the user failed to confirm or if the intent wasn't BookFlight
-            // the Result here will be null.
-            // if (stepContext.Result is PersonalDetails result)
-            // {
-            //     // Now we have all the booking details call the booking service.
+            var userInfo = (PersonalDetails)stepContext.Result;
 
-            //     // If the call to the booking service was successful tell the user.
+            string status = "Your name is " + (userInfo.Name) + ".";
 
-            //     var timeProperty = new TimexProperty(result.TravelDate);
-            //     var travelDateMsg = timeProperty.ToNaturalLanguage(DateTime.Now);
-            //     var messageText = $"I have you booked to {result.Destination} from {result.Origin} on {travelDateMsg}";
-            //     var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
-            //     await stepContext.Context.SendActivityAsync(message, cancellationToken);
-            // }
+            await stepContext.Context.SendActivityAsync(status);
+
+            var assessor = _userState.CreateProperty<PersonalDetails>(nameof(PersonalDetails));
+            await assessor.SetAsync(stepContext.Context, userInfo, cancellationToken);
 
             return await stepContext.EndDialogAsync(null, cancellationToken);
         }

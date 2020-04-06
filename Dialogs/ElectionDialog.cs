@@ -31,7 +31,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         private async Task<DialogTurnResult> IntroStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            var messageText = stepContext.Options?.ToString() ?? "So, did you vote in this year's election then?";
+            var messageText = stepContext.Options?.ToString() ?? "So, alot has happened since this year's general election then! Did you vote in February last?";
             var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
             return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
         }
