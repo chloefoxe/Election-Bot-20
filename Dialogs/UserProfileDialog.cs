@@ -52,7 +52,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             
             var userProfile = (PersonalDetails)stepContext.Values[UserInfo];
-            userProfile.Name = luisResult.Entities.name;
+            userProfile.Name = (String[])luisResult.Entities.name;
 
             var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter your user ID.") };
 
@@ -65,7 +65,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             
             var userProfile = (PersonalDetails)stepContext.Values[UserInfo];
-            userProfile.UserID = luisResult.Entities.userID;
+            userProfile.UserID = (String[])luisResult.Entities.userID;
 
             await stepContext.Context.SendActivityAsync(
                 MessageFactory.Text($"Thanks for participating, {((PersonalDetails)stepContext.Values[UserInfo]).Name}."),
