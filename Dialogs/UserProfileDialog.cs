@@ -41,20 +41,23 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private async Task<DialogTurnResult> GetNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetials = (PersonalDetails)stepContext.Options;
-
+            
             if (personalDetials.Name == null)
             {
                 var messageText = "Can I ask what is your name?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
-
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             return await stepContext.NextAsync(personalDetials.Name, cancellationToken);
         }
 
         private async Task<DialogTurnResult> GetUserIDAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
+            personalDetails.Name = luisResult.Entities.name;
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Nice to meet you {personalDetails.Name}"), cancellationToken);
 
             if (personalDetails.UserID== null)
             {                                                                                                                                                                    
@@ -70,7 +73,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
-            personalDetails.UserID = (string[])stepContext.Result;
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
+            personalDetails.UserID = luisResult.Entities.userID;
 
             personalDetails = (PersonalDetails)stepContext.Options;
 
