@@ -67,11 +67,11 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             switch (luisResult.TopIntent().intent)
             {
                 case Luis.ElectionBot.Intent.discussFeeling:
-                    return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), luisResult, cancellationToken);
+                    return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), personalDetails, cancellationToken);
                 
                 case Luis.ElectionBot.Intent.askMood:
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I'm great! Thanks for asking."), cancellationToken);
-                    return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), luisResult, cancellationToken);
+                    return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), personalDetails, cancellationToken);
 
                 default:
                     // Catch all for unhandled intents
