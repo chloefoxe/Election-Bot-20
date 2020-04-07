@@ -18,7 +18,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
     {
         private readonly ConversationRecognizer _luisRecognizer;
         protected readonly ILogger Logger;
-        private readonly UserState _userState;
 
         public ElectionDialog(ConversationRecognizer luisRecognizer, /*EndConversationDialog endConversationDialog*/ ILogger<ElectionDialog> logger)
             : base(nameof(ElectionDialog))
