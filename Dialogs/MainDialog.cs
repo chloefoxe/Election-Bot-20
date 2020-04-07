@@ -48,7 +48,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         private async Task<DialogTurnResult> IntroStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            await Task.Delay(5000);
+            await Task.Delay(3000);
 
             // // Use the text provided in FinalStepAsync or the default if it is the first time.
             var messageText = stepContext.Options?.ToString() ?? "My name is BotWise, how are you today?";
@@ -82,15 +82,37 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         }
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            string notDisclosed = "not disclosed";
             string name, location, userID, voted;
-            
+
             if (stepContext.Result is PersonalDetails result)
             {
-                name = result.Name.First() ?? notDisclosed;
-                userID = result.UserID.First() ?? notDisclosed;
-                location = result.Location.First() ?? notDisclosed;
-                voted = result.Voted.First() ?? notDisclosed;
+                if (String.IsNullOrEmpty(result.Name.First())){ 
+                    name = "not disclosed";
+                }
+                else {
+                    name = result.Name.First();
+                }
+
+                if (String.IsNullOrEmpty(result.Location.First())){ 
+                    location = "not disclosed";
+                }
+                else {
+                    location = result.Location.First();
+                }
+
+                if (String.IsNullOrEmpty(result.UserID.First())){ 
+                    userID = "not disclosed";
+                }
+                else {
+                    userID = result.UserID.First();
+                }
+
+                if (String.IsNullOrEmpty(result.Voted.First())){ 
+                    voted = "not disclosed";
+                }
+                else {
+                    voted= result.Voted.First();
+                }
 
                 var messageText = $"Thanks {name} from {location}, with user ID: {userID}. Who {voted} in the election.";
                 var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
