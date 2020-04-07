@@ -42,6 +42,7 @@ namespace Microsoft.BotBuilderSamples
             // The MainDialog that will be run by the bot.
             services.AddSingleton<MainDialog>();
             services.AddSingleton<ElectionDialog>();
+            services.AddSingleton<IssuesDialog>();
             services.AddSingleton<ConstituencyDialog>();
             services.AddSingleton<EndConversationDialog>();
             services.AddSingleton<UserProfileDialog>();
