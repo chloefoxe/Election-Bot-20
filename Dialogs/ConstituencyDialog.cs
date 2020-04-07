@@ -28,7 +28,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             {
                 AskConstituency,
                 RemarkOnLocationAsync,
-                FillerStepAsync,
+                AgreeStepAsync,
             }));
 
             // The initial child Dialog to run.
@@ -98,7 +98,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             return await stepContext.NextAsync(personalDetails, cancellationToken);
         }
 
-        private async Task<DialogTurnResult> FillerStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        private async Task<DialogTurnResult> AgreeStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             
