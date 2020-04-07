@@ -33,10 +33,13 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             
-            var messageText = stepContext.Options?.ToString() ?? "So, alot has happened since this year's general election then! Did you vote in February last?";
-            var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
-            return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
-
+            if (personalDetails.Voted == null)
+            {
+                var messageText = "So, alot has happened since this year's general election then! Did you vote in February last?";
+                var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+                return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+            }
+            
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             return await stepContext.NextAsync(personalDetails, cancellationToken);
         }
