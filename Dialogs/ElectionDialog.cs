@@ -66,9 +66,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
                     var votedText = "Good job 👍🏻 Everyone should use their vote, right?";
                     var votedPromptMessage = MessageFactory.Text(votedText, votedText, InputHints.ExpectingInput);
-                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = votedPromptMessage }, cancellationToken);
-                    
-                    return await stepContext.NextAsync(personalDetails, cancellationToken);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = votedPromptMessage }, cancellationToken);
                 
                 case Luis.ElectionBot.Intent.didNotVote:
                     personalDetails.Voted = didNotVoteString;
@@ -76,9 +74,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Awh that's a pity. I couldn't vote either. 😐"), cancellationToken);
                     var didNotVoteText = "... apartently I'm not classed as a real citizen! - Isn't that strange?";
                     var promptMessage = MessageFactory.Text(didNotVoteText, didNotVoteText, InputHints.ExpectingInput);
-                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
-
-                    return await stepContext.NextAsync(personalDetails, cancellationToken);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
 
                 default:
                     // Catch all for unhandled intents
@@ -86,6 +82,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
                     return await stepContext.NextAsync(personalDetails, cancellationToken);
             }
+
+            return await stepContext.NextAsync(personalDetails, cancellationToken);
         }
 
         private async Task<DialogTurnResult> FillerStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
