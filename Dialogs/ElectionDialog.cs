@@ -40,7 +40,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             
             if (personalDetails.Voted == null)
             {
-                var messageText = "So, alot has happened since this year's general election then! Did you vote in February last?";
+                var messageText = "So, alot has happened since this year's general election then! Did you cast your vote in February?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
@@ -63,23 +63,42 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             {
                 case Luis.ElectionBot.Intent.didVote:
                     personalDetails.Voted = votedString;
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"So you did vote then"), cancellationToken);
-                    return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
+
+                    var votedText = "Good job 👍🏻 Everyone should use their vote, right?";
+                    var votedPromptMessage = MessageFactory.Text(votedText, votedText, InputHints.ExpectingInput);
+                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = votedPromptMessage }, cancellationToken);
+                    
+                    return await stepContext.NextAsync(personalDetails, cancellationToken);
                 
                 case Luis.ElectionBot.Intent.didNotVote:
                     personalDetails.Voted = didNotVoteString;
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"So you didn't vote then"), cancellationToken);
-                    return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
+
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Awh that's a pity. I couldn't vote either. 😐"), cancellationToken);
+                    var didNotVoteText = "... apartently I'm not classed as a real citizen! - Isn't that strange?";
+                    var promptMessage = MessageFactory.Text(didNotVoteText, didNotVoteText, InputHints.ExpectingInput);
+                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+
+                    return await stepContext.NextAsync(personalDetails, cancellationToken);
 
                 default:
                     // Catch all for unhandled intents
-                    var didntUnderstandMessageText = $"Sorry, I didn't get that. Please try asking in a different way (intent was {luisResult.TopIntent().intent})";
+                    var didntUnderstandMessageText = $"That's interesting!";
                     var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
-                    await stepContext.Context.SendActivityAsync(didntUnderstandMessage, cancellationToken);
-                    break;
+                    return await stepContext.NextAsync(personalDetails, cancellationToken);
             }
+        }
 
-            return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
+        private async Task<DialogTurnResult> FillerStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        {
+            var personalDetails = (PersonalDetails)stepContext.Options;
+            
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I totally agree with you."), cancellationToken);
+            var messageText = "So, now we're moving on";
+            var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+            await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
+            return await stepContext.NextAsync(personalDetails, cancellationToken);
         }
     }
 }
