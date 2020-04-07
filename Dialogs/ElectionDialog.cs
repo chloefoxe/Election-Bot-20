@@ -45,9 +45,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         private async Task<DialogTurnResult> AskVotedAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            var personalDetails = (PersonalDetails)stepContext.Options;
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-
+            var personalDetails = (PersonalDetails)stepContext.Options;
             string[] votedString, didNotVoteString;
             votedString = new string[]{ "Did not Vote"};
             didNotVoteString = new string[]{ "Did Vote"};
