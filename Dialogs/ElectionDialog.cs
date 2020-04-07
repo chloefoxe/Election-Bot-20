@@ -40,7 +40,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-            return await stepContext.NextAsync(personalDetials.Voted, cancellationToken);
+            return await stepContext.NextAsync(personalDetials, cancellationToken);
         }
 
         private async Task<DialogTurnResult> AskVotedAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -49,9 +49,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             votedString = new string[]{ "Did not Vote"};
             didNotVoteString = new string[]{ "Did Vote"};
-            
-            var personalDetails = (PersonalDetails)stepContext.Options;
 
+            var personalDetails = (PersonalDetails)stepContext.Options;
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
 
             switch (luisResult.TopIntent().intent)
