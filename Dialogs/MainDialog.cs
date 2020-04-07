@@ -118,8 +118,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     issues = result.Issues.First();
                 }
 
-                var messageText = $"Name {name} "+ System.Environment.NewLine + $"User ID: {name}" + System.Environment.NewLine + $"Location: {location}" 
-                + System.Environment.NewLine + $"Voted?: {voted}" + System.Environment.NewLine + $"Cares about: {issues}" + System.Environment.NewLine + "";
+                var messageText = $"So, your name is {name}. You are from {location}. You {voted} in the last general election and {issues} is among the issues that you care about.";
 
                 var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
                 await stepContext.Context.SendActivityAsync(message, cancellationToken);
