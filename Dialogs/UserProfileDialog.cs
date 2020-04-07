@@ -18,7 +18,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         private const string UserInfo = "value-userInfo";
 
-       public UserProfileDialog(ConversationRecognizer luisRecognizer, ElectionDialog electionDialog, /*EndConversationDialog endConversationDialog*/ ILogger<UserProfileDialog> logger)
+       public UserProfileDialog(ConversationRecognizer luisRecognizer, ElectionDialog electionDialog, ILogger<UserProfileDialog> logger)
             : base(nameof(UserProfileDialog))
         {
             _luisRecognizer = luisRecognizer;

@@ -16,7 +16,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private readonly ConversationRecognizer _luisRecognizer;
         protected readonly ILogger Logger;
 
-        public ElectionDialog(ConversationRecognizer luisRecognizer, ILogger<ElectionDialog> logger, ConstituencyDialog constituencyDialog)
+        public ElectionDialog(ConversationRecognizer luisRecognizer, ILogger<ElectionDialog> logger, ConstituencyDialog constituencyDialog
+        )
             : base(nameof(ElectionDialog))
         {
             _luisRecognizer = luisRecognizer;

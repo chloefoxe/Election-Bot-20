@@ -36,7 +36,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var personalDetails = (PersonalDetails)stepContext.Options;
             
             await Task.Delay(1500);
-            var messageText = $"So let's finish up before we go too far and get into an argument on political views, goodbye {personalDetails.Name}";
+            var messageText = $"So let's finish up before we go too far and get into an argument on political views, Bye! 👋🏼";
             var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
             return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
         }
@@ -45,7 +45,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Here's what I gathered from our conversation: "), cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Here's what I could gather from our conversation: "), cancellationToken);
 
             return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
         }
