@@ -56,18 +56,18 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
 
             string[] votedString, didNotVoteString;
-            votedString = new string[]{ "Did not Vote"};
-            didNotVoteString = new string[]{ "Did Vote"};
+            votedString = new string[]{ "did not vote"};
+            didNotVoteString = new string[]{ "did vote"};
 
             switch (luisResult.TopIntent().intent)
             {
                 case Luis.ElectionBot.Intent.didVote:
-                    //personalDetails.Voted = votedString;
+                    personalDetails.Voted = votedString;
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"So you did vote then"), cancellationToken);
                     return await stepContext.EndDialogAsync(null, cancellationToken);
                 
                 case Luis.ElectionBot.Intent.didNotVote:
-                    //personalDetails.Voted = didNotVoteString;
+                    personalDetails.Voted = didNotVoteString;
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"So you didn't vote then"), cancellationToken);
                     return await stepContext.EndDialogAsync(null, cancellationToken);
 

@@ -87,7 +87,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             if (stepContext.Result is PersonalDetails result)
             {
-                var messageText = $"Thanks {result.Name.First()} with user ID: {result.UserID.First()}";
+                var messageText = $"Thanks {result.Name.First()} with user ID: {result.UserID.First()}. Who {result.Voted.First()} in the election.";
                 var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
                 await stepContext.Context.SendActivityAsync(message, cancellationToken);
             }
