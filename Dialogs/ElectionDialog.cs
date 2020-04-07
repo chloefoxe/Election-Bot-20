@@ -28,6 +28,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             {
                 IntroStepAsync,
                 AskVotedAsync,
+                FillerStepAsync,
             }));
 
             // The initial child Dialog to run.
@@ -76,11 +77,11 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     var promptMessage = MessageFactory.Text(didNotVoteText, didNotVoteText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
 
-                default:
-                    // Catch all for unhandled intents
-                    var didntUnderstandMessageText = $"That's interesting!";
-                    var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
-                    return await stepContext.NextAsync(personalDetails, cancellationToken);
+                // default:
+                //     // Catch all for unhandled intents
+                //     var didntUnderstandMessageText = $"That's interesting!";
+                //     var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
+                //     return await stepContext.NextAsync(personalDetails, cancellationToken);
             }
 
             return await stepContext.NextAsync(personalDetails, cancellationToken);
