@@ -30,10 +30,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             if (stepContext.Result is PersonalDetails result)
             {
-                // Now we have all the booking details call the booking service.
-
-                // If the call to the booking service was successful tell the user.
-
                 var messageText = $"Your name is {result.Name}";
                 var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
                 await stepContext.Context.SendActivityAsync(message, cancellationToken);

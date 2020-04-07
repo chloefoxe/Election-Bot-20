@@ -64,7 +64,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             }
             else {
                 if(personalDetails.Location.First() == "wexford") {
-                    var messageText = $"The Sunny South East! A big win for Johnny Mythen down there, a suprising result don't you think?";
+                    var messageText = $"The Sunny South East 😎! A big win for Johnny Mythen down there, a suprising result don't you think?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
@@ -89,7 +89,9 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
                 else {
-                    var messageText = $"Very good. A big win for Pearse Doherty in the Donegal area. A suprrising result don't you think?";
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Oh yes, {personalDetails.Location.First()}, I know the place."), cancellationToken);
+                    await Task.Delay(1500);
+                    var messageText = $"Most people think Sinn Féin's win was suprising, did you think that too?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
@@ -100,6 +102,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             
+            await Task.Delay(1500);
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Yeah I thought so too."), cancellationToken);
 
             return await stepContext.EndDialogAsync(personalDetails, cancellationToken);

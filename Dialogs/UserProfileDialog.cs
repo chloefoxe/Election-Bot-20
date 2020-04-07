@@ -79,7 +79,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks for that {personalDetails.Name.First()}"), cancellationToken);
 
-
             return await stepContext.BeginDialogAsync(nameof(ElectionDialog), personalDetails, cancellationToken);
         }
     }
