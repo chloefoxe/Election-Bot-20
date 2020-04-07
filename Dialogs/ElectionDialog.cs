@@ -94,6 +94,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             
+            await Task.Delay(1500);
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You know what? I totally agree with you."), cancellationToken);
 
             return await stepContext.BeginDialogAsync(nameof(ConstituencyDialog), personalDetails, cancellationToken);
