@@ -10,6 +10,12 @@
       "name": "askMood"
     },
     {
+      "name": "didNotVote"
+    },
+    {
+      "name": "didVote"
+    },
+    {
       "name": "discussCandidate"
     },
     {
@@ -65,6 +71,10 @@
     },
     {
       "name": "topical_issue",
+      "roles": []
+    },
+    {
+      "name": "voted",
       "roles": []
     }
   ],
@@ -518,6 +528,36 @@
           "endPos": 39
         }
       ]
+    },
+    {
+      "text": "i did",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "i did actually",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "i did in fact",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "i did vote",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "i did vote indeed",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "i didnt no",
+      "intent": "didNotVote",
+      "entities": []
     },
     {
       "text": "i dont believe in politics",
@@ -1172,8 +1212,73 @@
       "entities": []
     },
     {
+      "text": "nah i didnt",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
+      "text": "nah i didnt vote",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
+      "text": "nah i forgot",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
+      "text": "nah i forgot to vote",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
+      "text": "nah ive no interest in politics",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
       "text": "nice talking to you",
       "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "no",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
+      "text": "no i couldnt vote",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
+      "text": "no i didnt",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
+      "text": "no i didnt vote",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
+      "text": "no i was at a wedding that day",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
+      "text": "no i was working",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
+      "text": "nope",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
+      "text": "nope i didnt",
+      "intent": "didNotVote",
       "entities": []
     },
     {
@@ -1605,6 +1710,41 @@
       ]
     },
     {
+      "text": "yea",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "yeah",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "yeah i did vote",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "yes",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "yes i did",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "yes i did vote",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "yes i voted",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
       "text": "yes its s0987",
       "intent": "giveUserID",
       "entities": []
@@ -1619,6 +1759,16 @@
           "endPos": 18
         }
       ]
+    },
+    {
+      "text": "yup",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "yup i did vote",
+      "intent": "didVote",
+      "entities": []
     }
   ],
   "settings": []

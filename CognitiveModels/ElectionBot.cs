@@ -20,6 +20,8 @@ namespace Luis
 
         public enum Intent {
             askMood, 
+            didNotVote, 
+            didVote, 
             discussCandidate, 
             discussCoronavirus, 
             discussFeeling, 
@@ -49,6 +51,8 @@ namespace Luis
 
             public string[] topical_issue;
 
+            public string[] voted;
+
             // Regex entities
             public string[] userID;
 
@@ -61,6 +65,7 @@ namespace Luis
                 public InstanceData[] party_name;
                 public InstanceData[] topical_issue;
                 public InstanceData[] userID;
+                public InstanceData[] voted;
             }
             [JsonProperty("$instance")]
             public _Instance _instance;
