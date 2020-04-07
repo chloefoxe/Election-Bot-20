@@ -13,9 +13,13 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 {
     public class EndConversationDialog : ComponentDialog
     {
-        public EndConversationDialog(string id)
-            : base(id)
+        private readonly ConversationRecognizer _luisRecognizer;
+        protected readonly ILogger Logger;
+        public EndConversationDialog(ConversationRecognizer luisRecognizer, ILogger<IssuesDialog> logger)
+            : base(nameof(ConstituencyDialog))
         {
+            _luisRecognizer = luisRecognizer;
+            Logger = logger;
 
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
