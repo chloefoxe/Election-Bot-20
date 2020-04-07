@@ -1,6 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
@@ -19,10 +16,10 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private readonly ConversationRecognizer _luisRecognizer;
         protected readonly ILogger Logger;
 
-        public ElectionDialog(ConversationRecognizer luisRecognizer, /*EndConversationDialog endConversationDialog*/ ILogger<ElectionDialog> logger)
+        public ElectionDialog(ConversationRecognizer luisRecognizer, ILogger<ElectionDialog> logger)
             : base(nameof(ElectionDialog))
         {
-            luisRecognizer = luisRecognizer;
+            _luisRecognizer = luisRecognizer;
             Logger = logger;
 
             AddDialog(new TextPrompt(nameof(TextPrompt)));
