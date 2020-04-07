@@ -42,6 +42,11 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             
             // var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             // return await stepContext.NextAsync(personalDetails, cancellationToken);
+
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
+
+            return await stepContext.NextAsync(luisResult, cancellationToken);
+            
         }
 
         private async Task<DialogTurnResult> AskVotedAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
