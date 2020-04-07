@@ -64,12 +64,12 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 case Luis.ElectionBot.Intent.didVote:
                     personalDetails.Voted = votedString;
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"So you did vote then"), cancellationToken);
-                    return await stepContext.EndDialogAsync(null, cancellationToken);
+                    return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
                 
                 case Luis.ElectionBot.Intent.didNotVote:
                     personalDetails.Voted = didNotVoteString;
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"So you didn't vote then"), cancellationToken);
-                    return await stepContext.EndDialogAsync(null, cancellationToken);
+                    return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
 
                 default:
                     // Catch all for unhandled intents
@@ -79,7 +79,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     break;
             }
 
-            return await stepContext.EndDialogAsync(null, cancellationToken);
+            return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
         }
     }
 }
