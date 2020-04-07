@@ -74,6 +74,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     personalDetails.Voted = didNotVoteString;
 
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Awh that's a pity. I couldn't vote either. 😐"), cancellationToken);
+                    await Task.Delay(1500);
                     var didNotVoteText = "... apartently I'm not classed as a real citizen! - Isn't that strange?";
                     var promptMessage = MessageFactory.Text(didNotVoteText, didNotVoteText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);

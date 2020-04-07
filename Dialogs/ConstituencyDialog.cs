@@ -26,8 +26,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
-                IntroStepAsync,
-                AskVotedAsync,
+                AskConstituency,
+                RemarkOnLocationAsync,
                 FillerStepAsync,
             }));
 
@@ -35,53 +35,64 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             InitialDialogId = nameof(WaterfallDialog);
         }
 
-        private async Task<DialogTurnResult> IntroStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        private async Task<DialogTurnResult> AskConstituency(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             
-            if (personalDetails.Voted == null)
+            if (personalDetails.Location == null)
             {
-                var messageText = "So, alot has happened since this year's general election then! Did you cast your vote in February?";
+                var messageText = "My local voting constituency is in Wicklow. Where's your's then?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
             
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-            return await stepContext.NextAsync(personalDetails, cancellationToken);
-
+            return await stepContext.NextAsync(personalDetails.Location, cancellationToken);
         }
 
-        private async Task<DialogTurnResult> AskVotedAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        private async Task<DialogTurnResult> RemarkOnLocationAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
+            personalDetails.Location = luisResult.Entities.location;
 
-            string[] votedString, didNotVoteString;
-            votedString = new string[]{ "did vote"};
-            didNotVoteString = new string[]{ "did not vote"};
-
-            switch (luisResult.TopIntent().intent)
-            {
-                case Luis.ElectionBot.Intent.didVote:
-                    personalDetails.Voted = votedString;
-
-                    var votedText = "Good job 👍🏻 Everyone should use their vote, right?";
-                    var votedPromptMessage = MessageFactory.Text(votedText, votedText, InputHints.ExpectingInput);
-                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = votedPromptMessage }, cancellationToken);
-                
-                case Luis.ElectionBot.Intent.didNotVote:
-                    personalDetails.Voted = didNotVoteString;
-
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Awh that's a pity. I couldn't vote either. 😐"), cancellationToken);
-                    var didNotVoteText = "... apartently I'm not classed as a real citizen! - Isn't that strange?";
-                    var promptMessage = MessageFactory.Text(didNotVoteText, didNotVoteText, InputHints.ExpectingInput);
-                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
-
-                // default:
-                //     // Catch all for unhandled intents
-                //     var didntUnderstandMessageText = $"That's interesting!";
-                //     var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
-                //     return await stepContext.NextAsync(personalDetails, cancellationToken);
+            if(luisResult.Entities.location == null) {
+                var messageText = $"I see, I see. Suprising result in general, wasn't it?";
+                var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+                await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                return await stepContext.BeginDialogAsync(nameof(ConstituencyDialog), personalDetails, cancellationToken);
+            }
+            else {
+                if(personalDetails.Location.First() == "wexford") {
+                    var messageText = $"The Sunny South East! A big win for Johnny Mythen down there, a suprising result don't you think?";
+                    var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                }
+                else if (personalDetails.Location.First() == "dublin" || personalDetails.Location.First() == "Dun Laoighre") {
+                    var messageText = $"Interesting. Dublin's poll was dominated by Sinn Féin with 24% of the preference. Suprising result don't you think?";
+                    var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                }
+                else if (personalDetails.Location.First() == "carlow" || personalDetails.Location.First() == "kilkenny") {
+                    var messageText = $"Interesting. A big win for Kathleen Funchion in the Carlow-Kilkenny constituency.  An unsuprrising result don't you think?";
+                    var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                }
+                else if (personalDetails.Location.First() == "donegal") {
+                    var messageText = $"Very good. A big win for Sinn Féin's Pearse Doherty in the Donegal area. An unsuprrising result don't you think?";
+                    var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                }
+                else if (personalDetails.Location.First() == "galway") {
+                    var messageText = $"Very good. A big result for the independent Seán Canney in Galway. A suprrising result don't you think?";
+                    var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                }
+                else {
+                    var messageText = $"Very good. A big win for Pearse Doherty in the Donegal area. A suprrising result don't you think?";
+                    var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                }
             }
 
             return await stepContext.NextAsync(personalDetails, cancellationToken);
@@ -91,12 +102,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I totally agree with you."), cancellationToken);
-            var messageText = "So, now we're moving on";
-            var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
-            await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Yeah I thought so too."), cancellationToken);
 
-            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
         }
     }
