@@ -11,18 +11,17 @@ using Microsoft.Bot.Builder.Dialogs.Choices;
 
 namespace Microsoft.BotBuilderSamples.Dialogs
 {
-    public class ElectionDialog : ComponentDialog
+    public class ConstituencyDialog : ComponentDialog
     {
         private readonly ConversationRecognizer _luisRecognizer;
         protected readonly ILogger Logger;
 
-        public ElectionDialog(ConversationRecognizer luisRecognizer, ILogger<ElectionDialog> logger, ConstituencyDialog constituencyDialog)
-            : base(nameof(ElectionDialog))
+        public ConstituencyDialog(ConversationRecognizer luisRecognizer, ILogger<ConstituencyDialog> logger)
+            : base(nameof(ConstituencyDialog))
         {
             _luisRecognizer = luisRecognizer;
             Logger = logger;
 
-            AddDialog(constituencyDialog);
             AddDialog(new TextPrompt(nameof(TextPrompt)));
             AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
@@ -66,7 +65,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 case Luis.ElectionBot.Intent.didVote:
                     personalDetails.Voted = votedString;
 
-                    var votedText = "Good job 👍🏻 Everyone should use their vote don't you think?";
+                    var votedText = "Good job 👍🏻 Everyone should use their vote, right?";
                     var votedPromptMessage = MessageFactory.Text(votedText, votedText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = votedPromptMessage }, cancellationToken);
                 
@@ -92,9 +91,13 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You know what? I totally agree with you."), cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I totally agree with you."), cancellationToken);
+            var messageText = "So, now we're moving on";
+            var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+            await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
 
-            return await stepContext.BeginDialogAsync(nameof(ConstituencyDialog), personalDetails, cancellationToken);
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
+            return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
         }
     }
 }
