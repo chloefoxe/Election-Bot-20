@@ -36,12 +36,16 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var messageText = stepContext.Options?.ToString() ?? "So, alot has happened since this year's general election then! Did you vote in February last?";
             var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
             return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
+            return await stepContext.NextAsync(personalDetails, cancellationToken);
         }
 
         private async Task<DialogTurnResult> AskVotedAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             var personalDetails = (PersonalDetails)stepContext.Options;
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
+            //var personalDetails = (PersonalDetails)stepContext.Options;
             string[] votedString, didNotVoteString;
             votedString = new string[]{ "Did not Vote"};
             didNotVoteString = new string[]{ "Did Vote"};
@@ -49,14 +53,14 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             switch (luisResult.TopIntent().intent)
             {
                 case Luis.ElectionBot.Intent.didVote:
-                    personalDetails.Voted = votedString;
+                    //personalDetails.Voted = votedString;
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"So you did vote then"), cancellationToken);
-                    return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
+                    return await stepContext.EndDialogAsync(null, cancellationToken);
                 
                 case Luis.ElectionBot.Intent.didNotVote:
-                    personalDetails.Voted = didNotVoteString;
+                    //personalDetails.Voted = didNotVoteString;
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"So you didn't vote then"), cancellationToken);
-                    return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
+                    return await stepContext.EndDialogAsync(null, cancellationToken);
 
                 default:
                     // Catch all for unhandled intents
@@ -66,7 +70,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     break;
             }
 
-            return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
+            return await stepContext.EndDialogAsync(null, cancellationToken);
         }
     }
 }
