@@ -21,7 +21,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
        public UserProfileDialog(ConversationRecognizer luisRecognizer, ElectionDialog electionDialog, /*EndConversationDialog endConversationDialog*/ ILogger<UserProfileDialog> logger)
             : base(nameof(UserProfileDialog))
         {
-            // _userProfileAccessor = userState.CreateProperty<UserProfile>("UserProfile");
             _luisRecognizer = luisRecognizer;
             Logger = logger;
             
@@ -57,7 +56,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var personalDetails = (PersonalDetails)stepContext.Options;
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             personalDetails.Name = luisResult.Entities.name;
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Nice to meet you {personalDetails.Name.First()}"), cancellationToken);
 
             if (personalDetails.UserID== null)
             {                                                                                                                                                                    
@@ -78,11 +76,11 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             personalDetails = (PersonalDetails)stepContext.Options;
 
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks for that."), cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks for that {personalDetails.Name.First()}"), cancellationToken);
+
+            //return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
 
             return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
-
-            //return await stepContext.EndDialogAsync(null, cancellationToken);
         }
 
         // private async Task<DialogTurnResult> GetNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
