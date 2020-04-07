@@ -60,10 +60,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             var personalDetails = new PersonalDetails();
-                    // {
-                    //     Name = luisResult.Entities.name,
-                    //     UserID = luisResult.Entities.userID,
-                    // };
+
             switch (luisResult.TopIntent().intent)
             {
                 case Luis.ElectionBot.Intent.discussFeeling:

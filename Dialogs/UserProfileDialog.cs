@@ -60,6 +60,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             if (personalDetails.UserID== null)
             {                                                                                                                                                                    
                 await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Nice to meet you {personalDetails.Name.First()}"), cancellationToken);
+                await Task.Delay(1500);
                 var messageText = "Next, could you input your User ID, please?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
@@ -81,30 +82,5 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             return await stepContext.BeginDialogAsync(nameof(ElectionDialog), personalDetails, cancellationToken);
         }
-
-        // private async Task<DialogTurnResult> GetNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-        // {
-        //     var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-        //     var userInfo = new PersonalDetails(){
-        //         Name = luisResult.Entities.name,
-        //     };
-                
-        //     var messageText = $"Next, could you input your User ID, please?";
-            
-        //     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
-        //     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
-        // }
-
-        // private async Task<DialogTurnResult> GetUserIDAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-        // {
-        //     var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-        //     var userInfo = new PersonalDetails(){
-        //         UserID = luisResult.Entities.userID,
-        //     };
-
-        //     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks for that."), cancellationToken);
-
-        //     return await stepContext.BeginDialogAsync(nameof(ElectionDialog));
-        // }
     }
 }   

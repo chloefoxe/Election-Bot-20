@@ -41,6 +41,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             
             if (personalDetails.Location == null)
             {
+                await Task.Delay(1500);
                 var messageText = "My local voting constituency is in Wicklow. Where's your's then?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
@@ -93,8 +94,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
             }
-
-            return await stepContext.NextAsync(personalDetails, cancellationToken);
         }
 
         private async Task<DialogTurnResult> AgreeStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)

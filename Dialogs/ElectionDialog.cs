@@ -42,6 +42,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             
             if (personalDetails.Voted == null)
             {
+                await Task.Delay(1500);
                 var messageText = "So, alot has happened since this year's general election then! Did you cast your vote in February?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
@@ -79,7 +80,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     var promptMessage = MessageFactory.Text(didNotVoteText, didNotVoteText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
 
-                // default:
+                //case Luis.ElectionBot.Intent.didNotVote:
                 //     // Catch all for unhandled intents
                 //     var didntUnderstandMessageText = $"That's interesting!";
                 //     var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
