@@ -17,7 +17,7 @@
       "spacing": "small",
       "size": "default",
       "weight": "bolder",
-      "text": "Welcome to Chloe's EthicalBot!",
+      "text": "Welcome to BotWise!",
       "wrap": true,
       "maxLines": 0
     },
@@ -25,7 +25,7 @@
       "type": "TextBlock",
       "size": "default",
       "isSubtle": true,
-      "text": "Chloe's EthicalBot (“us,” or “we”) respects your privacy, and we want you to understand how we may collect personal information about you through this conversation.",
+      "text": "BotWise (“us,” or “we”) respects your privacy, and we want you to understand how we may collect personal information about you through this conversation.",
       "wrap": true,
       "maxLines": 0
     },
