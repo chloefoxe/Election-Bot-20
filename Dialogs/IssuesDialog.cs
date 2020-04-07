@@ -17,7 +17,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         protected readonly ILogger Logger;
 
         public IssuesDialog(ConversationRecognizer luisRecognizer, EndConversationDialog endConversationDialog, ILogger<IssuesDialog> logger)
-            : base(nameof(ConstituencyDialog))
+            : base(nameof(IssuesDialog))
         {
             _luisRecognizer = luisRecognizer;
             Logger = logger;
