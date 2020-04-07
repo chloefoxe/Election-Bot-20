@@ -59,39 +59,38 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             if(luisResult.Entities.location == null) {
                 var messageText = $"I see, I see. Suprising result in general, wasn't it?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
-                await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
-                return await stepContext.BeginDialogAsync(nameof(ConstituencyDialog), personalDetails, cancellationToken);
+                return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
             else {
                 if(personalDetails.Location.First() == "wexford") {
                     var messageText = $"The Sunny South East! A big win for Johnny Mythen down there, a suprising result don't you think?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
-                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
                 else if (personalDetails.Location.First() == "dublin" || personalDetails.Location.First() == "Dun Laoighre") {
                     var messageText = $"Interesting. Dublin's poll was dominated by Sinn Féin with 24% of the preference. Suprising result don't you think?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
-                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
                 else if (personalDetails.Location.First() == "carlow" || personalDetails.Location.First() == "kilkenny") {
                     var messageText = $"Interesting. A big win for Kathleen Funchion in the Carlow-Kilkenny constituency.  An unsuprrising result don't you think?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
-                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
                 else if (personalDetails.Location.First() == "donegal") {
                     var messageText = $"Very good. A big win for Sinn Féin's Pearse Doherty in the Donegal area. An unsuprrising result don't you think?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
-                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
                 else if (personalDetails.Location.First() == "galway") {
                     var messageText = $"Very good. A big result for the independent Seán Canney in Galway. A suprrising result don't you think?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
-                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
                 else {
                     var messageText = $"Very good. A big win for Pearse Doherty in the Donegal area. A suprrising result don't you think?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
-                    await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
             }
 
