@@ -56,8 +56,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
 
             string[] votedString, didNotVoteString;
-            votedString = new string[]{ "did not vote"};
-            didNotVoteString = new string[]{ "did vote"};
+            votedString = new string[]{ "did vote"};
+            didNotVoteString = new string[]{ "did not vote"};
 
             switch (luisResult.TopIntent().intent)
             {
