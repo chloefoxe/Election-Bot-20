@@ -82,9 +82,17 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         }
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
+            string notDisclosed = "not disclosed";
+            string name, location, userID, voted;
+            
             if (stepContext.Result is PersonalDetails result)
             {
-                var messageText = $"Thanks {result.Name.First()} from {result.Location.FirstOrDefault()}, with user ID: {result.UserID.First()}. Who {result.Voted.First()} in the election.";
+                name = result.Name.First() ?? notDisclosed;
+                userID = result.UserID.First() ?? notDisclosed;
+                location = result.Location.First() ?? notDisclosed;
+                voted = result.Voted.First() ?? notDisclosed;
+
+                var messageText = $"Thanks {name} from {location}, with user ID: {userID}. Who {voted} in the election.";
                 var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
                 await stepContext.Context.SendActivityAsync(message, cancellationToken);
             }
