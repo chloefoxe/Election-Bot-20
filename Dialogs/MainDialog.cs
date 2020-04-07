@@ -22,7 +22,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private readonly UserState _userState;
 
         // Dependency injection uses this constructor to instantiate MainDialog
-        public MainDialog(UserState userState, ConversationRecognizer luisRecognizer, ElectionDialog electionDialog, /*PartyDialog partyDialog,*/ UserProfileDialog userProfileDialog, /*EndConversationDialog endConversationDialog,*/ ILogger<MainDialog> logger)
+        public MainDialog(UserState userState, ConversationRecognizer luisRecognizer, ElectionDialog electionDialog, UserProfileDialog userProfileDialog, ILogger<MainDialog> logger)
             : base(nameof(MainDialog))
         {
             _luisRecognizer = luisRecognizer;
@@ -30,11 +30,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             Logger = logger;
 
             AddDialog(new TextPrompt(nameof(TextPrompt)));
-            //AddDialog(electionDialog);
             AddDialog(userProfileDialog);
             AddDialog(electionDialog);
-            //AddDialog(partyDialog);
-            //AddDialog(endConversationDialog);
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
                 IntroStepAsync,
@@ -82,7 +79,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         }
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            string name, location, userID, voted;
+            string name, location, userID, voted, issues;
 
             if (stepContext.Result is PersonalDetails result)
             {
@@ -114,10 +111,21 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     voted = result.Voted.First();
                 }
 
-                var messageText = $"Thanks {name} from {location}, with user ID: {userID}. Who {voted} in the election.";
+                if (result.Issues == null){ 
+                    issues = "not disclosed";
+                }
+                else {
+                    issues = result.Issues.First();
+                }
+
+                var messageText = $"Name {name} "+ System.Environment.NewLine + $"User ID: {name}" + System.Environment.NewLine + $"Location: {location}" 
+                + System.Environment.NewLine + $"Voted?: {voted}" + System.Environment.NewLine + $"Cares about: {issues}" + System.Environment.NewLine + "";
+
                 var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
                 await stepContext.Context.SendActivityAsync(message, cancellationToken);
             }
+
+            await Task.Delay(10000);
 
             return await stepContext.EndDialogAsync(null, cancellationToken);
         }

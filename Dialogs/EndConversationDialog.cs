@@ -18,7 +18,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
-                PrintOutEntitiesTask,
+                ThankTask,
                 FinalStepAsync,
             }));
 
@@ -26,21 +26,23 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             InitialDialogId = nameof(WaterfallDialog);
         }
 
-        private async Task<DialogTurnResult> PrintOutEntitiesTask(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        private async Task<DialogTurnResult> ThankTask(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            if (stepContext.Result is PersonalDetails result)
-            {
-                var messageText = $"Your name is {result.Name}";
-                var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
-                await stepContext.Context.SendActivityAsync(message, cancellationToken);
-            }
-            return await stepContext.NextAsync(null, cancellationToken);
+            var personalDetails = (PersonalDetails)stepContext.Options;
+            
+            await Task.Delay(1500);
+            var messageText = $"So let's finish up before we go too far and get into an argument on political views, goodbye {personalDetails.Name}";
+            var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+            return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
         }
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            var messageText = stepContext.Options?.ToString() ?? "conversation ended";
-            return await stepContext.EndDialogAsync(null, cancellationToken);
+            var personalDetails = (PersonalDetails)stepContext.Options;
+            
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Here's what I gathered from our conversation: "), cancellationToken);
+
+            return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
         }
     }
 }

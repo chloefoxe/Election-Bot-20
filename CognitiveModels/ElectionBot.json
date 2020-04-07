@@ -22,10 +22,28 @@
       "name": "discussCoronavirus"
     },
     {
+      "name": "discussCrime"
+    },
+    {
+      "name": "discussEducation"
+    },
+    {
       "name": "discussFeeling"
     },
     {
+      "name": "discussHealth"
+    },
+    {
+      "name": "discussHousing"
+    },
+    {
       "name": "discussLocation"
+    },
+    {
+      "name": "discussMentalHealth"
+    },
+    {
+      "name": "discussMortgage"
     },
     {
       "name": "discussParty"
@@ -35,6 +53,12 @@
     },
     {
       "name": "discussPolitics"
+    },
+    {
+      "name": "discussTeachersPay"
+    },
+    {
+      "name": "discussUnemployment"
     },
     {
       "name": "disscussIssues"
@@ -94,6 +118,11 @@
   "patterns": [],
   "utterances": [
     {
+      "text": "a good education is important to me",
+      "intent": "discussEducation",
+      "entities": []
+    },
+    {
       "text": "a1234",
       "intent": "None",
       "entities": []
@@ -113,6 +142,11 @@
           "endPos": 52
         }
       ]
+    },
+    {
+      "text": "alot of people think tecahers should be paid more",
+      "intent": "discussTeachersPay",
+      "entities": []
     },
     {
       "text": "alright. you?",
@@ -199,6 +233,11 @@
       "entities": []
     },
     {
+      "text": "crime is a huge probelm i think",
+      "intent": "discussCrime",
+      "entities": []
+    },
+    {
       "text": "cya",
       "intent": "endConversation",
       "entities": []
@@ -227,6 +266,16 @@
     {
       "text": "e1234",
       "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "education needs to be improved in ireland",
+      "intent": "discussEducation",
+      "entities": []
+    },
+    {
+      "text": "education needs to be sorted",
+      "intent": "discussEducation",
       "entities": []
     },
     {
@@ -427,6 +476,11 @@
       ]
     },
     {
+      "text": "hospitals",
+      "intent": "discussHealth",
+      "entities": []
+    },
+    {
       "text": "hye",
       "intent": "giveName",
       "entities": []
@@ -614,7 +668,7 @@
     },
     {
       "text": "i have strong feelings about the rental crisis",
-      "intent": "disscussIssues",
+      "intent": "discussHousing",
       "entities": [
         {
           "entity": "topical_issue",
@@ -662,6 +716,11 @@
       ]
     },
     {
+      "text": "i need to get a mortgage soon so i'd talk about that",
+      "intent": "discussMortgage",
+      "entities": []
+    },
+    {
       "text": "i never vote",
       "intent": "discussPersonal",
       "entities": []
@@ -680,6 +739,11 @@
     {
       "text": "i only vote in referendums",
       "intent": "discussPolitics",
+      "entities": []
+    },
+    {
+      "text": "i think crime is a problem , especially in dublin",
+      "intent": "discussCrime",
       "entities": []
     },
     {
@@ -708,6 +772,31 @@
           "endPos": 25
         }
       ]
+    },
+    {
+      "text": "i think teachers need to be paid more",
+      "intent": "discussTeachersPay",
+      "entities": []
+    },
+    {
+      "text": "i think the banks need to start lending",
+      "intent": "discussMortgage",
+      "entities": []
+    },
+    {
+      "text": "i think the education problem needs to be solved",
+      "intent": "discussEducation",
+      "entities": []
+    },
+    {
+      "text": "i think we need better hospitals",
+      "intent": "discussHealth",
+      "entities": []
+    },
+    {
+      "text": "i thnk teachers should be paid more",
+      "intent": "discussTeachersPay",
+      "entities": []
     },
     {
       "text": "i voted for leo vradkar",
@@ -809,7 +898,7 @@
     },
     {
       "text": "i want the next government to fix the health service",
-      "intent": "disscussIssues",
+      "intent": "discussHealth",
       "entities": [
         {
           "entity": "topical_issue",
@@ -863,8 +952,45 @@
       ]
     },
     {
+      "text": "i wish i could solve the education problem",
+      "intent": "discussEducation",
+      "entities": []
+    },
+    {
+      "text": "i would bring up things about unemployment",
+      "intent": "discussUnemployment",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 30,
+          "endPos": 41
+        }
+      ]
+    },
+    {
+      "text": "i would bring up things like unemployment",
+      "intent": "discussUnemployment",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 29,
+          "endPos": 40
+        }
+      ]
+    },
+    {
+      "text": "i would build more colleges",
+      "intent": "discussEducation",
+      "entities": []
+    },
+    {
+      "text": "i would discuss things like teacher's pay",
+      "intent": "discussTeachersPay",
+      "entities": []
+    },
+    {
       "text": "i would like affordable rent",
-      "intent": "disscussIssues",
+      "intent": "discussHousing",
       "entities": [
         {
           "entity": "topical_issue",
@@ -872,6 +998,31 @@
           "endPos": 27
         }
       ]
+    },
+    {
+      "text": "i would talk about hospitals and the likes",
+      "intent": "discussHealth",
+      "entities": []
+    },
+    {
+      "text": "i would talk about the hse",
+      "intent": "discussHealth",
+      "entities": []
+    },
+    {
+      "text": "i would try build better hospitals",
+      "intent": "discussHealth",
+      "entities": []
+    },
+    {
+      "text": "i would try stop gangland crime",
+      "intent": "discussCrime",
+      "entities": []
+    },
+    {
+      "text": "i would try stop gangland fueds",
+      "intent": "discussCrime",
+      "entities": []
     },
     {
       "text": "i would've voted for finnna fail",
@@ -883,6 +1034,56 @@
           "endPos": 31
         }
       ]
+    },
+    {
+      "text": "i'd bring up things about crime and gangland crime especially",
+      "intent": "discussCrime",
+      "entities": []
+    },
+    {
+      "text": "i'd talk about education in general",
+      "intent": "discussEducation",
+      "entities": []
+    },
+    {
+      "text": "i'd talk about mortages and other things",
+      "intent": "discussMortgage",
+      "entities": []
+    },
+    {
+      "text": "i'd talk about the mortgage problem",
+      "intent": "discussMortgage",
+      "entities": []
+    },
+    {
+      "text": "i'd talk about things like mental health",
+      "intent": "discussMentalHealth",
+      "entities": []
+    },
+    {
+      "text": "i'd talk about third level education",
+      "intent": "discussEducation",
+      "entities": []
+    },
+    {
+      "text": "i'd try improve mental health services",
+      "intent": "discussMentalHealth",
+      "entities": []
+    },
+    {
+      "text": "if i could improve education it would be great",
+      "intent": "discussEducation",
+      "entities": []
+    },
+    {
+      "text": "i'm a teacher. so i'd like to improve teachers pay",
+      "intent": "discussTeachersPay",
+      "entities": []
+    },
+    {
+      "text": "i'm building a house soon. so a mortgage would be a start. i'd talk about that",
+      "intent": "discussMortgage",
+      "entities": []
     },
     {
       "text": "i'm done thanks",
@@ -912,7 +1113,7 @@
     },
     {
       "text": "i'm interested to see if the housing crisis will be sorted by the next government",
-      "intent": "disscussIssues",
+      "intent": "discussHousing",
       "entities": [
         {
           "entity": "topical_issue",
@@ -944,6 +1145,17 @@
           "entity": "location",
           "startPos": 25,
           "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "ireland needs better education infrastructures",
+      "intent": "discussEducation",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 21,
+          "endPos": 29
         }
       ]
     },
@@ -991,6 +1203,11 @@
       "entities": []
     },
     {
+      "text": "loads of people dont have jobs",
+      "intent": "discussUnemployment",
+      "entities": []
+    },
+    {
       "text": "mayo is my constituency",
       "intent": "discussLocation",
       "entities": [
@@ -1000,6 +1217,21 @@
           "endPos": 3
         }
       ]
+    },
+    {
+      "text": "mental health facilities could be improved",
+      "intent": "discussMentalHealth",
+      "entities": []
+    },
+    {
+      "text": "mental health is a huge problem in wexford",
+      "intent": "discussMentalHealth",
+      "entities": []
+    },
+    {
+      "text": "mentla health is a huge issue. i would bring up that",
+      "intent": "discussMentalHealth",
+      "entities": []
     },
     {
       "text": "mick wallace is a legend",
@@ -1167,7 +1399,7 @@
     },
     {
       "text": "my rent is so expensive",
-      "intent": "disscussIssues",
+      "intent": "discussHousing",
       "entities": [
         {
           "entity": "topical_issue",
@@ -1340,7 +1572,7 @@
     },
     {
       "text": "people in my area wanted to sort issues with teachers pay",
-      "intent": "disscussIssues",
+      "intent": "discussTeachersPay",
       "entities": [
         {
           "entity": "topical_issue",
@@ -1348,6 +1580,11 @@
           "endPos": 56
         }
       ]
+    },
+    {
+      "text": "people need to be able to get mortgages easier",
+      "intent": "discussMortgage",
+      "entities": []
     },
     {
       "text": "politics gives power to the people",
@@ -1464,13 +1701,13 @@
       "entities": []
     },
     {
-      "text": "that was fun. thanks",
+      "text": "that's great thanks",
       "intent": "endConversation",
       "entities": []
     },
     {
-      "text": "that's great thanks",
-      "intent": "endConversation",
+      "text": "the banks need to start lending",
+      "intent": "discussMortgage",
       "entities": []
     },
     {
@@ -1480,7 +1717,7 @@
     },
     {
       "text": "the coronavirus has showed flaws in the health service",
-      "intent": "disscussIssues",
+      "intent": "discussHealth",
       "entities": [
         {
           "entity": "topical_issue",
@@ -1501,7 +1738,7 @@
     },
     {
       "text": "the homelessness crisis needs to be sorted",
-      "intent": "disscussIssues",
+      "intent": "discussHousing",
       "entities": [
         {
           "entity": "topical_issue",
@@ -1576,6 +1813,11 @@
       ]
     },
     {
+      "text": "there is a huge crime problem i would bring up that",
+      "intent": "discussCrime",
+      "entities": []
+    },
+    {
       "text": "there were 26 candiates to choose from in wexford",
       "intent": "discussLocation",
       "entities": [
@@ -1594,6 +1836,28 @@
           "entity": "location",
           "startPos": 24,
           "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "unemployment is a problem",
+      "intent": "discussUnemployment",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 0,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "unemployment is going to be huge , we need that fixed",
+      "intent": "discussUnemployment",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 0,
+          "endPos": 11
         }
       ]
     },
@@ -1645,8 +1909,13 @@
       "entities": []
     },
     {
+      "text": "we definitiely need more hospitals",
+      "intent": "discussHealth",
+      "entities": []
+    },
+    {
       "text": "we have the worst health service in europe",
-      "intent": "disscussIssues",
+      "intent": "discussHealth",
       "entities": [
         {
           "entity": "topical_issue",
@@ -1657,7 +1926,7 @@
     },
     {
       "text": "we need a solution to the housing crsis",
-      "intent": "disscussIssues",
+      "intent": "discussHousing",
       "entities": [
         {
           "entity": "topical_issue",
@@ -1667,8 +1936,34 @@
       ]
     },
     {
+      "text": "we need better facilities for people with mental health",
+      "intent": "discussMentalHealth",
+      "entities": []
+    },
+    {
       "text": "we need more beds in hospitals",
-      "intent": "disscussIssues",
+      "intent": "discussHealth",
+      "entities": []
+    },
+    {
+      "text": "we need to fix the hse",
+      "intent": "discussHealth",
+      "entities": []
+    },
+    {
+      "text": "we need to fix the unemployment issue",
+      "intent": "discussUnemployment",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 19,
+          "endPos": 36
+        }
+      ]
+    },
+    {
+      "text": "well the number of people who have no work is going to be huge",
+      "intent": "discussUnemployment",
       "entities": []
     },
     {
@@ -1736,6 +2031,11 @@
     },
     {
       "text": "yes i did vote",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "yes i did vote in the election",
       "intent": "didVote",
       "entities": []
     },

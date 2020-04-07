@@ -9,5 +9,6 @@ namespace Microsoft.BotBuilderSamples
         public string [] UserID { get; set; }
         public string [] Voted { get; set; }
         public string [] Location { get; set; }
+        public string [] Issues { get; set;}
     }
 }
