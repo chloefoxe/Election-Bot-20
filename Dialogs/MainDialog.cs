@@ -86,32 +86,32 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             if (stepContext.Result is PersonalDetails result)
             {
-                if (String.IsNullOrEmpty(result.Name.First())){ 
+                if (result.Name == null){ 
                     name = "not disclosed";
                 }
                 else {
                     name = result.Name.First();
                 }
 
-                if (String.IsNullOrEmpty(result.Location.First())){ 
+                if (result.Location == null){ 
                     location = "not disclosed";
                 }
                 else {
                     location = result.Location.First();
                 }
 
-                if (String.IsNullOrEmpty(result.UserID.First())){ 
+                if (result.UserID == null){ 
                     userID = "not disclosed";
                 }
                 else {
                     userID = result.UserID.First();
                 }
 
-                if (String.IsNullOrEmpty(result.Voted.First())){ 
+                if (result.Voted == null){ 
                     voted = "not disclosed";
                 }
                 else {
-                    voted= result.Voted.First();
+                    voted = result.Voted.First();
                 }
 
                 var messageText = $"Thanks {name} from {location}, with user ID: {userID}. Who {voted} in the election.";
