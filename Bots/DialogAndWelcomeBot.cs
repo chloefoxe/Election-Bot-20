@@ -47,7 +47,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             catch
             {
                 // Inform the user an error occured.
-                await turnContext.SendActivityAsync("Sorry, something went wrong reading your stored messages!");
+                //await turnContext.SendActivityAsync("Sorry, something went wrong reading your stored messages!");
             }
 
             // If no stored messages were found, create and store a new entry.
@@ -72,7 +72,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                 catch
                 {
                     // Inform the user an error occured.
-                    await turnContext.SendActivityAsync("Sorry, something went wrong storing your message!");
+                    //await turnContext.SendActivityAsync("Sorry, something went wrong storing your message!");
                 }
             }
             // Else, our Storage already contained saved user messages, add new one to the list.
@@ -97,7 +97,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                 catch
                 {
                     // Inform the user an error occured.
-                    await turnContext.SendActivityAsync("Sorry, something went wrong storing your message!");
+                    //await turnContext.SendActivityAsync("Sorry, something went wrong storing your message!");
                 }
             }
         }
