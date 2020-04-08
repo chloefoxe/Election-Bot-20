@@ -43,9 +43,9 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             if (personalDetails.Issues == null)
             {
                 await Task.Delay(1000);
-                await stepContext.Context.SendActivityAsync(MessageFactory.Text($"If I was elected, I'd finally bring high speed broadband to Kerry!"), cancellationToken);
-                await Task.Delay(1500);
-                var messageText = $"So {personalDetails.Name.First()}, imagine you were elected in the morning, what kinds of issues with you raise in Dáil Eireann?";
+                await stepContext.Context.SendActivityAsync(MessageFactory.Text($"If I were elected, I'd finally bring high speed broadband to Kerry!"), cancellationToken);
+                await Task.Delay(2000);
+                var messageText = $"So {personalDetails.Name.First()}, imagine you were elected in the morning, what kinds of issues would you raise in Dáil Eireann?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
@@ -124,14 +124,14 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = mortgagePromptMessage }, cancellationToken);
                 
                 case Luis.ElectionBot.Intent.discussEducation:
-                    personalDetails.Issues = mortgage;
+                    personalDetails.Issues = education;
 
-                    var educationText = "I 100% agree. Ireland needs more universities, and more affordable education. Hopefully it improves soon, right?";
+                    var educationText = "I 100% agree. Improving education in Ireland should be a number one priority. Hopefully it improves soon, right?";
                     var educationPromptMessage = MessageFactory.Text(educationText, educationText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = educationPromptMessage }, cancellationToken);
 
                 case Luis.ElectionBot.Intent.discussTeachersPay:
-                    personalDetails.Issues = mortgage;
+                    personalDetails.Issues = teachersPay;
 
                     var tecahersPayText = "Ah yes, teachers, the backbone of society. They should be paid more, right?";
                     var tecahersPayPromptMessage = MessageFactory.Text(tecahersPayText, tecahersPayText, InputHints.ExpectingInput);
@@ -150,11 +150,9 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var personalDetails = (PersonalDetails)stepContext.Options;
             
             await Task.Delay(1500);
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Absolutely"), cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I'm with you on that"), cancellationToken);
 
             return await stepContext.BeginDialogAsync(nameof(PartyDialog), personalDetails, cancellationToken);
         }
-
-
     }
 }

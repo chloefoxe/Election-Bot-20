@@ -36,7 +36,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             
             await Task.Delay(1500);
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($" Goodbye, have a nice day 👋🏼"), cancellationToken);
-            await Task.Delay(1000);
+            await Task.Delay(1500);
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Here's what I could gather from our conversation: "), cancellationToken);
 
             return await stepContext.EndDialogAsync(personalDetails, cancellationToken);

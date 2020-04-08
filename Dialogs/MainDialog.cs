@@ -45,10 +45,10 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         private async Task<DialogTurnResult> IntroStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            await Task.Delay(3000);
+            await Task.Delay(1000);
 
             // // Use the text provided in FinalStepAsync or the default if it is the first time.
-            var messageText = stepContext.Options?.ToString() ?? "My name is BotWise, how are you today?";
+            var messageText = stepContext.Options?.ToString() ?? "My name is BotWise, hope you are well?";
             var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
             return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
         }
@@ -125,10 +125,99 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     party = result.Party.First();
                 }
 
-                var messageText = $"So, your name is {name}. You are from {location}. You {voted} in the last general election and {issues} is among the issues that you care about. You support the {party} party.";
+                /** -------------------- NAME --------------------- **/
 
-                var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
-                await stepContext.Context.SendActivityAsync(message, cancellationToken);
+                await Task.Delay(1500);
+
+                if(name == "not disclosed"){
+                    await Task.Delay(1);
+                }
+                else{
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"So first of all, your name is {name}"), cancellationToken);
+                }
+
+                /** -------------------- VOTING --------------------- **/
+
+                await Task.Delay(1500);
+
+                if(voted == "not disclosed"){
+                    await Task.Delay(1);
+                }
+                else if(voted == "did vote"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You voted in the last general election, which probably means that you have an interest in politics and care about your right to vote."), cancellationToken);
+                }
+                else if(voted == "did not vote"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You did not vote in the last general election, which means you probably feel indifferent about polotics, or don't have the right to vote in Ireland."), cancellationToken);
+                }
+
+                /** -------------------- LOCATION --------------------- **/
+
+                await Task.Delay(4000);
+
+                if(location == "not disclosed"){
+                    await Task.Delay(1);
+                }
+                else {
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You're from {location}"), cancellationToken);
+                }
+
+                /** -------------------- ISSUES --------------------- **/
+                
+                await Task.Delay(1500);
+
+                if(issues == "not disclosed"){
+                    await Task.Delay(1);
+                }
+                else if(issues == "education"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You are either a teacher or a student, who cares about improving education in ireland."), cancellationToken);
+                }
+                else if(issues == "housing"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Improving housing is important to you, I can infer that you are paying expensive rent in dublin as a student or finding it difficult to find affordable housing."), cancellationToken);
+                }
+                else if(issues == "teachers pay"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you're probably a teacher because you care about getting equal pay"), cancellationToken);
+                }
+                else if(issues == "health"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Improving health infrastructure is important to you so or someone you know have probably experienced long waiting times in hospitals recently."), cancellationToken);
+                }
+                else if(issues == "coronavirus"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You're worried about the coronavirus and the implications it may cause for society. There's a chance you could be part of an 'at risk' health group."), cancellationToken);
+                }
+                else if(issues == "mortgage"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You're worried about the mortgage situation, I can assume that you might be building a house in the future."), cancellationToken);
+                }
+                else if(issues == "unemployment"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Improving Ireland's employment rates are important to you which may mean that you might be unemployed at the minute."), cancellationToken);
+                }
+                else if(issues == "mental health"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($""), cancellationToken);
+                }
+
+                /** -------------------- PARTY --------------------- **/
+
+                await Task.Delay(4000);
+
+                if(location == "not disclosed"){
+                    await Task.Delay(1);
+                }
+                else if(party == "green party" || party == "greens"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support the Green Party"), cancellationToken);
+                }
+                else if(party == "sinn fein"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Sinn Féin, "), cancellationToken);
+                }
+                else if(party == "fianna fail"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Fianna Fáil"), cancellationToken);
+                }
+                else if(party == "fine gael"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Fine Gael"), cancellationToken);
+                }
+                else if(party == "labour"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Labour"), cancellationToken);
+                }
+                else if(party == "independent"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You see yourseld as an independent which possibly means you don't neccesarily align to any political party."), cancellationToken);
+                }
             }
 
             await Task.Delay(10000);

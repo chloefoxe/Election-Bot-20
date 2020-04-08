@@ -45,7 +45,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             if (personalDetails.Location == null)
             {
                 await Task.Delay(1500);
-                var messageText = "What is your local voting constituency then? Mine is in Kerry, the kingdom 😉";
+                var messageText = "Mine voting area is in Kerry, the kingdom 😉! Where is yours?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
@@ -71,7 +71,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
-                else if (personalDetails.Location.First() == "dublin" || personalDetails.Location.First() == "Dun Laoighre") {
+                else if (personalDetails.Location.First() == "dublin" || personalDetails.Location.First() == "dun laoighre") {
                     var messageText = $"Interesting. Dublin's poll was dominated by Sinn Féin with 24% of the preference. Suprising result don't you think?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
@@ -105,7 +105,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             
-            await Task.Delay(1500);
+            await Task.Delay(2000);
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Yeah I thought so too."), cancellationToken);
 
             return await stepContext.BeginDialogAsync(nameof(IssuesDialog), personalDetails, cancellationToken);

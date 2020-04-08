@@ -55,7 +55,13 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-            personalDetails.Name = luisResult.Entities.name;
+        
+            if(luisResult.Entities.name == null){
+                personalDetails.Name = personalDetails.Name;
+            }
+            else{
+                personalDetails.Name = luisResult.Entities.name;
+            }
 
             if (personalDetails.UserID== null)
             {                                                                                                                                                                    

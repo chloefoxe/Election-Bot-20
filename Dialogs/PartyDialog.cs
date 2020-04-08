@@ -42,10 +42,10 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             
             if (personalDetails.Party == null)
             {
-                await Task.Delay(1000);
+                await Task.Delay(1500);
                 await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Continuing on with our imaginary scenario..."), cancellationToken);
                 await Task.Delay(1500);
-                var messageText = $"Would you join a party or go as an independent? I'd probably join the Green Party, what about you?";
+                var messageText = $"Would you join a party or go as an independent? I'd be between the greens and sinn féin, what about you?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
@@ -88,7 +88,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             
-            await Task.Delay(1500);
+            await Task.Delay(2000);
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"So maybe let's finish up before we go too far and get into an argument on political views?"), cancellationToken);
 
             return await stepContext.BeginDialogAsync(nameof(EndConversationDialog), personalDetails, cancellationToken);
