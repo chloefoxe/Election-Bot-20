@@ -59,9 +59,6 @@ namespace Microsoft.BotBuilderSamples.Bots
                 // set initial turn counter to 1.
                 logItems.TurnNumber++;
 
-                // Show user new user message.
-                await turnContext.SendActivityAsync($"Echo" + turnContext.Activity.Text);
-
                 // Create Dictionary object to hold received user messages.
                 var changes = new Dictionary<string, object>();
                 {
@@ -85,9 +82,6 @@ namespace Microsoft.BotBuilderSamples.Bots
                 logItems.UtteranceList.Add(utterance);
                 // increment turn counter.
                 logItems.TurnNumber++;
-
-                // show user new list of saved messages.
-                await turnContext.SendActivityAsync($"Echo " + turnContext.Activity.Text);
 
                 // Create Dictionary object to hold new list of messages.
                 var changes = new Dictionary<string, object>();
