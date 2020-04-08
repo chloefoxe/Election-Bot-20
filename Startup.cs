@@ -32,7 +32,7 @@ namespace Microsoft.BotBuilderSamples
             };
             var storage = new CosmosDbPartitionedStorage(cosmosDbStorageOptions);
 
-            //services.AddSingleton<IStorage>(new CosmosDbPartitionedStorage(cosmosDbStorageOptions));
+            services.AddSingleton<IStorage>(new CosmosDbPartitionedStorage(cosmosDbStorageOptions));
 
             // Create the storage we'll be using for User and Conversation state. (Memory is great for testing purposes.)
             //services.AddSingleton<IStorage, MemoryStorage>();
