@@ -44,8 +44,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             {
                 await Task.Delay(1500);
                 await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Continuing on with our imaginary scenario..."), cancellationToken);
-                await Task.Delay(1500);
-                var messageText = $"Would you join a party or go as an independent? I'd be between the greens and sinn féin, what about you?";
+                await Task.Delay(2500);
+                var messageText = $"Would you join a party or go as an independent? I'd be between the greens and independents, what about you?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }

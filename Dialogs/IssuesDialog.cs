@@ -45,7 +45,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 await Task.Delay(1000);
                 await stepContext.Context.SendActivityAsync(MessageFactory.Text($"If I were elected, I'd finally bring high speed broadband to Kerry!"), cancellationToken);
                 await Task.Delay(2000);
-                var messageText = $"So {personalDetails.Name.First()}, imagine you were elected in the morning, what kinds of issues would you raise in Dáil Eireann?";
+                var messageText = $"So {personalDetails.Name.First()}, imagine you were elected in the morning... what kinds of issues would you raise in Dáil Eireann?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
