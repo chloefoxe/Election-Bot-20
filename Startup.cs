@@ -23,16 +23,16 @@ namespace Microsoft.BotBuilderSamples
             // Create the Bot Framework Adapter with error handling enabled.
             services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
 
-             var cosmosDbStorageOptions = new CosmosDbPartitionedStorageOptions()
-            {
-                CosmosDbEndpoint = "https://electioncosmos.documents.azure.com:443/",
-                AuthKey = "0zqSGejOcM7dqU603OFedsrfXf3HG6DBrwO0YZm85h2IlZrdyDY7la7tgfX0axd9ccNN4myrphorQMlxOuuBSw==",
-                DatabaseId = "BotStoage",
-                ContainerId = "Container1"
-            };
-            var storage = new CosmosDbPartitionedStorage(cosmosDbStorageOptions);
+            //  var cosmosDbStorageOptions = new CosmosDbPartitionedStorageOptions()
+            // {
+            //     CosmosDbEndpoint = "https://electioncosmos.documents.azure.com:443/",
+            //     AuthKey = "0zqSGejOcM7dqU603OFedsrfXf3HG6DBrwO0YZm85h2IlZrdyDY7la7tgfX0axd9ccNN4myrphorQMlxOuuBSw==",
+            //     DatabaseId = "BotStoage",
+            //     ContainerId = "Container1"
+            // };
+            // var storage = new CosmosDbPartitionedStorage(cosmosDbStorageOptions);
 
-            services.AddSingleton<IStorage>(new CosmosDbPartitionedStorage(cosmosDbStorageOptions));
+            // services.AddSingleton<IStorage>(new CosmosDbPartitionedStorage(cosmosDbStorageOptions));
 
             // Create the storage we'll be using for User and Conversation state. (Memory is great for testing purposes.)
             //services.AddSingleton<IStorage, MemoryStorage>();
