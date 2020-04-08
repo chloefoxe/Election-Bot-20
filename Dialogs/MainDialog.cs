@@ -79,7 +79,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         }
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            string name, location, userID, voted, issues;
+            string name, location, userID, voted, issues, party;
 
             if (stepContext.Result is PersonalDetails result)
             {
@@ -118,7 +118,14 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     issues = result.Issues.First();
                 }
 
-                var messageText = $"So, your name is {name}. You are from {location}. You {voted} in the last general election and {issues} is among the issues that you care about.";
+                if (result.Party == null){ 
+                    party = "not disclosed";
+                }
+                else {
+                    party = result.Party.First();
+                }
+
+                var messageText = $"So, your name is {name}. You are from {location}. You {voted} in the last general election and {issues} is among the issues that you care about. You support the {party} party.";
 
                 var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
                 await stepContext.Context.SendActivityAsync(message, cancellationToken);
