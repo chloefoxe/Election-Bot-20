@@ -147,7 +147,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You voted in the last general election, which probably means that you have an interest in politics and care about your right to vote."), cancellationToken);
                 }
                 else if(voted == "did not vote"){
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You did not vote in the last general election, which means you probably feel indifferent about polotics, or don't have the right to vote in Ireland."), cancellationToken);
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You did not vote in the last general election, which means you probably feel indifferent about politics, or don't have the right to vote in Ireland."), cancellationToken);
                 }
 
                 /** -------------------- LOCATION --------------------- **/
@@ -158,12 +158,12 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     await Task.Delay(1);
                 }
                 else {
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You're from {location}"), cancellationToken);
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I found out that you're from {location}"), cancellationToken);
                 }
 
                 /** -------------------- ISSUES --------------------- **/
                 
-                await Task.Delay(1500);
+                await Task.Delay(1000);
 
                 if(issues == "not disclosed"){
                     await Task.Delay(1);
@@ -201,22 +201,49 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     await Task.Delay(1);
                 }
                 else if(party == "green party" || party == "greens"){
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support the Green Party"), cancellationToken);
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support the Green Party so I can tell that you care deeply about stopping climate change is an number one priority for you."), cancellationToken);
+
+                    if(location == "wexford"){
+
+                    }
+                    else if(location == "dublin"){
+                        
+                    }
                 }
                 else if(party == "sinn fein"){
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Sinn Féin, "), cancellationToken);
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Sinn Féin, so I can tell that you're interested in a fairer, equal society for everyone. Establishing a united Ireland may also be important to you."), cancellationToken);
+                
+                    if(location == "wexford"){
+
+                    }
+                    else if(location == "dublin"){
+                        
+                    }
+                    else if(location == "dun laoighre"){
+                        
+                    }
+                    else if(location == "galway"){
+                        
+                    }
+                    else if(location == "kildare"){
+                        
+                    }
+                    else if(location == "monaghan"){
+                        
+                    }
+                
                 }
                 else if(party == "fianna fail"){
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Fianna Fáil"), cancellationToken);
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Fianna Fáil. You are in favour of realistic government policies that are more in touch with the people. You'd never vote for a Fine Gael candidate."), cancellationToken);
                 }
                 else if(party == "fine gael"){
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Fine Gael"), cancellationToken);
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Fine Gael. You think an 'econonmy driven' Ireland is the best approach for government. You'd rather Ireland remains part of Europe in the future."), cancellationToken);
                 }
                 else if(party == "labour"){
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Labour"), cancellationToken);
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Labour party. "), cancellationToken);
                 }
-                else if(party == "independent"){
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You see yourseld as an independent which possibly means you don't neccesarily align to any political party."), cancellationToken);
+                else if(party == "independent" || party == "independents"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You see yourself as an independent which possibly means you have no interest in mainstream politics and don't neccesarily align to any political party."), cancellationToken);
                 }
             }
 

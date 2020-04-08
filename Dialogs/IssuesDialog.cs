@@ -105,7 +105,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 case Luis.ElectionBot.Intent.discussMentalHealth:
                     personalDetails.Issues = mentalHealth;
 
-                    var mentalHealthText = "Indeed. I couldn't agree more, mental health is a huge topic at the minute. Hopefully government can fix this soon right?";
+                    var mentalHealthText = "Indeed. I couldn't agree more, mental health really needs to be given more attention from the government. Hopefully government can fix this soon right?";
                     var mentalHealthPromptMessage = MessageFactory.Text(mentalHealthText, mentalHealthText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = mentalHealthPromptMessage }, cancellationToken);
 

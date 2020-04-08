@@ -52,9 +52,6 @@
       "name": "discussUnemployment"
     },
     {
-      "name": "disscussIssues"
-    },
-    {
       "name": "endConversation"
     },
     {
@@ -119,6 +116,33 @@
       "entities": []
     },
     {
+      "text": "adeline",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "alison",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "all teachers should have equal pay",
+      "intent": "discussTeachersPay",
+      "entities": []
+    },
+    {
       "text": "alot of people in my constituency voted for sinn fein",
       "intent": "discussParty",
       "entities": [
@@ -140,13 +164,13 @@
       "entities": []
     },
     {
-      "text": "brexit is important to me",
-      "intent": "disscussIssues",
+      "text": "barry",
+      "intent": "giveName",
       "entities": [
         {
-          "entity": "topical_issue",
+          "entity": "name",
           "startPos": 0,
-          "endPos": 5
+          "endPos": 4
         }
       ]
     },
@@ -171,6 +195,17 @@
       "entities": []
     },
     {
+      "text": "caroline",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 7
+        }
+      ]
+    },
+    {
       "text": "chloe",
       "intent": "giveName",
       "entities": [
@@ -193,9 +228,31 @@
       ]
     },
     {
+      "text": "clare",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
       "text": "cool bye now",
       "intent": "endConversation",
       "entities": []
+    },
+    {
+      "text": "coronavirus",
+      "intent": "discussCoronavirus",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 0,
+          "endPos": 10
+        }
+      ]
     },
     {
       "text": "covid-19 is putting a delay to things",
@@ -239,6 +296,11 @@
       "entities": []
     },
     {
+      "text": "education",
+      "intent": "discussEducation",
+      "entities": []
+    },
+    {
       "text": "education needs to be improved in ireland",
       "intent": "discussEducation",
       "entities": []
@@ -249,13 +311,24 @@
       "entities": []
     },
     {
-      "text": "everyone was talking about the forestry issues",
-      "intent": "disscussIssues",
+      "text": "elayne",
+      "intent": "giveName",
       "entities": [
         {
-          "entity": "topical_issue",
-          "startPos": 31,
-          "endPos": 45
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "fair play i would be an independent",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 24,
+          "endPos": 34
         }
       ]
     },
@@ -314,6 +387,17 @@
       ]
     },
     {
+      "text": "galway",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
       "text": "galway east",
       "intent": "discussLocation",
       "entities": [
@@ -336,8 +420,24 @@
       ]
     },
     {
+      "text": "gerard",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
       "text": "good and yourself?",
       "intent": "askMood",
+      "entities": []
+    },
+    {
+      "text": "good thanks",
+      "intent": "discussFeeling",
       "entities": []
     },
     {
@@ -381,6 +481,11 @@
       "entities": []
     },
     {
+      "text": "great",
+      "intent": "discussFeeling",
+      "entities": []
+    },
+    {
       "text": "great hows things?",
       "intent": "askMood",
       "entities": []
@@ -409,6 +514,27 @@
       "text": "have a nice evening",
       "intent": "endConversation",
       "entities": []
+    },
+    {
+      "text": "health education and housing",
+      "intent": "discussHealth",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 0,
+          "endPos": 5
+        },
+        {
+          "entity": "topical_issue",
+          "startPos": 7,
+          "endPos": 15
+        },
+        {
+          "entity": "topical_issue",
+          "startPos": 21,
+          "endPos": 27
+        }
+      ]
     },
     {
       "text": "hey my name is chloe",
@@ -482,6 +608,22 @@
       "entities": []
     },
     {
+      "text": "housing",
+      "intent": "discussHousing",
+      "entities": []
+    },
+    {
+      "text": "housing crisis",
+      "intent": "discussHousing",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 0,
+          "endPos": 13
+        }
+      ]
+    },
+    {
       "text": "hye",
       "intent": "giveName",
       "entities": []
@@ -552,17 +694,6 @@
       ]
     },
     {
-      "text": "i am worried about the outcome of brexit",
-      "intent": "disscussIssues",
-      "entities": [
-        {
-          "entity": "topical_issue",
-          "startPos": 34,
-          "endPos": 39
-        }
-      ]
-    },
-    {
       "text": "i did",
       "intent": "didVote",
       "entities": []
@@ -578,6 +709,11 @@
       "entities": []
     },
     {
+      "text": "i did not vote",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
       "text": "i did vote",
       "intent": "didVote",
       "entities": []
@@ -589,6 +725,16 @@
     },
     {
       "text": "i did vote, yes",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "i did yeah",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "i did yes",
       "intent": "didVote",
       "entities": []
     },
@@ -695,6 +841,17 @@
       ]
     },
     {
+      "text": "i think mental health needs improving",
+      "intent": "discussMentalHealth",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 8,
+          "endPos": 20
+        }
+      ]
+    },
+    {
       "text": "i think teachers need to be paid more",
       "intent": "discussTeachersPay",
       "entities": []
@@ -738,17 +895,6 @@
           "entity": "party_name",
           "startPos": 16,
           "endPos": 31
-        }
-      ]
-    },
-    {
-      "text": "i voted in alliance with my views on climate change",
-      "intent": "disscussIssues",
-      "entities": [
-        {
-          "entity": "topical_issue",
-          "startPos": 37,
-          "endPos": 50
         }
       ]
     },
@@ -798,17 +944,6 @@
           "entity": "topical_issue",
           "startPos": 38,
           "endPos": 51
-        }
-      ]
-    },
-    {
-      "text": "i want the next government to tackle climate change",
-      "intent": "disscussIssues",
-      "entities": [
-        {
-          "entity": "topical_issue",
-          "startPos": 37,
-          "endPos": 50
         }
       ]
     },
@@ -881,6 +1016,11 @@
           "endPos": 27
         }
       ]
+    },
+    {
+      "text": "i would solve some of the education problems",
+      "intent": "discussEducation",
+      "entities": []
     },
     {
       "text": "i would talk about hospitals and the likes",
@@ -1070,6 +1210,44 @@
       ]
     },
     {
+      "text": "it's in fermanagh",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 8,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "j5478",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "james",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "jerry",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
       "text": "labour have lost popularity",
       "intent": "discussParty",
       "entities": [
@@ -1102,6 +1280,17 @@
       "entities": []
     },
     {
+      "text": "mark",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 3
+        }
+      ]
+    },
+    {
       "text": "mayo is my constituency",
       "intent": "discussLocation",
       "entities": [
@@ -1111,6 +1300,11 @@
           "endPos": 3
         }
       ]
+    },
+    {
+      "text": "mental health",
+      "intent": "discussMentalHealth",
+      "entities": []
     },
     {
       "text": "mental health facilities could be improved",
@@ -1125,6 +1319,33 @@
     {
       "text": "mentla health is a huge issue. i would bring up that",
       "intent": "discussMentalHealth",
+      "entities": []
+    },
+    {
+      "text": "mine is dublin",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 8,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "mines wexford",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "mortgages",
+      "intent": "discussMortgage",
       "entities": []
     },
     {
@@ -1157,6 +1378,17 @@
           "entity": "party_name",
           "startPos": 33,
           "endPos": 52
+        }
+      ]
+    },
+    {
+      "text": "my name is candice",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 11,
+          "endPos": 17
         }
       ]
     },
@@ -1227,6 +1459,17 @@
       ]
     },
     {
+      "text": "my name is jack",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 11,
+          "endPos": 14
+        }
+      ]
+    },
+    {
       "text": "my name is jerry",
       "intent": "giveName",
       "entities": [
@@ -1234,6 +1477,17 @@
           "entity": "name",
           "startPos": 11,
           "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "my name is jim",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 11,
+          "endPos": 13
         }
       ]
     },
@@ -1293,6 +1547,11 @@
       ]
     },
     {
+      "text": "my user id d342",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
       "text": "my user id is a1234",
       "intent": "giveUserID",
       "entities": []
@@ -1309,6 +1568,16 @@
     },
     {
       "text": "my user id is e3456",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "my user id is h3452",
+      "intent": "giveUserID",
+      "entities": []
+    },
+    {
+      "text": "my user id is j782",
       "intent": "giveUserID",
       "entities": []
     },
@@ -1373,6 +1642,11 @@
       "entities": []
     },
     {
+      "text": "no i did'nt",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
       "text": "no i didnt vote",
       "intent": "didNotVote",
       "entities": []
@@ -1384,6 +1658,11 @@
     },
     {
       "text": "no i was working",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
+      "text": "no. i was working unfortunately",
       "intent": "didNotVote",
       "entities": []
     },
@@ -1471,6 +1750,28 @@
       "entities": []
     },
     {
+      "text": "rent",
+      "intent": "discussHousing",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 0,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "renting crisis",
+      "intent": "discussHousing",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 0,
+          "endPos": 13
+        }
+      ]
+    },
+    {
       "text": "s2356",
       "intent": "None",
       "entities": []
@@ -1486,9 +1787,42 @@
       "entities": []
     },
     {
+      "text": "sharon",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
       "text": "sinn fein always get my number one",
       "intent": "discussParty",
       "entities": []
+    },
+    {
+      "text": "sorcha",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "stephanie",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 8
+        }
+      ]
     },
     {
       "text": "stupid",
@@ -1524,6 +1858,11 @@
     {
       "text": "talk to you again",
       "intent": "endConversation",
+      "entities": []
+    },
+    {
+      "text": "teachers pay",
+      "intent": "discussTeachersPay",
       "entities": []
     },
     {
@@ -1681,6 +2020,28 @@
       ]
     },
     {
+      "text": "tom",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "unemployment",
+      "intent": "discussUnemployment",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 0,
+          "endPos": 11
+        }
+      ]
+    },
+    {
       "text": "unemployment is a problem",
       "intent": "discussUnemployment",
       "entities": [
@@ -1720,6 +2081,17 @@
           "entity": "location",
           "startPos": 35,
           "endPos": 43
+        }
+      ]
+    },
+    {
+      "text": "vivek",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
         }
       ]
     },
@@ -1792,13 +2164,13 @@
       "entities": []
     },
     {
-      "text": "we're going to have a water crisis if we don't stop wasting it",
-      "intent": "disscussIssues",
+      "text": "wexford",
+      "intent": "discussLocation",
       "entities": [
         {
-          "entity": "topical_issue",
-          "startPos": 22,
-          "endPos": 33
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 6
         }
       ]
     },
@@ -1874,6 +2246,22 @@
       "text": "yes i did vote in the election",
       "intent": "didVote",
       "entities": []
+    },
+    {
+      "text": "yes i did, i always vote and everyone should vote and if i had my way i would make it compulsary for all.",
+      "intent": "didVote",
+      "entities": []
+    },
+    {
+      "text": "yes i think i would run as an independent, but i dot",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 30,
+          "endPos": 40
+        }
+      ]
     },
     {
       "text": "yes i voted",

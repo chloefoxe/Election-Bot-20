@@ -34,7 +34,6 @@ namespace Luis
             discussParty, 
             discussTeachersPay, 
             discussUnemployment, 
-            disscussIssues, 
             endConversation, 
             giveName, 
             giveUserID, 
