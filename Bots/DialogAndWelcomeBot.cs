@@ -75,17 +75,17 @@ namespace Microsoft.BotBuilderSamples.Bots
             // make empty local logitems list.
             UtteranceLog logItems = null;
 
-            // see if there are previous messages saved in storage.
-            try
-            {
-                string[] utteranceList = { "UtteranceLog" };
-                logItems = _myStorage.ReadAsync<UtteranceLog>(utteranceList).Result?.FirstOrDefault().Value;
-            }
-            catch
-            {
-                // Inform the user an error occured.
-                await turnContext.SendActivityAsync("Sorry, something went wrong reading your stored messages!");
-            }
+            // // see if there are previous messages saved in storage.
+            // try
+            // {
+            //     string[] utteranceList = { "UtteranceLog" };
+            //     logItems = _myStorage.ReadAsync<UtteranceLog>(utteranceList).Result?.FirstOrDefault().Value;
+            // }
+            // catch
+            // {
+            //     // Inform the user an error occured.
+            //     await turnContext.SendActivityAsync("Sorry, something went wrong reading your stored messages!");
+            // }
 
             // If no stored messages were found, create and store a new entry.
             if (logItems is null)
@@ -112,32 +112,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                     await turnContext.SendActivityAsync("Sorry, something went wrong storing your message!");
                 }
             }
-            // Else, our Storage already contained saved user messages, add new one to the list.
-            else
-            {
-                // add new message to list of messages to display.
-                logItems.UtteranceList.Add(utterance);
-                // increment turn counter.
-                logItems.TurnNumber++;
-
-                // Create Dictionary object to hold new list of messages.
-                var changes = new Dictionary<string, object>();
-                {
-                    changes.Add("UtteranceLog", logItems);
-                };
-
-                try
-                {
-                    // Save new list to your Storage.
-                    await _myStorage.WriteAsync(changes, cancellationToken);
-                }
-                catch
-                {
-                    // Inform the user an error occured.
-                    await turnContext.SendActivityAsync("Sorry, something went wrong storing your message!");
-                }
-            }
-   }
+        }
 
         // Load attachment from embedded resource.
         private Attachment CreateAdaptiveCardAttachment()
