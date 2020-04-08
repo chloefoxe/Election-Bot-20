@@ -16,13 +16,13 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private readonly ConversationRecognizer _luisRecognizer;
         protected readonly ILogger Logger;
 
-        public IssuesDialog(ConversationRecognizer luisRecognizer, EndConversationDialog endConversationDialog, ILogger<IssuesDialog> logger)
+        public IssuesDialog(ConversationRecognizer luisRecognizer, PartyDialog partyDialog, ILogger<IssuesDialog> logger)
             : base(nameof(IssuesDialog))
         {
             _luisRecognizer = luisRecognizer;
             Logger = logger;
 
-            AddDialog(endConversationDialog);
+            AddDialog(partyDialog);
             AddDialog(new TextPrompt(nameof(TextPrompt)));
             AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
@@ -152,7 +152,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             await Task.Delay(1500);
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Absolutely"), cancellationToken);
 
-            return await stepContext.BeginDialogAsync(nameof(EndConversationDialog), personalDetails, cancellationToken);
+            return await stepContext.BeginDialogAsync(nameof(PartyDialog), personalDetails, cancellationToken);
         }
 
 

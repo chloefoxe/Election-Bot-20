@@ -24,7 +24,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
                 ThankTask,
-                FinalStepAsync,
             }));
 
             // The initial child Dialog to run.
@@ -36,18 +35,12 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var personalDetails = (PersonalDetails)stepContext.Options;
             
             await Task.Delay(1500);
-            var messageText = $"So let's finish up before we go too far and get into an argument on political views, Bye! 👋🏼";
-            var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
-            return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
-        }
-
-        private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-        {
-            var personalDetails = (PersonalDetails)stepContext.Options;
-            
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($" Goodbye, have a nice day 👋🏼"), cancellationToken);
+            await Task.Delay(1000);
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Here's what I could gather from our conversation: "), cancellationToken);
 
             return await stepContext.EndDialogAsync(personalDetails, cancellationToken);
+
         }
     }
 }
