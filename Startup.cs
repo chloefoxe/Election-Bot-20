@@ -57,6 +57,7 @@ namespace Microsoft.BotBuilderSamples
             services.AddSingleton<IssuesDialog>();
             services.AddSingleton<ConstituencyDialog>();
             services.AddSingleton<EndConversationDialog>();
+            services.AddSingleton<PartyDialog>();
             services.AddSingleton<UserProfileDialog>();
 
             // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
