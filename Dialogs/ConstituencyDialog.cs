@@ -45,7 +45,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             if (personalDetails.Location == null)
             {
                 await Task.Delay(1500);
-                var messageText = "Mine voting area is in Kerry, the kingdom 😉! Where is yours?";
+                var messageText = "My voting area is in Kerry, the kingdom 😉! Where is yours?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }

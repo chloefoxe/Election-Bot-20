@@ -45,7 +45,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 await Task.Delay(1500);
                 await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Continuing on with our imaginary scenario..."), cancellationToken);
                 await Task.Delay(2500);
-                var messageText = $"Would you join a party or go as an independent? I'd be between the greens and independents, what about you?";
+                var messageText = $"Personally, if choosing parties I'd be between the greens and renua! What about you? Would you join a party or go as an independent?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
@@ -62,7 +62,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             string[] def;
             def = new string[]{ "not disclosed"};
 
-            await Task.Delay(1500);
+            await Task.Delay(2000);
 
             switch (luisResult.TopIntent().intent)
             {
