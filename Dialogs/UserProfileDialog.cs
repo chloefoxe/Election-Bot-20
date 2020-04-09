@@ -37,6 +37,13 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             InitialDialogId = nameof(WaterfallDialog);
         }
 
+        static string UppercaseFirst(string s)
+        {
+            char[] a = s.ToCharArray();
+            a[0] = char.ToUpper(a[0]);
+            return new string(a);
+        }
+
         private async Task<DialogTurnResult> GetNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetials = (PersonalDetails)stepContext.Options;
@@ -57,6 +64,18 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
 
             personalDetails.Name = luisResult.Entities.name;
+
+            string uncapped, capped;
+
+            uncapped = personalDetails.Name.First();
+
+            capped = UppercaseFirst(uncapped);
+
+            string [] capitalisedName = new string [1];
+
+            capitalisedName[0] = capped;
+
+            personalDetails.Name = capitalisedName;
 
             if (personalDetails.UserID== null)
             {                                                                                                                                                                    
