@@ -70,16 +70,19 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
                     if(luisResult.Entities.party_name == null){
                         await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I think that's a good shout!"), cancellationToken);
+                        await Task.Delay(1500);
+                        var partyText = "But sure hey! It's all politics right?";
+                        var housingPromptMessage = MessageFactory.Text(partyText, partyText, InputHints.ExpectingInput);
+                        return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = housingPromptMessage }, cancellationToken);
                     }
-                    else {
+                    else{
                         personalDetails.Party = luisResult.Entities.party_name;
                         await stepContext.Context.SendActivityAsync(MessageFactory.Text($"The {personalDetails.Party.First()} party?!"), cancellationToken);
+                        await Task.Delay(1500);
+                        var partyText = "hmmm not sure if I agree with you on that! But sure it's all politics right?";
+                        var housingPromptMessage = MessageFactory.Text(partyText, partyText, InputHints.ExpectingInput);
+                        return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = housingPromptMessage }, cancellationToken);
                     }
-                    
-                    await Task.Delay(1500);
-                    var partyText = "hmmm not sure if I agree with you on that! But sure it's all politics right?";
-                    var housingPromptMessage = MessageFactory.Text(partyText, partyText, InputHints.ExpectingInput);
-                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = housingPromptMessage }, cancellationToken);
                 
                 default:
                     personalDetails.Party = def;
@@ -87,8 +90,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = didntUnderstandMessage }, cancellationToken);
             }
-
-            //return await stepContext.NextAsync(personalDetails, cancellationToken);
         }
         private async Task<DialogTurnResult> ContinueStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
