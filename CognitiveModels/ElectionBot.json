@@ -115,7 +115,7 @@
     },
     {
       "text": "a1234",
-      "intent": "None",
+      "intent": "giveUserID",
       "entities": []
     },
     {
@@ -1246,6 +1246,28 @@
       ]
     },
     {
+      "text": "independent",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 0,
+          "endPos": 10
+        }
+      ]
+    },
+    {
+      "text": "independents",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 0,
+          "endPos": 11
+        }
+      ]
+    },
+    {
       "text": "ireland needs better education infrastructures",
       "intent": "discussEducation",
       "entities": [
@@ -1912,8 +1934,19 @@
       ]
     },
     {
+      "text": "renua",
+      "intent": "discussParty",
+      "entities": [
+        {
+          "entity": "party_name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
       "text": "s2356",
-      "intent": "None",
+      "intent": "giveUserID",
       "entities": []
     },
     {
@@ -2242,7 +2275,7 @@
     },
     {
       "text": "w2356",
-      "intent": "None",
+      "intent": "giveUserID",
       "entities": []
     },
     {
