@@ -352,6 +352,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     
             }
 
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"And that's everything from me!"), cancellationToken);
+
             await Task.Delay(10000);
 
             return await stepContext.EndDialogAsync(null, cancellationToken);
