@@ -140,10 +140,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
                 await Task.Delay(1500);
 
-                if(voted == "not disclosed"){
-                    await Task.Delay(1);
-                }
-                else if(voted == "did vote"){
+                if(voted == "did vote"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You voted in the last general election, which probably means that you have an interest in politics and care about your right to vote."), cancellationToken);
                 }
                 else if(voted == "did not vote"){
@@ -165,11 +162,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 
                 await Task.Delay(1000);
 
-                if(issues == "not disclosed"){
-                    await Task.Delay(1);
-                }
-                else if(issues == "education"){
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You are either a teacher or a student, who cares about improving education in ireland."), cancellationToken);
+                if(issues == "education"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can infer that you are either a teacher or a student, who cares about improving education in ireland."), cancellationToken);
                 }
                 else if(issues == "housing"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Improving housing is important to you, I can infer that you are paying expensive rent in dublin as a student or finding it difficult to find affordable housing."), cancellationToken);
@@ -179,6 +173,12 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 }
                 else if(issues == "health"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Improving health infrastructure is important to you so or someone you know have probably experienced long waiting times in hospitals recently."), cancellationToken);
+
+                    await Task.Delay(2000);
+                    
+                    if(location == "wexford"){
+                        await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Plus the fact that your from Wexford may mean that you feel that a 24/7 cardiac care unit is needed in the county."), cancellationToken);
+                    }
                 }
                 else if(issues == "coronavirus"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You're worried about the coronavirus and the implications it may cause for society. There's a chance you could be part of an 'at risk' health group."), cancellationToken);
@@ -190,7 +190,13 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Improving Ireland's employment rates are important to you which may mean that you might be unemployed at the minute."), cancellationToken);
                 }
                 else if(issues == "mental health"){
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($""), cancellationToken);
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Improving mental health infrastructure in Ireland is important to you"), cancellationToken);
+                    
+                    await Task.Delay(2000);
+
+                    if(location == "wexford"){
+                        await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Plus the fact that your from Wexford may mean that you are in favour of St. Sennan's reopening as a psychiatric unit."), cancellationToken);
+                    }
                 }
 
                 /** -------------------- PARTY --------------------- **/
@@ -203,48 +209,149 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 else if(party == "green party" || party == "greens"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support the Green Party so I can tell that you care deeply about stopping climate change is an number one priority for you."), cancellationToken);
 
-                    if(location == "wexford"){
+                    await Task.Delay(4000);
 
-                    }
-                    else if(location == "dublin"){
+                    if(voted == "did vote"){
+                        if(location == "wexford"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Paula Roseingrave or Verona Murphy your top votes."), cancellationToken);
+                        }
+                        else if(location == "dun laoighre"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Ossian Smyth your top vote."), cancellationToken);
+                        }
+                        else if(location == "galway"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Seán Canney your top vote."), cancellationToken);
+                        }
+                        else if(location == "kildare"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Vincent Martin your top vote."), cancellationToken);
+                        }
+                        else if(location == "monaghan"){
                         
+                        }
+                        else if(location == "mayo"){
+                        
+                        }
+                        else if(location == "leitrim"){
+                        
+                        }
                     }
                 }
+                /** -------------------- SINN FEIN --------------------- **/
+
                 else if(party == "sinn fein"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Sinn Féin, so I can tell that you're interested in a fairer, equal society for everyone. Establishing a united Ireland may also be important to you."), cancellationToken);
                 
-                    if(location == "wexford"){
+                    await Task.Delay(4000);
 
-                    }
-                    else if(location == "dublin"){
+                    if(voted == "did vote"){
+                        if(location == "wexford"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Johnny Myhten your number one vote."), cancellationToken);
+                        }
+                        else if(location == "dun laoighre"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Shane O'Brien your number one vote."), cancellationToken);
+                        }
+                        else if(location == "galway"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Louis O'Hara or Seán Canney your number one vote."), cancellationToken);
+                        }
+                        else if(location == "kildare"){
                         
-                    }
-                    else if(location == "dun laoighre"){
+                        }
+                        else if(location == "monaghan"){
                         
-                    }
-                    else if(location == "galway"){
-                        
-                    }
-                    else if(location == "kildare"){
-                        
-                    }
-                    else if(location == "monaghan"){
-                        
+                        }
                     }
                 
                 }
+
+                 /** -------------------- FIANNA FAIL --------------------- **/
                 else if(party == "fianna fail"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Fianna Fáil. You are in favour of realistic government policies that are more in touch with the people. You'd never vote for a Fine Gael candidate."), cancellationToken);
+                
+                    await Task.Delay(4000);
+
+                    if(voted == "did vote"){
+                        if(location == "wexford"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given James Browne your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "dun laoighre"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Cormac Devlin your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "galway"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Anne Rabbitte your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "kildare"){
+                        
+                        }
+                        else if(location == "monaghan"){
+                        
+                        }
+                    }
                 }
+                 /** -------------------- FINE GAEL --------------------- **/
                 else if(party == "fine gael"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Fine Gael. You think an 'econonmy driven' Ireland is the best approach for government. You'd rather Ireland remains part of Europe in the future."), cancellationToken);
+
+                    await Task.Delay(4000);
+
+                    if(voted == "did vote"){
+                        if(location == "wexford"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Paul Kehoe or Micahel D'Arcy your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "dun laoighre"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Jennifer Carroll MacNeill or Mary Mitchell O'Connor your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "galway"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Ciaran Cannon your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "kildare"){
+                        
+                        }
+                        else if(location == "monaghan"){
+                        
+                        }
+                    }
                 }
+
+                 /** -------------------- LABOUR --------------------- **/
+                
                 else if(party == "labour"){
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Labour party. "), cancellationToken);
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Labour party. You believe in an equal society for everyone in society."), cancellationToken);
+
+                    await Task.Delay(4000);
+
+                    if(voted == "did vote"){
+                        if(location == "cavan"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Brendan Howlin your number one vote in the last election."), cancellationToken);
+                        }
+                    }
                 }
+
+                /** -------------------- INDEPENDENTS --------------------- **/
+
                 else if(party == "independent" || party == "independents"){
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You see yourself as an independent which possibly means you have no interest in mainstream politics and don't neccesarily align to any political party."), cancellationToken);
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You see yourself as an independent which possibly means you have no interest in mainstream politics and don't neccesarily align to a political party."), cancellationToken);
+                
+                    await Task.Delay(4000);
+
+                    if(voted == "did vote"){
+                        if(location == "wexford"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Verona Murphy your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "dun laoighre"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Richard Boyd Barrett and Ossian Smyth a number 1 or 2 vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "galway"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Seán Canney a number 1 vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "kildare"){
+                        
+                        }
+                        else if(location == "monaghan"){
+                        
+                        }
+                    }
+                
                 }
+                    
             }
 
             await Task.Delay(10000);

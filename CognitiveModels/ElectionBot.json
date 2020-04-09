@@ -206,6 +206,17 @@
       ]
     },
     {
+      "text": "cavan",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
       "text": "chloe",
       "intent": "giveName",
       "entities": [
@@ -275,6 +286,17 @@
       "entities": []
     },
     {
+      "text": "donegal",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
+    },
+    {
       "text": "donegal is full of sinn feiners",
       "intent": "discussLocation",
       "entities": [
@@ -287,6 +309,17 @@
           "entity": "party_name",
           "startPos": 19,
           "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "dun laoighre",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 11
         }
       ]
     },
@@ -410,6 +443,17 @@
     },
     {
       "text": "galway is the pits",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "galway-east",
       "intent": "discussLocation",
       "entities": [
         {
@@ -1248,6 +1292,28 @@
       ]
     },
     {
+      "text": "kildare",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "kilkenny",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 7
+        }
+      ]
+    },
+    {
       "text": "labour have lost popularity",
       "intent": "discussParty",
       "entities": [
@@ -1270,6 +1336,17 @@
       ]
     },
     {
+      "text": "leitrim",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
+    },
+    {
       "text": "leo vradkar is doing a good job during the coronavirus",
       "intent": "discussCoronavirus",
       "entities": []
@@ -1280,11 +1357,33 @@
       "entities": []
     },
     {
+      "text": "longford",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 7
+        }
+      ]
+    },
+    {
       "text": "mark",
       "intent": "giveName",
       "entities": [
         {
           "entity": "name",
+          "startPos": 0,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "mayo",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
           "startPos": 0,
           "endPos": 3
         }
@@ -1322,6 +1421,17 @@
       "entities": []
     },
     {
+      "text": "mine is cavan",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 8,
+          "endPos": 12
+        }
+      ]
+    },
+    {
       "text": "mine is dublin",
       "intent": "discussLocation",
       "entities": [
@@ -1333,6 +1443,22 @@
       ]
     },
     {
+      "text": "mine is longford",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 8,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "mine is longfortd",
+      "intent": "discussLocation",
+      "entities": []
+    },
+    {
       "text": "mines wexford",
       "intent": "discussLocation",
       "entities": [
@@ -1340,6 +1466,17 @@
           "entity": "location",
           "startPos": 6,
           "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "monaghan",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 7
         }
       ]
     },
