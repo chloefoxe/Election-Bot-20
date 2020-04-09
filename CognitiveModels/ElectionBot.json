@@ -62,6 +62,9 @@
     },
     {
       "name": "None"
+    },
+    {
+      "name": "wakeBot"
     }
   ],
   "entities": [
@@ -2240,6 +2243,11 @@
     {
       "text": "w2356",
       "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "wake bot",
+      "intent": "wakeBot",
       "entities": []
     },
     {

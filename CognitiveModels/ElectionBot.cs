@@ -37,7 +37,8 @@ namespace Luis
             endConversation, 
             giveName, 
             giveUserID, 
-            None
+            None, 
+            wakeBot
         };
         [JsonProperty("intents")]
         public Dictionary<Intent, IntentScore> Intents;

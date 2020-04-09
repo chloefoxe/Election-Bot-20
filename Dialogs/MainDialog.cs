@@ -60,16 +60,12 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             switch (luisResult.TopIntent().intent)
             {
-                case Luis.ElectionBot.Intent.discussFeeling:
+                case Luis.ElectionBot.Intent.wakeBot:
                     return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), personalDetails, cancellationToken);
                 
-                case Luis.ElectionBot.Intent.askMood:
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I'm great! Thanks for asking."), cancellationToken);
-                    return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), personalDetails, cancellationToken);
-
                 default:
                     // Catch all for unhandled intents
-                    var didntUnderstandMessageText = $"Sorry, I didn't get that. Please try asking in a different way (intent was {luisResult.TopIntent().intent})";
+                    var didntUnderstandMessageText = $"Sorry, I didn't get that. Please use 'wake bot' to wake the bot. Refresh the page and restart";
                     var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
                     await stepContext.Context.SendActivityAsync(didntUnderstandMessage, cancellationToken);
                     break;
