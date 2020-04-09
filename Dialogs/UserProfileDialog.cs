@@ -50,7 +50,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             
             if (personalDetials.Name == null)
             {
-                var messageText = "Can I ask what is your name?";
+                var messageText = "What is your name?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
             }
