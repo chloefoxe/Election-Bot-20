@@ -67,9 +67,15 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             switch (luisResult.TopIntent().intent)
             {
                 case Luis.ElectionBot.Intent.discussParty:
-                    personalDetails.Party = luisResult.Entities.party_name;
 
-                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"The {personalDetails.Party.First()} party?!"), cancellationToken);
+                    if(luisResult.Entities.party_name == null){
+                        await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I think that's a good shout!"), cancellationToken);
+                    }
+                    else {
+                        personalDetails.Party = luisResult.Entities.party_name;
+                        await stepContext.Context.SendActivityAsync(MessageFactory.Text($"The {personalDetails.Party.First()} party?!"), cancellationToken);
+                    }
+                    
                     await Task.Delay(1500);
                     var partyText = "hmmm not sure if I agree with you on that! But sure it's all politics right?";
                     var housingPromptMessage = MessageFactory.Text(partyText, partyText, InputHints.ExpectingInput);
