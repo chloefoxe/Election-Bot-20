@@ -74,10 +74,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             return await stepContext.NextAsync(null, cancellationToken);
         }
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-        {
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($" Please use the 'Next Step' button at the top to continue."), cancellationToken);
-            
-            
+        {   
             string name, location, userID, voted, issues, party;
 
             if (stepContext.Result is PersonalDetails result)
@@ -356,6 +353,10 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             }
 
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"And that's everything from me!"), cancellationToken);
+
+            await Task.Delay(1500);
+
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($" Please use the 'Next Step' button at the top to continue."), cancellationToken);
 
             await Task.Delay(10000);
 
