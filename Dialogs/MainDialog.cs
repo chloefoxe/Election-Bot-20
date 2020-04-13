@@ -49,7 +49,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             await Task.Delay(1000);
 
             // // Use the text provided in FinalStepAsync or the default if it is the first time.
-            var messageText = stepContext.Options?.ToString() ?? "Hi there, thanks for waking me up! 😴 My name is BotWise, hope you are well! So to begin then...";
+            var messageText = stepContext.Options?.ToString() ?? "Hi there, thanks for waking me up! 😴 My name is BotWise, hope you are well! So first of all, to begin then...";
             var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
             return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
         }
@@ -394,7 +394,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private async Task<DialogTurnResult> EndStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"That's cool with me"), cancellationToken);
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Please use the 'Next Step' button to continue..."), cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Please wait for your last message to finish sending and then use the 'Next Step' button to continue..."), cancellationToken);
 
             await Task.Delay(10000);
 
