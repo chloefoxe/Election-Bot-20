@@ -167,7 +167,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 else if(issues == "housing"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Improving housing is important to you, I can infer that you are paying expensive rent in dublin as a student or finding it difficult to find affordable housing."), cancellationToken);
                 }
-                else if(issues == "teachers pay"){
+                else if(issues == "teacher's pay"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you're probably a teacher because you care about getting equal pay"), cancellationToken);
                 }
                 else if(issues == "health service"){
