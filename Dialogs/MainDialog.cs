@@ -233,7 +233,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 }
                 /** -------------------- SINN FEIN --------------------- **/
 
-                else if(party == "sinn fein"){
+                else if(party == "sinn fein" || party == "sinn féin" || party == "SF"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Sinn Féin, so I can tell that you're interested in a fairer, equal society for everyone. Establishing a united Ireland may also be important to you."), cancellationToken);
                 
                     await Task.Delay(4000);
@@ -265,7 +265,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 }
 
                  /** -------------------- FIANNA FAIL --------------------- **/
-                else if(party == "fianna fail"){
+                else if(party == "fianna fail" || party == "fianna fáil" || party == "FF"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Fianna Fáil. You are in favour of realistic government policies that are more in touch with the people. You'd never vote for a Fine Gael candidate."), cancellationToken);
                 
                     await Task.Delay(4000);
@@ -394,6 +394,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private async Task<DialogTurnResult> EndStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"That's cool with me"), cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Please use the 'Next Step' button to continue..."), cancellationToken);
 
             await Task.Delay(10000);
 
