@@ -77,17 +77,39 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
                 else if (personalDetails.Location.First() == "carlow" || personalDetails.Location.First() == "kilkenny") {
-                    var messageText = $"Interesting. A big win for Kathleen Funchion in the Carlow-Kilkenny constituency.  An unsurprising result don't you think?";
+                    var messageText = $"Interesting. A big win for Kathleen Funchion in the Carlow-Kilkenny constituency. An unsurprising result don't you think?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
                 else if (personalDetails.Location.First() == "donegal") {
-                    var messageText = $"Very good. A big win for Sinn Féin's Pearse Doherty in the Donegal area. An unsurprising result don't you think?";
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Donegal haigh! I was up there in the Gaeltacht before!"), cancellationToken);
+                    await Task.Delay(1500);
+                    var messageText = $"Anyways, a big win for Sinn Féin's Pearse Doherty in the Donegal area. An unsurprising result don't you think?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
                 else if (personalDetails.Location.First() == "galway") {
                     var messageText = $"Very good. A big result for the independent Seán Canney in Galway. A surprising result don't you think?";
+                    var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                }
+                else if (personalDetails.Location.First() == "leitrim") {
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Leitrim haigh! The county with the shortest coastline in Ireland!"), cancellationToken);
+                    var messageText = $"Kenny Martin elected with 15,000 votes on count one! An unsurprising result don't you think!";
+                    var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                }
+                else if (personalDetails.Location.First() == "kildare") {
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"ah Kildare yes, I was there on my holidays before!"), cancellationToken);
+                    await Task.Delay(1500);
+                    var messageText = $"Sinn Féin with 22% of number ones! A surprising result don't you think!";
+                    var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                }
+                else if (personalDetails.Location.First() == "cork") {
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"ah you're from Cork! Sorry for your troubles."), cancellationToken);
+                    await Task.Delay(1500);
+                    var messageText = $"Sinn Féin with a 12.5% increase in votes since 2016... very surprising don't you think?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }

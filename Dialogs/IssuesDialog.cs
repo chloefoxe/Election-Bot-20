@@ -133,7 +133,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 case Luis.ElectionBot.Intent.discussTeachersPay:
                     personalDetails.Issues = teachersPay;
 
-                    var tecahersPayText = "Ah yes, teachers, the backbone of society. They should be paid more, right?";
+                    var tecahersPayText = "Ah yes, teachers, the backbone of society. It's about time equal pay is enforced, right?";
                     var tecahersPayPromptMessage = MessageFactory.Text(tecahersPayText, tecahersPayText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = tecahersPayPromptMessage }, cancellationToken);
 

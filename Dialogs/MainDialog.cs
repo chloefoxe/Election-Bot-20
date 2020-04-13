@@ -37,6 +37,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 IntroStepAsync,
                 ActStepAsync,
                 FinalStepAsync,
+                EndStepAsync,
             }));
 
             // The initial child Dialog to run.
@@ -220,16 +221,13 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Seán Canney your top vote."), cancellationToken);
                         }
                         else if(location == "kildare"){
-                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Vincent Martin your top vote."), cancellationToken);
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Ronan Maher your top vote."), cancellationToken);
                         }
-                        else if(location == "monaghan"){
-                        
-                        }
-                        else if(location == "mayo"){
-                        
+                        else if(location == "cork"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Liam Quade your top vote."), cancellationToken);
                         }
                         else if(location == "leitrim"){
-                        
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Martin Kenny your top vote."), cancellationToken);
                         }
                     }
                 }
@@ -251,10 +249,16 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Louis O'Hara or Seán Canney your number one vote."), cancellationToken);
                         }
                         else if(location == "kildare"){
-                        
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Patricia Ryan your number one vote."), cancellationToken);
                         }
-                        else if(location == "monaghan"){
-                        
+                        else if(location == "donegal"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Pearse Doherty your number one vote."), cancellationToken);
+                        }
+                        else if(location == "leitrim"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Martin Kenny your number one vote."), cancellationToken);
+                        }
+                        else if(location == "cork"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Pat Buckley your number one vote."), cancellationToken);
                         }
                     }
                 
@@ -277,10 +281,16 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Anne Rabbitte your number one vote in the last election."), cancellationToken);
                         }
                         else if(location == "kildare"){
-                        
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Fiona O'Loughlin your number one vote in the last election."), cancellationToken);
                         }
-                        else if(location == "monaghan"){
-                        
+                        else if(location == "donegal"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Charlie McConalouge your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "leitrim"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Marc MacSharry your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "cork"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given James O'Connor your number one vote in the last election."), cancellationToken);
                         }
                     }
                 }
@@ -301,11 +311,18 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Ciaran Cannon your number one vote in the last election."), cancellationToken);
                         }
                         else if(location == "kildare"){
-                        
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Martin Héydon your number one vote in the last election."), cancellationToken);
                         }
-                        else if(location == "monaghan"){
-                        
+                        else if(location == "donegal"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Joe McHugh your number one vote in the last election."), cancellationToken);
                         }
+                        else if(location == "leitrim"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Frankie Feighan your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "cork"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given David Stanton your number one vote in the last election."), cancellationToken);
+                        }
+                        
                     }
                 }
 
@@ -319,6 +336,9 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     if(voted == "did vote"){
                         if(location == "cavan"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Brendan Howlin your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "cork"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Séan Sherlock your number one vote in the last election."), cancellationToken);
                         }
                     }
                 }
@@ -341,22 +361,40 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Seán Canney a number 1 vote in the last election."), cancellationToken);
                         }
                         else if(location == "kildare"){
-                        
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Cathal Berry a number 1 vote in the last election."), cancellationToken);
                         }
-                        else if(location == "monaghan"){
-                        
+                        else if(location == "donegal"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave John O'Donnell a number 1 vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "leitrim"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Marian Harkin a number 1 vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "cork"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Mary Linehan-Foley a number 1 vote in the last election."), cancellationToken);
                         }
                     }
                 
                 }
                     
             }
+            
+            await Task.Delay(2000);    
 
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"And that's everything from me!"), cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Anyway that's everything from me!"), cancellationToken);
 
             await Task.Delay(1500);
+            
+            var messageText = stepContext.Options?.ToString() ?? "Is it ok if I save this information? Yes or No?";
+            var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
+            return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
 
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($" Please use the 'Next Step' button at the top to continue."), cancellationToken);
+        }
+
+        private async Task<DialogTurnResult> EndStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        {
+            await Task.Delay(1500);
+
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"That's cool.. Please use the 'Next Step' button at the top to continue."), cancellationToken);
 
             await Task.Delay(10000);
 
