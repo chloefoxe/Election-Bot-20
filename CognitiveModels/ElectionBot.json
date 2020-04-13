@@ -130,6 +130,17 @@
       ]
     },
     {
+      "text": "aisling",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
+    },
+    {
       "text": "alison",
       "intent": "giveName",
       "entities": [
@@ -165,6 +176,28 @@
       "text": "alright. you?",
       "intent": "askMood",
       "entities": []
+    },
+    {
+      "text": "amy",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "anna",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 3
+        }
+      ]
     },
     {
       "text": "barry",
@@ -258,6 +291,17 @@
       "entities": []
     },
     {
+      "text": "cork",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 3
+        }
+      ]
+    },
+    {
       "text": "coronavirus",
       "intent": "discussCoronavirus",
       "entities": [
@@ -284,9 +328,64 @@
       "entities": []
     },
     {
+      "text": "daire",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "darragh",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "dickey",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
       "text": "do you know anything about the coronavirus",
       "intent": "discussCoronavirus",
       "entities": []
+    },
+    {
+      "text": "dom",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "domantas",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 7
+        }
+      ]
     },
     {
       "text": "donegal",
@@ -332,6 +431,17 @@
       "entities": []
     },
     {
+      "text": "eadaoin",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
+    },
+    {
       "text": "education",
       "intent": "discussEducation",
       "entities": []
@@ -354,6 +464,28 @@
           "entity": "name",
           "startPos": 0,
           "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "ella",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "emma",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 3
         }
       ]
     },
@@ -1328,6 +1460,17 @@
       ]
     },
     {
+      "text": "kildare-south",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
+    },
+    {
       "text": "kilkenny",
       "intent": "discussLocation",
       "entities": [
@@ -1361,6 +1504,17 @@
       ]
     },
     {
+      "text": "laura",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
       "text": "leitrim",
       "intent": "discussLocation",
       "entities": [
@@ -1368,6 +1522,22 @@
           "entity": "location",
           "startPos": 0,
           "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "leitrim-sligo",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 6
+        },
+        {
+          "entity": "location",
+          "startPos": 8,
+          "endPos": 12
         }
       ]
     },
@@ -1389,6 +1559,17 @@
           "entity": "location",
           "startPos": 0,
           "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "maire claire",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 11
         }
       ]
     },
@@ -1422,6 +1603,17 @@
           "entity": "location",
           "startPos": 0,
           "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "mc",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 1
         }
       ]
     },
