@@ -60,7 +60,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
 
             string[] housing, mentalHealth, health, unemployment, coronavirus, crime, mortgage, teachersPay, education;
-            housing = new string[]{ "housing/rental crisis"};
+            housing = new string[]{ "housing"};
             coronavirus = new string[]{ "coronavirus"};
             health = new string[]{"health service"};
             unemployment = new string[]{"unemployment"};

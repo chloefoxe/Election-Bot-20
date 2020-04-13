@@ -170,7 +170,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 else if(issues == "teachers pay"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you're probably a teacher because you care about getting equal pay"), cancellationToken);
                 }
-                else if(issues == "health"){
+                else if(issues == "health service"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Improving health infrastructure is important to you so or someone you know have probably experienced long waiting times in hospitals recently."), cancellationToken);
 
                     await Task.Delay(2000);
@@ -202,7 +202,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
                 await Task.Delay(4000);
 
-                if(location == "not disclosed"){
+                if(party == "not disclosed"){
                     await Task.Delay(1);
                 }
                 else if(party == "green party" || party == "greens"){
@@ -377,7 +377,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 }
                     
             }
-            
+
             await Task.Delay(2000);    
 
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Anyway that's everything from me!"), cancellationToken);
@@ -385,6 +385,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             await Task.Delay(1500);
             
             var messageText = stepContext.Options?.ToString() ?? "Is it ok if I save this information? Yes or No?";
+            await Task.Delay(1500);
             var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
             return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
 
@@ -392,9 +393,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         private async Task<DialogTurnResult> EndStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            await Task.Delay(1500);
-
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"That's cool.. Please use the 'Next Step' button at the top to continue."), cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"That's cool with me"), cancellationToken);
 
             await Task.Delay(10000);
 
