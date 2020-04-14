@@ -214,8 +214,11 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         if(location == "wexford"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Paula Roseingrave or Verona Murphy your top votes."), cancellationToken);
                         }
-                        else if(location == "dun laoighre"){
+                        else if(location == "dun - laoghaire" || location == "dun laoighre" || location == "dun - laoighre" || location == "dún - laoghaire" || location == "dún laoighre"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Ossian Smyth your top vote."), cancellationToken);
+                        }
+                        else if(location == "dublin central" || location == "dublin - central"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Nesa Hourigan your top vote."), cancellationToken);
                         }
                         else if(location == "galway"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Seán Canney your top vote."), cancellationToken);
@@ -228,6 +231,21 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         }
                         else if(location == "leitrim"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Martin Kenny your top vote."), cancellationToken);
+                        }
+                        else if(location == "carlow" || location == "carlow-kilkenny" || location == "kilkenny"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Malcom Noonan your top vote."), cancellationToken);
+                        }
+                        else if(location == "cavan"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Rosín Garvey your top vote."), cancellationToken);
+                        }
+                        else if(location == "mayo"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Saoirse McHugh your top vote."), cancellationToken);
+                        }
+                        else if(location == "louth"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Mark Deary your top vote."), cancellationToken);
+                        }
+                        else if(location == "dublin south west" || location == "dublin south-west" || location == "dublin south - west"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Nesa Hourigan your top vote."), cancellationToken);
                         }
                     }
                 }
@@ -242,7 +260,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         if(location == "wexford"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Johnny Myhten your number one vote."), cancellationToken);
                         }
-                        else if(location == "dun laoighre"){
+                        else if(location == "dun - laoghaire" || location == "dun laoighre" || location == "dun - laoighre" || location == "dún - laoghaire" || location == "dún laoighre"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Shane O'Brien your number one vote."), cancellationToken);
                         }
                         else if(location == "galway"){
@@ -260,8 +278,22 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         else if(location == "cork"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Pat Buckley your number one vote."), cancellationToken);
                         }
+                        else if(location == "cavan"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Violet-Anne Wynne your number one vote."), cancellationToken);
+                        }
+                        else if(location == "mayo"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Rose Conway-Walsh your number one vote."), cancellationToken);
+                        }
+                        else if(location == "carlow" || location == "carlow-kilkenny" || location == "kilkenny"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Kathleen Funchion your number one vote."), cancellationToken);    
+                        }
+                        else if(location == "louth"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Imelda Munster your number one vote."), cancellationToken);
+                        }
+                        else if(location == "dublin central" || location == "dublin - central"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Mary Lou McDonald your number one vote."), cancellationToken);
+                        }
                     }
-                
                 }
 
                  /** -------------------- FIANNA FAIL --------------------- **/
@@ -274,7 +306,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         if(location == "wexford"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given James Browne your number one vote in the last election."), cancellationToken);
                         }
-                        else if(location == "dun laoighre"){
+                        else if(location == "dun - laoghaire" || location == "dun laoighre" || location == "dun - laoighre" || location == "dún - laoghaire" || location == "dún laoighre"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Cormac Devlin your number one vote in the last election."), cancellationToken);
                         }
                         else if(location == "galway"){
@@ -292,6 +324,21 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         else if(location == "cork"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given James O'Connor your number one vote in the last election."), cancellationToken);
                         }
+                        else if(location == "cavan"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Cathal Crowe your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "mayo"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Dara Calleary your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "louth"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Declan Breathnach your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "carlow" || location == "carlow-kilkenny" || location == "kilkenny"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given John McGuinness your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "dublin central" || location == "dublin - central"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Mary Fitzpatrick your number one vote in the last election."), cancellationToken);
+                        }
                     }
                 }
                  /** -------------------- FINE GAEL --------------------- **/
@@ -304,7 +351,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         if(location == "wexford"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Paul Kehoe or Micahel D'Arcy your number one vote in the last election."), cancellationToken);
                         }
-                        else if(location == "dun laoighre"){
+                        else if(location == "dun - laoghaire" || location == "dun laoighre" || location == "dun - laoighre" || location == "dún - laoghaire" || location == "dún laoighre"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Jennifer Carroll MacNeill or Mary Mitchell O'Connor your number one vote in the last election."), cancellationToken);
                         }
                         else if(location == "galway"){
@@ -322,7 +369,18 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         else if(location == "cork"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given David Stanton your number one vote in the last election."), cancellationToken);
                         }
-                        
+                        else if(location == "cavan"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Joe Carey your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "mayo"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Michael Ring your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "carlow" || location == "carlow-kilkenny" || location == "kilkenny"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given John Paul Phelan your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "louth"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Fergus O'Dowd your number one vote in the last election."), cancellationToken);
+                        }
                     }
                 }
 
@@ -340,6 +398,12 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         else if(location == "cork"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Séan Sherlock your number one vote in the last election."), cancellationToken);
                         }
+                        else if(location == "carlow" || location == "carlow - kilkenny" || location == "kilkenny"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Denis Hynes your number one vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "louth"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you may have given Ged Nash your number one vote in the last election."), cancellationToken);
+                        }
                     }
                 }
 
@@ -354,7 +418,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         if(location == "wexford"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Verona Murphy your number one vote in the last election."), cancellationToken);
                         }
-                        else if(location == "dun laoighre"){
+                        else if(location == "dun - laoghaire" || location == "dun laoighre" || location == "dun - laoighre" || location == "dún - laoghaire" || location == "dún laoighre"){
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Richard Boyd Barrett and Ossian Smyth a number 1 or 2 vote in the last election."), cancellationToken);
                         }
                         else if(location == "galway"){
@@ -370,12 +434,25 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Marian Harkin a number 1 vote in the last election."), cancellationToken);
                         }
                         else if(location == "cork"){
-                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Mary Linehan-Foley a number 1 vote in the last election."), cancellationToken);
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Mary Linehan-Foley your number 1 vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "mayo"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Gráinne DeBara your number 1 vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "cavan"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Michael MacNamara your number 1 vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "carlow" || location == "carlow-kilkenny" || location == "kilkenny"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Alan Hynes your number 1 vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "louth"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Peter Fitzpatrick your number 1 vote in the last election."), cancellationToken);
+                        }
+                        else if(location == "dublin central" || location == "dublin - central"){
+                            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I can guess that you voted left in the last election and probably gave Mary Lou or Gary Gannon your number 1 vote in the last election."), cancellationToken);
                         }
                     }
-                
                 }
-                    
             }
 
             await Task.Delay(2000);    

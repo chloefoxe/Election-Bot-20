@@ -130,6 +130,28 @@
       ]
     },
     {
+      "text": "aine",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "Ã¡ine",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 3
+        }
+      ]
+    },
+    {
       "text": "aisling",
       "intent": "giveName",
       "entities": [
@@ -137,6 +159,28 @@
           "entity": "name",
           "startPos": 0,
           "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "alannah",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "alicia",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 5
         }
       ]
     },
@@ -211,6 +255,17 @@
       ]
     },
     {
+      "text": "bolu",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 3
+        }
+      ]
+    },
+    {
       "text": "bye",
       "intent": "endConversation",
       "entities": []
@@ -231,6 +286,22 @@
       "entities": []
     },
     {
+      "text": "carlow-kilkenny",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 5
+        },
+        {
+          "entity": "location",
+          "startPos": 7,
+          "endPos": 14
+        }
+      ]
+    },
+    {
       "text": "caroline",
       "intent": "giveName",
       "entities": [
@@ -249,6 +320,33 @@
           "entity": "location",
           "startPos": 0,
           "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "cavan-monaghan",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 4
+        },
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "charlie",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 6
         }
       ]
     },
@@ -276,7 +374,7 @@
     },
     {
       "text": "clare",
-      "intent": "giveName",
+      "intent": "discussLocation",
       "entities": [
         {
           "entity": "name",
@@ -292,6 +390,17 @@
     },
     {
       "text": "cork",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "cork-east",
       "intent": "discussLocation",
       "entities": [
         {
@@ -415,6 +524,66 @@
       ]
     },
     {
+      "text": "dublin central",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "dublin south west",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "dublin south-west",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "dublin-central",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "dun laoghaire-rathdown",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 12
+        },
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 12
+        }
+      ]
+    },
+    {
       "text": "dun laoighre",
       "intent": "discussLocation",
       "entities": [
@@ -442,6 +611,28 @@
       ]
     },
     {
+      "text": "ed",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 1
+        }
+      ]
+    },
+    {
+      "text": "eddie",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
       "text": "education",
       "intent": "discussEducation",
       "entities": []
@@ -455,6 +646,28 @@
       "text": "education needs to be sorted",
       "intent": "discussEducation",
       "entities": []
+    },
+    {
+      "text": "edward",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "eimear",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
     },
     {
       "text": "elayne",
@@ -599,6 +812,17 @@
       ]
     },
     {
+      "text": "gemma",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
       "text": "gerard",
       "intent": "giveName",
       "entities": [
@@ -683,6 +907,17 @@
       "text": "great. how are you",
       "intent": "askMood",
       "entities": []
+    },
+    {
+      "text": "hannah",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
     },
     {
       "text": "have a nice day",
@@ -1438,7 +1673,40 @@
       ]
     },
     {
+      "text": "jamie",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
       "text": "jerry",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "katherine",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "katie",
       "intent": "giveName",
       "entities": [
         {
@@ -1515,6 +1783,17 @@
       ]
     },
     {
+      "text": "leeona",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
       "text": "leitrim",
       "intent": "discussLocation",
       "entities": [
@@ -1547,6 +1826,50 @@
       "entities": []
     },
     {
+      "text": "leona",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "lettie",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "lily",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "lisa",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 3
+        }
+      ]
+    },
+    {
       "text": "loads of people dont have jobs",
       "intent": "discussUnemployment",
       "entities": []
@@ -1559,6 +1882,28 @@
           "entity": "location",
           "startPos": 0,
           "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "louth",
+      "intent": "discussLocation",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "lucie",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
         }
       ]
     },
@@ -1636,6 +1981,17 @@
       "text": "mentla health is a huge issue. i would bring up that",
       "intent": "discussMentalHealth",
       "entities": []
+    },
+    {
+      "text": "michael",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
     },
     {
       "text": "mine is cavan",
@@ -2006,6 +2362,11 @@
       "entities": []
     },
     {
+      "text": "no i forgot to",
+      "intent": "didNotVote",
+      "entities": []
+    },
+    {
       "text": "no i was at a wedding that day",
       "intent": "didNotVote",
       "entities": []
@@ -2051,6 +2412,28 @@
       "entities": []
     },
     {
+      "text": "oisin",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "oisÃ­n",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
       "text": "ok",
       "intent": "discussFeeling",
       "entities": []
@@ -2064,6 +2447,55 @@
       "text": "only alright",
       "intent": "discussFeeling",
       "entities": []
+    },
+    {
+      "text": "oscar",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "our health system is definitely something i think is worth discussing. i would also look into our education system to see if it could be made more appropriate to the year we are living in",
+      "intent": "discussEducation",
+      "entities": []
+    },
+    {
+      "text": "paddy",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "pat",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "patrick",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
     },
     {
       "text": "people before profit were top of my ballot sheet",
@@ -2137,9 +2569,31 @@
       ]
     },
     {
+      "text": "ronan",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
+    },
+    {
       "text": "s2356",
       "intent": "giveUserID",
       "entities": []
+    },
+    {
+      "text": "sarah",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
+        }
+      ]
     },
     {
       "text": "see you again",
@@ -2175,6 +2629,17 @@
           "entity": "name",
           "startPos": 0,
           "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "steph",
+      "intent": "giveName",
+      "entities": [
+        {
+          "entity": "name",
+          "startPos": 0,
+          "endPos": 4
         }
       ]
     },
