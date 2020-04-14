@@ -470,8 +470,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"That's cool with me"), cancellationToken);
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Please wait for your last answer to finish sending (written underneath) and THEN use the 'Next Step' button to continue..."), cancellationToken);
 
-            await Task.Delay(10000);
-
             return await stepContext.EndDialogAsync(null, cancellationToken);
         }
     }
