@@ -394,7 +394,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private async Task<DialogTurnResult> EndStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"That's cool with me"), cancellationToken);
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Please wait for your last message to say 'Just now' underneath and then use the 'Next Step' button to continue..."), cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Please wait for your last answer to finish sending (written underneath) and THEN use the 'Next Step' button to continue..."), cancellationToken);
 
             await Task.Delay(10000);
 
