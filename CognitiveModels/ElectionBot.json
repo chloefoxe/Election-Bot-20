@@ -16,6 +16,9 @@
       "name": "didVote"
     },
     {
+      "name": "discussClimateChange"
+    },
+    {
       "name": "discussCoronavirus"
     },
     {
@@ -44,6 +47,9 @@
     },
     {
       "name": "discussParty"
+    },
+    {
+      "name": "discussPublicTransport"
     },
     {
       "name": "discussTeachersPay"
@@ -255,6 +261,28 @@
       ]
     },
     {
+      "text": "better public transport in rural areas",
+      "intent": "discussPublicTransport",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 7,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "better transport infrastructure",
+      "intent": "discussPublicTransport",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 7,
+          "endPos": 15
+        }
+      ]
+    },
+    {
       "text": "bolu",
       "intent": "giveName",
       "entities": [
@@ -382,6 +410,11 @@
           "endPos": 4
         }
       ]
+    },
+    {
+      "text": "climate change",
+      "intent": "discussClimateChange",
+      "entities": []
     },
     {
       "text": "cool bye now",
@@ -690,6 +723,11 @@
           "endPos": 3
         }
       ]
+    },
+    {
+      "text": "emissions",
+      "intent": "discussClimateChange",
+      "entities": []
     },
     {
       "text": "emma",
@@ -1001,6 +1039,22 @@
         {
           "entity": "name",
           "startPos": 15,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "homeslessness and rent",
+      "intent": "discussHousing",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 0,
+          "endPos": 12
+        },
+        {
+          "entity": "topical_issue",
+          "startPos": 18,
           "endPos": 21
         }
       ]
@@ -1613,6 +1667,17 @@
       ]
     },
     {
+      "text": "improve transport in ireland",
+      "intent": "discussPublicTransport",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 21,
+          "endPos": 27
+        }
+      ]
+    },
+    {
       "text": "independent",
       "intent": "discussParty",
       "entities": [
@@ -1915,6 +1980,17 @@
           "entity": "name",
           "startPos": 0,
           "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "make improvements in public transport",
+      "intent": "discussPublicTransport",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 21,
+          "endPos": 36
         }
       ]
     },
@@ -2536,6 +2612,17 @@
       "entities": []
     },
     {
+      "text": "public transport",
+      "intent": "discussPublicTransport",
+      "entities": [
+        {
+          "entity": "topical_issue",
+          "startPos": 0,
+          "endPos": 15
+        }
+      ]
+    },
+    {
       "text": "rent",
       "intent": "discussHousing",
       "entities": [
@@ -2850,6 +2937,11 @@
       ]
     },
     {
+      "text": "things like climate change",
+      "intent": "discussClimateChange",
+      "entities": []
+    },
+    {
       "text": "tom",
       "intent": "giveName",
       "entities": [
@@ -2975,6 +3067,11 @@
     {
       "text": "we need more beds in hospitals",
       "intent": "discussHealth",
+      "entities": []
+    },
+    {
+      "text": "we need to fix climate change",
+      "intent": "discussClimateChange",
       "entities": []
     },
     {

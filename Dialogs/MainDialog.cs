@@ -185,6 +185,12 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 else if(issues == "mortgage"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You're worried about the mortgage situation, I can assume that you might be building a house in the future."), cancellationToken);
                 }
+                else if(issues == "climate change"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You're worried about the environment and think it's important that we act together to stop climate change."), cancellationToken);
+                }
+                else if(issues == "public transport"){
+                    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Improving Ireland's public transport indrastructure is important to you... You probably don't drive a car and you're a student."), cancellationToken);
+                }
                 else if(issues == "unemployment"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Improving Ireland's employment rates are important to you which may mean that you might be unemployed at the minute."), cancellationToken);
                 }

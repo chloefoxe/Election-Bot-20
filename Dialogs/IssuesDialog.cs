@@ -59,7 +59,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var personalDetails = (PersonalDetails)stepContext.Options;
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
 
-            string[] housing, mentalHealth, health, unemployment, coronavirus, crime, mortgage, teachersPay, education;
+            string[] housing, mentalHealth, health, unemployment, coronavirus, crime, mortgage, teachersPay, education, publicTransport, climateChange;
             housing = new string[]{ "housing"};
             coronavirus = new string[]{ "coronavirus"};
             health = new string[]{"health service"};
@@ -69,6 +69,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             mortgage = new string[]{"mortgage"};
             education = new string[]{"education"};
             teachersPay = new string[]{"teacher's pay"};
+            publicTransport = new string[]{"public transport"};
+            climateChange = new string[]{"climate change"};
 
             await Task.Delay(1500);
 
@@ -136,6 +138,20 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     var tecahersPayText = "Ah yes, teachers, the backbone of society. It's about time equal pay is enforced, right?";
                     var tecahersPayPromptMessage = MessageFactory.Text(tecahersPayText, tecahersPayText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = tecahersPayPromptMessage }, cancellationToken);
+                
+                case Luis.ElectionBot.Intent.discussPublicTransport:
+                    personalDetails.Issues = publicTransport;
+
+                    var publicTransportText = "Ah yes, public transport, it's difficult for some of us who don't drive right?";
+                    var publicTransportPromptMessage = MessageFactory.Text(publicTransportText, publicTransportText, InputHints.ExpectingInput);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = publicTransportPromptMessage }, cancellationToken);
+
+                case Luis.ElectionBot.Intent.discussClimateChange:
+                    personalDetails.Issues = climateChange;
+
+                    var climateChangeText = "Ah yes, climate change! It's time we actually take it seriously don't you think?";
+                    var climateChangePromptMessage = MessageFactory.Text(climateChangeText, climateChangeText, InputHints.ExpectingInput);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = climateChangePromptMessage }, cancellationToken);
 
                 default:
                     var didntUnderstandMessageText = $"Yeah I see. Hopefully some of the issues can be solved soon right?";
