@@ -116,14 +116,14 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 else if (personalDetails.Location.First() == "cavan" ) {
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Ah Cavan - the home of my pal Johnathan Swift!"), cancellationToken);
                     await Task.Delay(1000);
-                    var messageText = $"Anyways, An 11% incerase in first preference votes in Cavan for Sinn Féin since GE 2016! What did you think of that?";
+                    var messageText = $"Anyways, An 11% increase in first preference votes in Cavan for Sinn Féin since GE 2016! What did you think of that?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
                 else if (personalDetails.Location.First() == "mayo" ) {
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Ah Mayo on the Wild Atlantic Way - what a fabulous place it is!"), cancellationToken);
                     await Task.Delay(1000);
-                    var messageText = $"Anyways, An 13% incerase in first preference votes in Mayo for Sinn Féin since GE 2016! What did you think of that?";
+                    var messageText = $"Anyways, An 13% increase in first preference votes in Mayo for Sinn Féin since GE 2016! What did you think of that?";
                     var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
                 }
