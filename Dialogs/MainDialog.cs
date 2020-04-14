@@ -126,7 +126,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
                 /** -------------------- NAME --------------------- **/
 
-                await Task.Delay(1500);
+                await Task.Delay(1000);
 
                 if(name == "not disclosed"){
                     await Task.Delay(1);
@@ -137,7 +137,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
                 /** -------------------- VOTING --------------------- **/
 
-                await Task.Delay(1500);
+                await Task.Delay(1000);
 
                 if(voted == "did vote"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You voted in the last general election, which probably means that you have an interest in politics and care about your right to vote."), cancellationToken);
@@ -148,7 +148,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
                 /** -------------------- LOCATION --------------------- **/
 
-                await Task.Delay(4000);
+                await Task.Delay(2000);
 
                 if(location == "not disclosed"){
                     await Task.Delay(1);
@@ -173,7 +173,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 else if(issues == "health service"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Improving health infrastructure is important to you so or someone you know have probably experienced long waiting times in hospitals recently."), cancellationToken);
 
-                    await Task.Delay(2000);
+                    await Task.Delay(1000);
                     
                     if(location == "wexford"){
                         await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Plus the fact that your from Wexford may mean that you feel that a 24/7 cardiac care unit is needed in the county."), cancellationToken);
@@ -191,7 +191,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 else if(issues == "mental health"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Improving mental health infrastructure in Ireland is important to you"), cancellationToken);
                     
-                    await Task.Delay(2000);
+                    await Task.Delay(1000);
 
                     if(location == "wexford"){
                         await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Plus the fact that your from Wexford may mean that you are in favour of St. Sennan's reopening as a psychiatric unit."), cancellationToken);
@@ -200,7 +200,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
                 /** -------------------- PARTY --------------------- **/
 
-                await Task.Delay(4000);
+                await Task.Delay(2000);
 
                 if(party == "not disclosed"){
                     await Task.Delay(1);
@@ -208,7 +208,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 else if(party == "green party" || party == "greens"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support the Green Party so I can tell that you care deeply about stopping climate change is an number one priority for you."), cancellationToken);
 
-                    await Task.Delay(4000);
+                    await Task.Delay(2000);
 
                     if(voted == "did vote"){
                         if(location == "wexford"){
@@ -236,7 +236,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 else if(party == "sinn fein" || party == "sinn féin" || party == "SF"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Sinn Féin, so I can tell that you're interested in a fairer, equal society for everyone. Establishing a united Ireland may also be important to you."), cancellationToken);
                 
-                    await Task.Delay(4000);
+                    await Task.Delay(2000);
 
                     if(voted == "did vote"){
                         if(location == "wexford"){
@@ -268,7 +268,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 else if(party == "fianna fail" || party == "fianna fáil" || party == "FF"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Fianna Fáil. You are in favour of realistic government policies that are more in touch with the people. You'd never vote for a Fine Gael candidate."), cancellationToken);
                 
-                    await Task.Delay(4000);
+                    await Task.Delay(2000);
 
                     if(voted == "did vote"){
                         if(location == "wexford"){
@@ -298,7 +298,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 else if(party == "fine gael"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Fine Gael. You think an 'econonmy driven' Ireland is the best approach for government. You'd rather Ireland remains part of Europe in the future."), cancellationToken);
 
-                    await Task.Delay(4000);
+                    await Task.Delay(2000);
 
                     if(voted == "did vote"){
                         if(location == "wexford"){
@@ -331,7 +331,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 else if(party == "labour"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You support Labour party. You believe in an equal society for everyone in society."), cancellationToken);
 
-                    await Task.Delay(4000);
+                    await Task.Delay(2000);
 
                     if(voted == "did vote"){
                         if(location == "cavan"){
@@ -348,7 +348,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                 else if(party == "independent" || party == "independents"){
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"You see yourself as an independent which possibly means you have no interest in mainstream politics and don't neccesarily align to a political party."), cancellationToken);
                 
-                    await Task.Delay(4000);
+                    await Task.Delay(2000);
 
                     if(voted == "did vote"){
                         if(location == "wexford"){
@@ -381,11 +381,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             await Task.Delay(2000);    
 
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Anyway that's everything from me!"), cancellationToken);
-
-            await Task.Delay(1500);
             
             var messageText = stepContext.Options?.ToString() ?? "Is it ok if I save this information? Yes or No?";
-            await Task.Delay(1500);
             var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
             return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
 
