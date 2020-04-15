@@ -28,7 +28,7 @@ namespace Microsoft.BotBuilderSamples
                 CosmosDbEndpoint = "https://electioncosmos.documents.azure.com:443/",
                 AuthKey = "0zqSGejOcM7dqU603OFedsrfXf3HG6DBrwO0YZm85h2IlZrdyDY7la7tgfX0axd9ccNN4myrphorQMlxOuuBSw==",
                 DatabaseId = "BotStoage",
-                ContainerId = "Group2"
+                ContainerId = "Group3"
             };
             var storage = new CosmosDbPartitionedStorage(cosmosDbStorageOptions);
 
