@@ -20,38 +20,6 @@
       "text": "Welcome to BotWise!",
       "wrap": true,
       "maxLines": 0
-    },
-    {
-      "type": "TextBlock",
-      "size": "default",
-      "isSubtle": true,
-      "text": "BotWise respects your privacy, it wants you to understand how it may collect personal information about you through this conversation.",
-      "wrap": true,
-      "maxLines": 0
-    },
-    {
-      "type": "TextBlock",
-      "size": "default",
-      "isSubtle": true,
-      "text": "“Personal information”, is any information that enables us to identify you, directly or indirectly, by reference to an identifier such as your name, identification number, location data or one or more factors specific to you. Personal information includes “sensitive personal information” and “pseudonymised personal information” but excludes anonymous information or information that has had the identity of an individual.",
-      "wrap": true,
-      "maxLines": 0
-    },
-    {
-      "type": "TextBlock",
-      "spacing": "medium",
-      "size": "default",
-      "weight": "bolder",
-      "text": "***Please note, that by continuing you agree to our terms of use and privacy notice.***",
-      "wrap": true,
-      "maxLines": 0
-    }
-  ],
-  "actions": [
-    {
-      "type": "Action.OpenUrl",
-      "title": "Check out our Privacy Notice",
-      "url": "https://www.termsfeed.com/privacy-policy/e5084bb6c80051b26d12e7350b756208"
     }
   ]
 }

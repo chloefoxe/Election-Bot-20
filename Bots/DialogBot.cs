@@ -51,7 +51,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             CosmosDbEndpoint = "https://electioncosmos.documents.azure.com:443/",
             AuthKey = "0zqSGejOcM7dqU603OFedsrfXf3HG6DBrwO0YZm85h2IlZrdyDY7la7tgfX0axd9ccNN4myrphorQMlxOuuBSw==",
             DatabaseId = "BotStoage",
-            ContainerId = "Group3",
+            ContainerId = "Group4",
         });
 
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
