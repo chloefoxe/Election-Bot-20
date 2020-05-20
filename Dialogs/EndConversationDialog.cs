@@ -1,3 +1,5 @@
+/* The end conversation dialog thanks the user for their particpation and continues to the data profile presentation in main dialog */
+
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
@@ -30,6 +32,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             InitialDialogId = nameof(WaterfallDialog);
         }
 
+        /* Thank user and return to main dialog*/
         private async Task<DialogTurnResult> ThankTask(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;

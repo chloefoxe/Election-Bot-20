@@ -16,11 +16,6 @@ using System.Linq;
 
 namespace Microsoft.BotBuilderSamples.Bots
 {
-    // This IBot implementation can run any type of Dialog. The use of type parameterization is to allows multiple different bots
-    // to be run at different endpoints within the same project. This can be achieved by defining distinct Controller types
-    // each with dependency on distinct IBot types, this way ASP Dependency Injection can glue everything together without ambiguity.
-    // The ConversationState is used by the Dialog system. The UserState isn't, however, it might have been used in a Dialog implementation,
-    // and the requirement is that all BotState objects are saved at the end of a turn.
     public class DialogBot<T> : ActivityHandler
         where T : Dialog
     {
@@ -45,7 +40,8 @@ namespace Microsoft.BotBuilderSamples.Bots
             await ConversationState.SaveChangesAsync(turnContext, false, cancellationToken);
             await UserState.SaveChangesAsync(turnContext, false, cancellationToken);
         }
-
+        
+        /* Cosmos DB storage references*/
          private static readonly CosmosDbPartitionedStorage query = new CosmosDbPartitionedStorage(new CosmosDbPartitionedStorageOptions
         {
             CosmosDbEndpoint = "https://electioncosmos.documents.azure.com:443/",
@@ -54,6 +50,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             ContainerId = "Group4",
         });
 
+        /* Method from Microsoft Bot Framework doccumentation*/
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
             // preserve user input.
@@ -62,16 +59,9 @@ namespace Microsoft.BotBuilderSamples.Bots
             UtteranceLog logItems = null;
 
             // see if there are previous messages saved in storage.
-            try
-            {
-                string[] utteranceList = { "UtteranceLog" };
-                logItems = query.ReadAsync<UtteranceLog>(utteranceList).Result?.FirstOrDefault().Value;
-            }
-            catch
-            {
-                // Inform the user an error occured.
-                //await turnContext.SendActivityAsync("Sorry, something went wrong reading your stored messages!");
-            }
+            string[] utteranceList = { "UtteranceLog" };
+            logItems = query.ReadAsync<UtteranceLog>(utteranceList).Result?.FirstOrDefault().Value;
+
 
             // If no stored messages were found, create and store a new entry.
             if (logItems is null)
@@ -92,10 +82,8 @@ namespace Microsoft.BotBuilderSamples.Bots
                     // Save the user message to your Storage.
                     await query.WriteAsync(changes, cancellationToken);
                 }
-                catch
-                {
-                    // Inform the user an error occured.
-                    //await turnContext.SendActivityAsync("Sorry, something went wrong storing your message!");
+                catch{
+                    
                 }
             }
             // Else, our Storage already contained saved user messages, add new one to the list.

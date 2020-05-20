@@ -1,5 +1,5 @@
-/* This is the Election dialog which asks users whether they voted in the previous election. The bot parses the answer through LUIS and attempts to make an intelligent response.
- Following some chit-chat (conversation fillers) at the end of this dialog, the conversation flow moves to the issuesDialog. */
+/* The Election dialog asks users whether they voted in the previous election. The bot parses the answer through LUIS and attempts to make an intelligent response.
+ Following some chit-chat (conversation fillers) at the end of this dialog, the conversation flow moves to the constiuency dialog. */
 
 
 using System.Threading;

@@ -1,4 +1,4 @@
-
+/* The constituency dialog asks users about their electoral voting area, following this dialog the conversation flow moves to the issues dialog */
 
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,15 +29,16 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
-                AskConstituency,
-                RemarkOnLocationAsync,
-                AgreeStepAsync,
+                AskConstituency,            // Ask users where they vote
+                RemarkOnLocationAsync,      // Make a remark on location
+                AgreeStepAsync,             // Agree with user opinion and continue
             }));
 
             // The initial child Dialog to run.
             InitialDialogId = nameof(WaterfallDialog);
         }
 
+        /* Ask users what constiuency they vote in */
         private async Task<DialogTurnResult> AskConstituency(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
@@ -54,12 +55,14 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             return await stepContext.NextAsync(personalDetails.Location, cancellationToken);
         }
 
+        /* Invoke LUIS model and return voting area*/
         private async Task<DialogTurnResult> RemarkOnLocationAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
             personalDetails.Location = luisResult.Entities.location;
 
+            /* Default message if the location is not contained in LUIS model or user doesn't provide location*/
             if(luisResult.Entities.location == null) {
                 var messageText = $"I see, I see. Surprising result in general, wasn't it?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
@@ -158,6 +161,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             }
         }
 
+        /* Continue to next dialog*/
         private async Task<DialogTurnResult> AgreeStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;

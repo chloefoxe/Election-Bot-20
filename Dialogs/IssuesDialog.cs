@@ -1,3 +1,5 @@
+/* The Issues dialog asks for user opinion on societal issues that they feel strongly about. Following this dialog the bot continues to the PartyDialog*/
+
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
@@ -27,15 +29,16 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
-                AskIssues,
-                ElaborateIssuesAsync,
-                ContinueStepAsync,
+                AskIssues,              //Ask user about societal issues
+                ElaborateIssuesAsync,   //Bot responds intelligently
+                ContinueStepAsync,      //continues to next dialog
             }));
 
             // The initial child Dialog to run.
             InitialDialogId = nameof(WaterfallDialog);
         }
 
+        /* Asks user question about issues*/
         private async Task<DialogTurnResult> AskIssues(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
@@ -54,6 +57,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             return await stepContext.NextAsync(personalDetails.Location, cancellationToken);
         }
 
+        /* Classifies the intent from the user utterance and saves the entity in the PersonalDetails obejct */
         private async Task<DialogTurnResult> ElaborateIssuesAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
@@ -74,6 +78,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             await Task.Delay(1500);
 
+            /* Switch to case based on user utterance */
             switch (luisResult.TopIntent().intent)
             {
                 case Luis.ElectionBot.Intent.discussHousing:
@@ -158,9 +163,8 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = didntUnderstandMessage }, cancellationToken);
             }
-
-            //return await stepContext.NextAsync(personalDetails, cancellationToken);
         }
+        /* Agree with user opinion and move to next dialog*/
         private async Task<DialogTurnResult> ContinueStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;

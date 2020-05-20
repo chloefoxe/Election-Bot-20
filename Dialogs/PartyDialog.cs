@@ -1,3 +1,5 @@
+/* The party dialog asks for user preference on political party*/
+
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
@@ -27,15 +29,16 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
-                AskParty,
-                ElaboratePartyAsync,
-                ContinueStepAsync,
+                AskParty,               // Ask for user input
+                ElaboratePartyAsync,    // Make a remark on input
+                ContinueStepAsync,      // Continue to next dialog
             }));
 
             // The initial child Dialog to run.
             InitialDialogId = nameof(WaterfallDialog);
         }
 
+        /* ask for user input on party preference*/
         private async Task<DialogTurnResult> AskParty(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
@@ -54,6 +57,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             return await stepContext.NextAsync(personalDetails, cancellationToken);
         }
 
+        /* Check user utterance for party and make remark on input*/
         private async Task<DialogTurnResult> ElaboratePartyAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
@@ -67,7 +71,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             switch (luisResult.TopIntent().intent)
             {
                 case Luis.ElectionBot.Intent.discussParty:
-
+                    /*If LUIS classes user input as a party that is not contained in the model*/
                     if(luisResult.Entities.party_name == null){
                         await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I think that's a good shout!"), cancellationToken);
                         await Task.Delay(1500);
@@ -75,6 +79,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         var housingPromptMessage = MessageFactory.Text(partyText, partyText, InputHints.ExpectingInput);
                         return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = housingPromptMessage }, cancellationToken);
                     }
+                    /* Otherwise just return the name of the party disclosed*/
                     else{
                         personalDetails.Party = luisResult.Entities.party_name;
                         await stepContext.Context.SendActivityAsync(MessageFactory.Text($"The {personalDetails.Party.First()} party?!"), cancellationToken);
@@ -83,7 +88,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         var housingPromptMessage = MessageFactory.Text(partyText, partyText, InputHints.ExpectingInput);
                         return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = housingPromptMessage }, cancellationToken);
                     }
-                
+                /* if the user doesn't disclose a party*/
                 default:
                     personalDetails.Party = def;
                     var didntUnderstandMessageText = $"hmmm not sure if I agree with you on that! But sure it's all politics right?";
@@ -91,6 +96,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = didntUnderstandMessage }, cancellationToken);
             }
         }
+        /* End conversation and continue to last dialog*/
         private async Task<DialogTurnResult> ContinueStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;

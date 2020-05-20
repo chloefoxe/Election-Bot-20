@@ -1,5 +1,5 @@
 
-/* This is the main dialog which runs as the first component in the conversation dialog. It contains 4 StepAsyncs:
+/* The main dialog runs as the first component in the conversation dialog. It contains 4 StepAsyncs:
         1. Intro step - which uses the phrase 'wake bot' as input
         2. Act step - finds the LUIS intent for the first user input
         3. Final Step - when all dialogs have been looped through, this runs at the end which prints out the users data profile
@@ -83,6 +83,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             return await stepContext.NextAsync(null, cancellationToken);
         }
 
+        /* Prints out user inferences based on entities contained in PersonalDetails object*/
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {   
             string name, location, userID, voted, issues, party;

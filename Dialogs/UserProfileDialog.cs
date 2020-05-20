@@ -1,5 +1,5 @@
 
-/* This is the user profile dialog which asks users to input their name and pre-assigned user ID. Following this dialog, the conversation flow moves to the electionDialog. */
+/* The user profile dialog asks users to input their name and pre-assigned user ID. Following this dialog, the conversation flow moves to the electionDialog. */
 
 using System.Threading;
 using System.Threading.Tasks;
@@ -49,16 +49,16 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         /* Name prompt which asks for user's name and adds to personalDetails object */
         private async Task<DialogTurnResult> GetNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            var personalDetials = (PersonalDetails)stepContext.Options;
+            var personalDetials = (PersonalDetails)stepContext.Options;     //Pass the personal Details object through
             
             if (personalDetials.Name == null)
             {
-                var messageText = "What is your name?";
-                var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
-                return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
+                var messageText = "What is your name?";     // Prompt message
+                var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);   //Display prompt message
+                return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);  // Prompt for user input
             }
-            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-            return await stepContext.NextAsync(personalDetials.Name, cancellationToken);
+            var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);    // Invoke LUIS model
+            return await stepContext.NextAsync(personalDetials.Name, cancellationToken);    //Return back to waterfall step
         }
 
         /* User ID prompt which asks users to input their pre-assigned user ID*/

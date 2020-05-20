@@ -25,17 +25,11 @@ namespace Microsoft.BotBuilderSamples.Bots
             //_conversationState = ConversationState
         }
 
-        // protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
-        // {
-            
-        // }
-
+        /* Displyed each time a new user is added to a convesation*/
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
             foreach (var member in membersAdded)
             {
-                // Greet anyone that was not the target (recipient) of this message.
-                // To learn more about Adaptive Cards, see https://aka.ms/msbot-adaptivecards for more details.
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
                     var welcomeCard = CreateAdaptiveCardAttachment();
@@ -46,7 +40,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             }
         }
 
-        // Load attachment from embedded resource.
+        /* Create adaptive card instance which displays privacy notice*/
         private Attachment CreateAdaptiveCardAttachment()
         {
             var cardResourcePath = "CoreBot.Cards.welcomeCard.json";
