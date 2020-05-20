@@ -1,3 +1,6 @@
+
+/* This is the user profile dialog which asks users to input their name and pre-assigned user ID. Following this dialog, the conversation flow moves to the electionDialog. */
+
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
@@ -16,8 +19,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private readonly ConversationRecognizer _luisRecognizer;
         protected readonly ILogger Logger;
 
-        private const string UserInfo = "value-userInfo";
-
        public UserProfileDialog(ConversationRecognizer luisRecognizer, ElectionDialog electionDialog, ILogger<UserProfileDialog> logger)
             : base(nameof(UserProfileDialog))
         {
@@ -28,15 +29,16 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             AddDialog(electionDialog);
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
-                GetNameAsync,
-                GetUserIDAsync,
-                FinalStepAsync,
+                GetNameAsync,       // Name input
+                GetUserIDAsync,     // UserID input
+                FinalStepAsync,     // Move to next dialog
             }));
 
             // The initial child Dialog to run.
             InitialDialogId = nameof(WaterfallDialog);
         }
 
+        // Function to change the user input string to uppercase so the bot can recall the user's name, for example the input 'chloe' returns 'Chloe', 
         static string UppercaseFirst(string s)
         {
             char[] a = s.ToCharArray();
@@ -44,6 +46,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             return new string(a);
         }
 
+        /* Name prompt which asks for user's name and adds to personalDetails object */
         private async Task<DialogTurnResult> GetNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetials = (PersonalDetails)stepContext.Options;
@@ -58,23 +61,19 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             return await stepContext.NextAsync(personalDetials.Name, cancellationToken);
         }
 
+        /* User ID prompt which asks users to input their pre-assigned user ID*/
         private async Task<DialogTurnResult> GetUserIDAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
 
+            /* Transforms name to uppercase and stores string in personalDetails */
             personalDetails.Name = luisResult.Entities.name;
-
             string uncapped, capped;
-
             uncapped = personalDetails.Name.First();
-
             capped = UppercaseFirst(uncapped);
-
             string [] capitalisedName = new string [1];
-
             capitalisedName[0] = capped;
-
             personalDetails.Name = capitalisedName;
 
             if (personalDetails.UserID== null)
@@ -89,11 +88,12 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             return await stepContext.NextAsync(personalDetails.UserID, cancellationToken);
         }
 
+        /* Thanks the user for their input and moves on to the Election Dialog*/
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-            personalDetails.UserID = luisResult.Entities.userID;
+            personalDetails.UserID = luisResult.Entities.userID;    //Store result of user ID in personalDetails
 
             personalDetails = (PersonalDetails)stepContext.Options;
 

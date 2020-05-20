@@ -1,3 +1,7 @@
+/* This is the Election dialog which asks users whether they voted in the previous election. The bot parses the answer through LUIS and attempts to make an intelligent response.
+ Following some chit-chat (conversation fillers) at the end of this dialog, the conversation flow moves to the issuesDialog. */
+
+
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
@@ -28,22 +32,23 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
-                IntroStepAsync,
-                AskVotedAsync,
-                FillerStepAsync,
+                IntroStepAsync,     // Bot asks if the user voted in the Election
+                AskVotedAsync,      // Stores result and comments on answer (Yes/No)
+                FillerStepAsync,    // Conversation chit-chat filler
             }));
 
             // The initial child Dialog to run.
             InitialDialogId = nameof(WaterfallDialog);
         }
 
+        /* Asks if the user voted in the previous election */
         private async Task<DialogTurnResult> IntroStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;
             
             if (personalDetails.Voted == null)
             {
-                await Task.Delay(1500);
+                await Task.Delay(1500);     // Pause for effect
                 var messageText = "So, alot has happened since this year's general election then! Did you cast your vote in February?";
                 var promptMessage = MessageFactory.Text(messageText, messageText, InputHints.ExpectingInput);
                 return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
@@ -59,38 +64,36 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var personalDetails = (PersonalDetails)stepContext.Options;
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
 
+            /* Booolean level strings to hold the result from the LUIS model, so these can be referenced at the end of the dialog 
+             with the same token for each user specfic to whether they voted or not. */
             string[] votedString, didNotVoteString;
             votedString = new string[]{ "did vote"};
             didNotVoteString = new string[]{ "did not vote"};
 
+            // Retrives the intent and makes a response based on whether user voted or not
             switch (luisResult.TopIntent().intent)
             {
                 case Luis.ElectionBot.Intent.didVote:
-                    personalDetails.Voted = votedString;
+                    personalDetails.Voted = votedString;   // Store result in personal Details object
 
                     var votedText = "Good job 👍🏻 Everyone should use their vote don't you think?";
                     var votedPromptMessage = MessageFactory.Text(votedText, votedText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = votedPromptMessage }, cancellationToken);
                 
                 case Luis.ElectionBot.Intent.didNotVote:
-                    personalDetails.Voted = didNotVoteString;
+                    personalDetails.Voted = didNotVoteString;   // Store result in personal Details object
 
                     await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Awh that's a pity. I couldn't vote either. 😐"), cancellationToken);
                     await Task.Delay(1500);
                     var didNotVoteText = "... apartently I'm not classed as a real citizen! - Isn't that strange?";
                     var promptMessage = MessageFactory.Text(didNotVoteText, didNotVoteText, InputHints.ExpectingInput);
                     return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
-
-                //case Luis.ElectionBot.Intent.didNotVote:
-                //     // Catch all for unhandled intents
-                //     var didntUnderstandMessageText = $"That's interesting!";
-                //     var didntUnderstandMessage = MessageFactory.Text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
-                //     return await stepContext.NextAsync(personalDetails, cancellationToken);
             }
 
             return await stepContext.NextAsync(personalDetails, cancellationToken);
         }
 
+        /* Continue to next dialog */
         private async Task<DialogTurnResult> FillerStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var personalDetails = (PersonalDetails)stepContext.Options;

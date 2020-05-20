@@ -1,5 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+
+/* This is the main dialog which runs as the first component in the conversation dialog. It contains 4 StepAsyncs:
+        1. Intro step - which uses the phrase 'wake bot' as input
+        2. Act step - finds the LUIS intent for the first user input
+        3. Final Step - when all dialogs have been looped through, this runs at the end which prints out the users data profile
+        4. End Step - Asks the user to continue via the 'next step' button on the user website 
+*/
 
 using System;
 using System.Collections.Generic;
@@ -44,6 +49,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             InitialDialogId = nameof(WaterfallDialog);
         }
 
+        /*Runs the first async which ensures that the user uses the 'wake bot' phrase*/
         private async Task<DialogTurnResult> IntroStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             await Task.Delay(1000);
@@ -54,15 +60,17 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = promptMessage }, cancellationToken);
         }
 
+        /* Returns an error if the user doesn't use the 'wake bot' phrase, continues otherwise */
         public async Task<DialogTurnResult> ActStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             var luisResult = await _luisRecognizer.RecognizeAsync<Luis.ElectionBot>(stepContext.Context, cancellationToken);
-            var personalDetails = new PersonalDetails();
+            var personalDetails = new PersonalDetails();    // creates a new instance of the personal details class which will be used to save data varaibles disclosed by the user. See PersonalDetails.cs
 
+            // If the user uses the 'wake bot' command, continue to the 'UserProfileDialog', otherwise, ask users to restart the process.
             switch (luisResult.TopIntent().intent)
             {
                 case Luis.ElectionBot.Intent.wakeBot:
-                    return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), personalDetails, cancellationToken);
+                    return await stepContext.BeginDialogAsync(nameof(UserProfileDialog), personalDetails, cancellationToken); //Pass the cancellation token and personalDetails object
                 
                 default:
                     // Catch all for unhandled intents
